@@ -1,0 +1,98 @@
+<ol class="breadcrumb newcrumb">
+    <li>
+        <a href="#">
+            <span><i class="fa fontello-home-outline"></i>
+            </span>Home</a>
+    </li>
+    <li><a href="#">Special Page</a>
+    </li>
+    <li>Time Line</li>
+</ol>
+
+<div class="row">
+    <!--   TIMELINE -->
+    <div class="col-lg-12">
+
+        <div class="box bg-transparent">
+            <div class="box-body no-padding" infinite-scroll='loadMore()' infinite-scroll-distance='0'>
+                <!--<div ng-click="create()">tttttttttt</div>-->
+                <ul class="timeline" ng-repeat="post in arrPost"  ng-switch="post.type">
+
+
+                    <!-- timeline item -->
+                    <li ng-switch-when="diary">
+                        <i class="fa fa-book bg-green"></i>
+                        <span>
+                            <strong>{{post.type}}&nbsp;&nbsp;</strong>from<i> &nbsp;&nbsp;{{post.name}}</i>
+                            <small>{{post.date}}</small>
+                        </span>
+                        <div class="timeline-item bg-white">
+                            <h3 style="padding: 15px 20px 0 20px;" class="timeline-header text-white  no-border">
+                                <span class="text-gray"><i class="fontello-pen"></i>&nbsp;&nbsp;My Post</span>
+                                <span class="text-white pull-right fa fa-cogs"></span>
+                            </h3>
+
+                            <div class="timeline-body">
+                                {{post.body}}
+                            </div>
+                            <div class='timeline-footer'>
+                                <a class="btn bg-green btn-xs">Read more</a>
+                                <a class="btn btn-danger btn-xs">Delete</a>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- END timeline item -->
+
+
+                    <!-- timeline item -->
+                    <li ng-switch-when="twitter">
+                        <i class="fa fa-twitter bg-aqua"></i>
+                        <span>
+                            <strong>{{post.type}}&nbsp;&nbsp;</strong>from<i> &nbsp;&nbsp;{{post.name}}</i>
+                            <small>{{post.date}}</small>
+                        </span>
+                        <div class="timeline-item bg-white">
+                            <h3 style="padding: 15px 20px 0 20px;" class="timeline-header text-white  no-border">
+                                <span class="text-gray"><i class="fa fa-twitter"></i>&nbsp;&nbsp;My Tweet</span>
+                                <span class="text-white pull-right fa fa-cogs"></span>
+                            </h3>
+
+                            <div class="timeline-body">
+                                {{post.body}}
+                            </div>
+                            <div class='timeline-footer'>
+                                <a class="btn bg-aqua btn-flat btn-xs">View comment</a>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- END timeline item -->
+
+                    <!-- timeline item -->
+                    <li ng-switch-when="facebook">
+                        <i class="fa fa-facebook bg-blue"></i>
+                        <span>
+                            <strong>{{post.type}}&nbsp;&nbsp;</strong>from<i> &nbsp;&nbsp;{{post.name}}</i>
+                            <small>{{post.date}}</small>
+                        </span>
+                        <div class="timeline-item bg-white">
+                            <h3 style="padding: 15px 20px 0 20px;" class="timeline-header text-white  no-border">
+                                <span class="text-gray"><i class="fontello-users-outline"></i>&nbsp;&nbsp;Friends List</span>
+                                <span class="text-white pull-right fa fa-cogs"></span>
+                            </h3>
+
+                            <div class="timeline-body">
+                                <img src="http://api.randomuser.me/portraits/thumb/men/45.jpg" alt="..." class="img-circle">
+                                <img src="http://api.randomuser.me/portraits/thumb/women/46.jpg" alt="..." class="margin img-circle">
+                                <img src="http://api.randomuser.me/portraits/thumb/men/47.jpg" alt="..." class="margin img-circle">
+                                <img src="http://api.randomuser.me/portraits/thumb/women/48.jpg" alt="..." class="margin img-circle">
+                            </div>
+                        </div>
+                    </li>
+                    <!-- END timeline item -->
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--   ./TIMELINE -->
