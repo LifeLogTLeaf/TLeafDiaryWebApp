@@ -17,7 +17,7 @@ function HeaderCtrl($rootScope, $scope, Facebook, GooglePlus){
 //    console.log('HeaderCtrl 부터...'+$rootScope.loginStatus);
 
     $rootScope.diaryList=[];
-//    $rootScope.isCalendar=true;
+
 
     $rootScope.$on('Facebook:statusChange', function(ev, data) {
         console.log('"HeaderCtrl 부터... " Facebook Status: ', JSON.stringify(data));
@@ -164,12 +164,7 @@ function CalendarCtrl($rootScope,$scope, $http, $timeout) {
 
     console.log('CalendarCtrl 로부터 : '+$rootScope.diaryList);
 
-
-//    if($rootScope.isCalendar){
-//        $rootScope.isCalendar=false;
-        getCalendar($rootScope);
-//    }
-
+    getCalendar($rootScope);
 
 
 
@@ -232,7 +227,6 @@ function getCalendar($rootScope) {
 
         }
     });
-
 }
 
 function InvoiceCtrl($scope, $http, $timeout) {}

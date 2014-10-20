@@ -1,4 +1,4 @@
-<ol class="breadcrumb newcrumb" ng-controller="CalendarCtrl">
+<ol class="breadcrumb newcrumb">
     <li>
         <a href="#">
             <span><i class="fa fontello-home-outline"></i>
@@ -16,7 +16,7 @@
             <div class="box-body no-padding ">
 
                 <!-- THE CALENDAR -->
-                <div ng-controller="calendarMiniCtrl" ng-model="$rootScope.diaryList" id="calendar"></div>
+                <div id="calendar"></div>
             </div>
             <!-- /.box-body -->
         </div>
@@ -95,10 +95,7 @@
 <script type="text/javascript">
 /* initialize the external events
                  -----------------------------------------------------------------*/
-var diarylist=[];
-function calendarMiniCtrl($rootScope,$scope) {
-    diarylist =$rootScope.diaryList;
-}
+
 function ini_events(ele) {
     ele.each(function() {
 
