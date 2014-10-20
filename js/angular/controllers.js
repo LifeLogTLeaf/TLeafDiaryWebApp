@@ -130,7 +130,7 @@ function EditorsCtrl($rootScope,$scope, $http) {
              'backgroundColor': "#f56954",
              'borderColor': "#f56954"});
         console.log($rootScope.diaryList);
-        location.replace("/#!");
+        location.replace("#!");
     }
 
 
@@ -151,83 +151,24 @@ function ButtonCtrl($scope, $http, $timeout) {}
 
 function TyphographyCtrl($scope, $http, $timeout) {}
 
+
+//매우 중요한 변수로, 캘린더로 돌아올 때마다 다이어리 루트의 다이어리 리스트를 일반 diaryList로 내려준다.
+//calendar.html에서 보기 위함이다.
+var diaryList=[];
 function CalendarCtrl($rootScope,$scope, $http, $timeout) {
 
-
+    diaryList=$rootScope.diaryList;
 
     $scope.createDiary = function (year,month,day) {
         console.log(year+','+ month+','+day);
         //에디터 컨트롤러에 보낼 목적으로 브로드캐스트 한다.
         $rootScope.date = {'year':year,'month':month, 'day':day};
-        location.replace("/#!/editors");
+        location.replace("#!/editors");
     }
 
-    console.log('CalendarCtrl 로부터 : '+$rootScope.diaryList);
-
-    getCalendar($rootScope);
-
-
-
-
-
-
-
+//    console.log('CalendarCtrl 로부터 : '+$rootScope.diaryList);
 }
 
-function getCalendar($rootScope) {
-
-
-    var date = new Date();
-    var d = date.getDate(),
-        m = date.getMonth(),
-        y = date.getFullYear();
-    $('#calendar').fullCalendar({
-        header: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'month,agendaWeek,agendaDay'
-        },
-        buttonText: { //This is to add icons to the visible buttons
-            prev: "<span class='fa fa-caret-left'></span>",
-            next: "<span class='fa fa-caret-right'></span>",
-            today: 'today',
-            month: 'month',
-            week: 'week',
-            day: 'day'
-        },
-        //일정 표시 예시
-        events: $rootScope.diaryList,
-        editable: true,
-        droppable: true, // this allows things to be dropped onto the calendar !!!
-
-        // 객체를 움직이게 하는 것
-        drop: function(date, allDay) {
-
-            // retrieve the dropped element's stored Event Object
-            var originalEventObject = $(this).data('eventObject');
-
-            // we need to copy it, so that multiple events don't have a reference to the same object
-            var copiedEventObject = $.extend({}, originalEventObject);
-
-            // assign it the date that was reported
-            copiedEventObject.start = date;
-            copiedEventObject.allDay = allDay;
-            copiedEventObject.backgroundColor = $(this).css("background-color");
-            copiedEventObject.borderColor = $(this).css("border-color");
-
-            // render the event on the calendar
-            // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-            $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
-
-            // is the "remove after drop" checkbox checked?
-            if ($('#drop-remove').is(':checked')) {
-                // if so, remove the element from the "Draggable Events" list
-                $(this).remove();
-            }
-
-        }
-    });
-}
 
 function InvoiceCtrl($scope, $http, $timeout) {}
 
