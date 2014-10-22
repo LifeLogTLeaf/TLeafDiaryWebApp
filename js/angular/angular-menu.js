@@ -136,8 +136,8 @@ var app = angular.module('shack', ['infinite-scroll', 'facebook', 'googleplus'])
             controller: BlogListCtrl,
             activetab: 'BlogList'
         }).
-        when('/blog-detail', {
-            templateUrl: 'pages/blog-detail.html',
+        when('/diary-detail', {
+            templateUrl: 'pages/diary-detail.html',
             controller: BlogDetailCtrl,
             activetab: 'BlogDetail'
         }).

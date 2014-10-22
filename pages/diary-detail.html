@@ -1,0 +1,104 @@
+<ol class="breadcrumb newcrumb">
+    <li>
+        <a href="#">
+            <span><i class="fa fontello-home-outline"></i>
+            </span>Home</a>
+    </li>
+    <li><a href="#">Blog</a>
+    </li>
+    <li>Blog Details</li>
+</ol>
+
+<!--CONTENT-->
+<div class="row" style="margin-top:30px;">
+    <!--  BLOG CONTENT -->
+    <div class="col-sm-8">
+
+        <div class="blog-list-nest">
+
+            <div class="blog-list-content">
+                <h2>{{title}}</h2>
+                <p>{{body}}</p>
+
+                <!--태그 페이지 -->
+                 <p class="pull-right">
+                    <span class="label label-default btn-margin bg-green" ng-repeat="tag in tags">{{tag}}</span>
+                </p>
+                <!--./태그페이지 -->
+
+                    <ul class="list-inline" >
+                    <li>
+                        <a class="text-green" href="#">
+                            <span class="fontello-globe-outline"></span>&nbsp;{{daysAgo}}2 Days Ago</a>
+                    </li>
+                    <li>
+                        <a class="text-green" href="#">
+                            <span class="fontello-comment-1"></span>&nbsp;{{cntComment}}2 Comments</a>
+                    </li>
+                    <li>
+                        <a class="text-green" href="#">
+                            <span class=" fontello-link-outline"></span>&nbsp;{{cntShare}}2 Shares</a>
+                    </li>
+                </ul>
+
+                <hr>
+                <button class="btn btn-info btn-margin pull-right">공유</button>
+                <button class="btn btn-danger btn-margin pull-right">삭제</button>
+                <button class="btn btn-warning btn-margin pull-right">수정</button>
+                <button class="btn btn-primary btn-margin pull-right">목록</button>
+
+
+                <div style="clear:both;"></div>
+            </div>
+        </div>
+
+
+        <ul class="pager success">
+            <li class="previous"><a href="#">← Older</a>
+            </li>
+            <li class="next disabled"><a href="#">Newer →</a>
+            </li>
+        </ul>
+
+
+
+    </div>
+    <!--  END OF BLOG CONTENT -->
+
+    <!--  BLOG SIDE CONTENT -->
+    <div class="col-sm-4">
+
+
+
+        <div class="blog-side-nest">
+            <h4 class="text-left">최근 일기</h4>
+            <hr style="margin:0">
+
+            <div class="media" ng-repeat="recent in recents">
+                <a class="pull-left" href="#"style="max-width: 64px">
+                    <img  class="img-circle media-object img-responsive-media" data-src="holder.js/64x64" alt="64x64" src="{{recent.imgUrl}}">
+                </a>
+                <div class="media-body">
+                    <h5 class="media-heading">{{recent.title}}</h5>
+                    <a class="text-green " style="margin:-10px 0 10px" href="#">{{recent.ago}}2 days ago</a>
+                </div>
+            </div>
+
+
+
+            <br>
+        </div>
+
+        <div class="blog-side-nest">
+            <h4 class="text-left">태그</h4>
+            <hr style="margin:0">
+            <ul class="list-inline">
+                <li ng-repeat="tags in tagsList">
+                    <a class="btn bg-green" href="{{tags.url}}">{{tags.name}}</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <!--  END OF BLOG SIDE CONTENT -->
+</div>

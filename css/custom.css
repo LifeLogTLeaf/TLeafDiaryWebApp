@@ -1,0 +1,4 @@
+/*일기 읽기 페이지에서 태그들 내의 간격을 넓혀준다*/
+.btn-margin{
+    margin: 0px 4px 0px 0px;
+}

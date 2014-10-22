@@ -29,15 +29,15 @@ function HeaderCtrl($rootScope, $scope, Facebook, GooglePlus){
         }
     });
 
-    $rootScope.$on('GooglePlus:statusChange', function(ev, data) {
-        console.log('Google Status: ', data);
-        if (data.status == 'connected') {
-
-
-        } else if (data.status == 'loggin') {
-
-        }
-    });
+//    $rootScope.$on('GooglePlus:statusChange', function(ev, data) {
+//        console.log('Google Status: ', data);
+//        if (data.status == 'connected') {
+//
+//
+//        } else if (data.status == 'loggin') {
+//
+//        }
+//    });
 
 
     /*check facebook sdk load complete*/
@@ -152,12 +152,7 @@ function ButtonCtrl($scope, $http, $timeout) {}
 function TyphographyCtrl($scope, $http, $timeout) {}
 
 
-//매우 중요한 변수로, 캘린더로 돌아올 때마다 다이어리 루트의 다이어리 리스트를 일반 diaryList로 내려준다.
-//calendar.html에서 보기 위함이다.
-var diaryList=[];
 function CalendarCtrl($rootScope,$scope, $http, $timeout) {
-
-    diaryList=$rootScope.diaryList;
 
     $scope.createDiary = function (year,month,day) {
         console.log(year+','+ month+','+day);
@@ -204,7 +199,23 @@ function BlankCtrl($scope, $http, $timeout) {}
 
 function BlogListCtrl($scope, $http, $timeout) {}
 
-function BlogDetailCtrl($scope, $http, $timeout) {}
+function BlogDetailCtrl($scope, $http, $timeout) {
+    $scope.title='학교종이 땡땡땡';
+    $scope.body = '난 오늘 11시에 태평역에서 가산디지털단지역으로 지하철을 타고 갔다. 도착하고 나서 짜장범벅을 먹었고 일하고 일하고 일하고 일하고 전화하고 하다가 오후 10시 37분인데 일하고 서류 만들고 이러고 있다.\n 배가 고파서 뭘 먹을까 배달의 민족을 10분전에 찾아보다가 별로 땡기는게 없어서 편의점에 갈까 고민중이다.\n';
+    $scope.tags=['keyword','tag','travel'];
+    $scope.recents=[{'title':'간만에 휴식','ago':3,'imgUrl':'https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpf1/v/t1.0-9/10553531_1494589260825919_7571164004568224289_n.jpg?oh=e150716e861d0a493fdeefe70a37c21d&oe=54AAC873&__gda__=1425070412_2bfe046f0909401324651c7cd0516f5c'},
+        {'title':'학교에 간 날','ago':4,'imgUrl':'https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xfp1/t31.0-8/1921045_468032023334626_6466308735889850799_o.jpg'},
+        {'title':'간만에 휴식','ago':3,'imgUrl':'https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpf1/v/t1.0-9/10553531_1494589260825919_7571164004568224289_n.jpg?oh=e150716e861d0a493fdeefe70a37c21d&oe=54AAC873&__gda__=1425070412_2bfe046f0909401324651c7cd0516f5c'},
+        {'title':'학교에 간 날','ago':4,'imgUrl':'https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xfp1/t31.0-8/1921045_468032023334626_6466308735889850799_o.jpg'}]
+
+    $scope.tagsList = [{'name':'Admin','url':'#'},
+        {'name':'Fleet','url':'#'},
+        {'name':'Music','url':'#'},
+        {'name':'Video','url':'#'},
+        {'name':'Typhography','url':'#'},
+        {'name':'Computer','url':'#'},
+        {'name':'webDesign','url':'#'},];
+}
 
 function FloatCtrl($scope, $http, $timeout) {}
 
