@@ -13,14 +13,10 @@
 'use strict';
 
 // angular.js main app initialization
-var app = angular.module('shack', ['infinite-scroll', 'facebook', 'googleplus']).
-    config(['$routeProvider', 'FacebookProvider', 'GooglePlusProvider',
-    function($routeProvider, FacebookProvider, GooglePlusProvider) {
-        FacebookProvider.init('675376119207653');
-        GooglePlusProvider.init({
-            clientId: '559884666614-fgk84jqqhekfgo5bhjod389pbiu7esq2.apps.googleusercontent.com',
-            apiKey: 'derp'
-        });
+var app = angular.module('shack', ['infinite-scroll'/**, 'facebook'*/]).
+    config(['$routeProvider', /**'FacebookProvider',*/
+    function($routeProvider/**, FacebookProvider*/) {
+/**FacebookProvider.init('675376119207653');*/
 
 
         $routeProvider.

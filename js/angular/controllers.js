@@ -13,13 +13,13 @@
 'use strict';
 
 // optional controllers
-function HeaderCtrl($rootScope, $scope, Facebook, GooglePlus){
+function HeaderCtrl($rootScope, $scope/**, Facebook*/){
 //    console.log('HeaderCtrl 부터...'+$rootScope.loginStatus);
 
     $rootScope.diaryList=[];
 
 
-    $rootScope.$on('Facebook:statusChange', function(ev, data) {
+    /**    $rootScope.$on('Facebook:statusChange', function(ev, data) {
         console.log('"HeaderCtrl 부터... " Facebook Status: ', JSON.stringify(data));
         console.log('"headerCtrl 부터... facebook status check : '+ data.status);
         $rootScope.loginStatus = data.status;
@@ -27,7 +27,7 @@ function HeaderCtrl($rootScope, $scope, Facebook, GooglePlus){
             console.log('HeaderCtrl 부터...로그인이 안되어 있습니다');
 //        location.replace("http://localhost/pages/login.html");
         }
-    });
+    });*/
 
 //    $rootScope.$on('GooglePlus:statusChange', function(ev, data) {
 //        console.log('Google Status: ', data);
@@ -59,7 +59,7 @@ function HeaderCtrl($rootScope, $scope, Facebook, GooglePlus){
 //                $scope.googleplusReady = true;
 //        }
 //    );
-
+/**
     $scope.facebooklogin = function(){
 //        1. facebook로그인을 진행한다
 
@@ -69,7 +69,7 @@ function HeaderCtrl($rootScope, $scope, Facebook, GooglePlus){
             Facebook.api('/me', function(response) {
                 console.log('페이스북 데이터 목록 \n'+JSON.stringify(response));
             });
-        });
+        });*/
 
 
 
@@ -85,9 +85,9 @@ function HeaderCtrl($rootScope, $scope, Facebook, GooglePlus){
 //            console.log(err);
 //        });
 //        2.끝
-    }
+//    }
 
-
+/**
     $scope.$on('Logout', function(event) {
         event.stopPropagation();
 
@@ -98,7 +98,7 @@ function HeaderCtrl($rootScope, $scope, Facebook, GooglePlus){
         Facebook.logout();
 
     }
-
+*/
 
 }
 function HomeCtrl($scope, $http) {
@@ -171,7 +171,7 @@ function CalendarCtrl($rootScope,$scope, $http, $timeout) {
             }
 
         });
-        location.replace('#!/diary-detail?'+ ob.body);
+        location.replace('#!/diary-detail?'+'id='+ ob.diaryId);
     }
 
 
@@ -213,7 +213,7 @@ function BlankCtrl($scope, $http, $timeout) {}
 
 function BlogListCtrl($scope, $http, $timeout) {}
 
-function DiaryDetailCtrl($scope, $http, $timeout) {
+function DiaryDetailCtrl($scope, $http, $timeout, $routeParams) {
     $scope.title='학교종이 땡땡땡';
     $scope.body = '난 오늘 11시에 태평역에서 가산디지털단지역으로 지하철을 타고 갔다. 도착하고 나서 짜장범벅을 먹었고 일하고 일하고 일하고 일하고 전화하고 하다가 오후 10시 37분인데 일하고 서류 만들고 이러고 있다.\n 배가 고파서 뭘 먹을까 배달의 민족을 10분전에 찾아보다가 별로 땡기는게 없어서 편의점에 갈까 고민중이다.\n';
     $scope.myTags=['keyword','tag','travel'];
@@ -229,6 +229,8 @@ function DiaryDetailCtrl($scope, $http, $timeout) {
         {'name':'Typhography','url':'#'},
         {'name':'Computer','url':'#'},
         {'name':'webDesign','url':'#'}];
+
+    console.log($routeParams.diaryId);
 }
 
 function FloatCtrl($scope, $http, $timeout) {}
