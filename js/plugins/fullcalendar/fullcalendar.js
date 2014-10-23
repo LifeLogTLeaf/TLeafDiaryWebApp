@@ -3980,6 +3980,7 @@ function AgendaEventRenderer() {
 		}
 		html +=
 			" class='" + classes.join(' ') + "'" +
+            " ng-click='readDiary("+seg.diaryId+")'" +
 			" style=" +
 				"'" +
 				"position:absolute;" +
@@ -5335,7 +5336,6 @@ function DayEventRenderer() {
 		// generate a semicolon delimited CSS string for any of the "skin" properties
 		// of the event object (`backgroundColor`, `borderColor` and such)
 		var skinCss = getSkinCss(event, opt);
-
 		if (url) {
 			html += "<a href='" + htmlEscape(url) + "'";
 		}else{
@@ -5343,6 +5343,7 @@ function DayEventRenderer() {
 		}
 		html +=
 			" class='" + classNames.join(' ') + "'" +
+            " ng-click='readDiary("+event.diaryId+")'" +
 			" style=" +
 				"'" +
 				"position:absolute;" +

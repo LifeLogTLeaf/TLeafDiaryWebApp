@@ -4,9 +4,9 @@
             <span><i class="fa fontello-home-outline"></i>
             </span>Home</a>
     </li>
-    <li><a href="#">Blog</a>
+    <li><a href="#">Diary</a>
     </li>
-    <li>Blog Details</li>
+    <li>Diary Details</li>
 </ol>
 
 <!--CONTENT-->
@@ -22,7 +22,7 @@
 
                 <!--태그 페이지 -->
                  <p class="pull-right">
-                    <span class="label label-default btn-margin bg-green" ng-repeat="tag in tags">{{tag}}</span>
+                    <span class="label label-default btn-margin bg-green" ng-repeat="myTag in myTags">{{myTag}}</span>
                 </p>
                 <!--./태그페이지 -->
 
@@ -42,10 +42,10 @@
                 </ul>
 
                 <hr>
-                <button class="btn btn-info btn-margin pull-right">공유</button>
-                <button class="btn btn-danger btn-margin pull-right">삭제</button>
-                <button class="btn btn-warning btn-margin pull-right">수정</button>
-                <button class="btn btn-primary btn-margin pull-right">목록</button>
+                <a href=""><button class="btn btn-info btn-margin pull-right">공유</button></a>
+                <a href=""><button class="btn btn-danger btn-margin pull-right">삭제</button></a>
+                <a href=""><button class="btn btn-warning btn-margin pull-right">수정</button></a>
+                <a href="/diary/#!"><button class="btn btn-primary btn-margin pull-right">목록</button></a>
 
 
                 <div style="clear:both;"></div>
@@ -93,8 +93,8 @@
             <h4 class="text-left">태그</h4>
             <hr style="margin:0">
             <ul class="list-inline">
-                <li ng-repeat="tags in tagsList">
-                    <a class="btn bg-green" href="{{tags.url}}">{{tags.name}}</a>
+                <li ng-repeat="tag in tags">
+                    <a class="btn bg-green" href="{{tag.url}}">{{tag.name}}</a>
                 </li>
 
             </ul>
