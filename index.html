@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="shack" ng-controller="IndexCtrl" lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="themesmile" />
-    <title>TLeaf :: Diary</title>
+    <title>Diary :: {{header}}</title>
     <meta name="description" content="Responsive website using AngularJS - demo page">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -82,14 +82,14 @@
 
 </head>
 
-<body ng-app="shack" class="main-theme fixed">
+<body class="main-theme fixed">
 
 <header class="header" ng-include src="'views/header.html'">
     <!-- header content -->
 </header>
 
 
-<div class="wrapper row-offcanvas row-offcanvas-left">
+<div class="wrapper row-offcanvas row-offcanvas-left" >
     <!-- Left Side Column. Contains Sidebar -->
 
     <!-- End of Left Side Column. Contains Sidebar -->

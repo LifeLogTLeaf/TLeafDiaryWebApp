@@ -12,11 +12,29 @@
 
 'use strict';
 
+//index.html의 title태그값을 바꾸기 위해 브로드캐스트한다.
+function setTitle($rootScope,msg) {
+    $rootScope.$broadcast('title:change',msg);
+}
+
+function IndexCtrl($rootScope,$scope) {
+    $scope.header='Calendar';
+
+    $rootScope.$on('title:change', function (e,data) {
+        console.log(data+'페이지 시작...');
+        $scope.header=data;
+    });
+
+}
+
+
 // optional controllers
 function HeaderCtrl($rootScope, $scope/**, Facebook*/){
 //    console.log('HeaderCtrl 부터...'+$rootScope.loginStatus);
 
     $rootScope.diaryList=[];
+
+
 
 
     /**    $rootScope.$on('Facebook:statusChange', function(ev, data) {
@@ -118,20 +136,26 @@ function SliderCtrl($scope, $http, $timeout) {}
 
 function MorrisCtrl($scope, $http) {}
 
+
+
 function EditorsCtrl($rootScope,$scope, $http) {
+    setTitle($rootScope,'Editor');
+
+
     var data=$rootScope.date;
     $rootScope.date = '';
+    CKEDITOR.replace('body');
+
+
     $scope.insert = function () {
-//        console.log('test');
-        console.log('this.body.. '+this.body);
+        var body = CKEDITOR.instances.body.getData();
         $rootScope.diaryList.push(
             {'diaryId':1,
              'title': this.title,
-             'body': '공사중입니다.',
+             'body': body,
              'start': new Date(data.year,data.month-1,data.day),
              'backgroundColor': "#f56954",
              'borderColor': "#f56954"});
-        console.log($rootScope.diaryList);
         location.replace("#!");
     }
 
@@ -155,7 +179,7 @@ function TyphographyCtrl($scope, $http, $timeout) {}
 
 
 function CalendarCtrl($rootScope,$scope, $http, $timeout) {
-
+    setTitle($rootScope,'Calendar');
     $scope.createDiary = function (year,month,day) {
         console.log(year+','+ month+','+day);
         //에디터 컨트롤러에 보낼 목적으로 브로드캐스트 한다.
@@ -190,6 +214,7 @@ function BlankCtrl($scope, $http, $timeout) {}
 function BlogListCtrl($scope, $http, $timeout) {}
 
 function DiaryDetailCtrl($rootScope ,$scope, $http, $timeout, $routeParams) {
+    setTitle($rootScope,'Read');
     console.log('DiaryDetailCtrl start..');
 
     getData();
@@ -198,7 +223,8 @@ function DiaryDetailCtrl($rootScope ,$scope, $http, $timeout, $routeParams) {
 
     var diaryId=$routeParams.diaryId;
     var ob=getDiaryObject(diaryId);
-    $scope.title = ob.title
+    $scope.title = ob.title;
+    $scope.body = ob.body;
 
 
 
