@@ -138,7 +138,7 @@ function MorrisCtrl($scope, $http) {}
 
 
 
-function EditorsCtrl($rootScope,$scope, $http) {
+function EditorsCtrl($rootScope, $scope, $http) {
     setTitle($rootScope,'Editor');
 
 
@@ -292,5 +292,7 @@ function SideBarCtrl($scope) {
     }
 
 }
+
+
 
 
