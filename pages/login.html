@@ -94,54 +94,63 @@
 
                 </div>
             </form>
-
             <!--회원가입에 관한 폼-->
-            <form ng-submit="submitJoin()" method="post" ng-switch-when="join">
+            <form name="user" ng-submit="submitJoin(user)" ng-switch-when="join">
                 <div class="body bg-white">
                     <!--이메일-->
                     <div class="input-group">
                         <span class="input-group-btn">
-                            <button class="btn bg-green" type="button"><i class="fontello-user-1"></i>
-                            </button>
+                            <div class="btn bg-green" ><i class="fontello-user-1"></i>
+                            </div>
                         </span>
-                        <input type="text" ng-model="email1" placeholder="E-Mail" class="form-control">
+                        <input type="text" ng-model="user.email1" placeholder="E-Mail" class="form-control">
                     </div>
-
                     <br>
                     <!--닉네임-->
                     <div class="input-group">
                         <span class="input-group-btn">
-                            <button class="btn bg-green" type="button"><i class="fontello-user-1"></i>
-                            </button>
+                            <div class="btn bg-green" ><i class="fontello-user-1"></i>
+                            </div>
                         </span>
-                        <input type="text" ng-model="nickname" class="form-control" placeholder="Nick Name" />
+                        <input type="text" ng-model="user.nickname" ng-minlength="3" class="form-control" placeholder="Nick Name" />
                     </div>
+                    <div class="msg-block">
+                        <span class="msg-error" ng-show="user.nickname.$error">
+                            Passwords don't match.
+                        </span>
+                    </div>
+
                     <br>
                     <!--패스워드-->
                     <div class="input-group">
                         <span class="input-group-btn">
-                            <button class="btn bg-green" type="button"><i class="fontello-lock"></i>
-                            </button>
+                            <div class="btn bg-green" ><i class="fontello-lock"></i>
+                            </div>
                         </span>
-                        <input type="password" ng-model="pw" placeholder="Password" class="form-control">
+                        <input type="password" ng-model="user.pw" placeholder="Password" class="form-control">
                     </div>
                     <br>
                     <!--패스워드 검사-->
                     <div class="input-group">
                         <span class="input-group-btn">
-                            <button class="btn bg-green" type="button"><i class="fontello-lock"></i>
-                            </button>
+                            <div class="btn bg-green" ><i class="fontello-lock"></i>
+                            </div>
                         </span>
-                        <input type="password"  placeholder="Password again" class="form-control">
+                        <input type="password" ng-model="user.pw2" ng-match="user.pw" placeholder="Password again" class="form-control">
+                    </div>
+                    <div class="msg-block">
+                        <span class="msg-error" data-ng-show="user.pw2.$error.match">
+                            Passwords don't match.
+                        </span>
                     </div>
                     <br>
                     <!--나이-->
                     <div class="input-group">
                         <span class="input-group-btn">
-                            <button class="btn bg-green" type="button"><i class="fontello-lock"></i>
-                            </button>
+                            <div class="btn bg-green" ><i class="fontello-lock"></i>
+                            </div>
                         </span>
-                        <input type="number" ng-model="age" placeholder="age" class="form-control">
+                        <input type="number" ng-model="user.age" placeholder="age" class="form-control">
                     </div>
                     <br>
 
