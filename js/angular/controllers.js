@@ -123,6 +123,7 @@ function EditorsCtrl($rootScope,$scope, $http) {
     $rootScope.date = '';
     $scope.insert = function () {
 //        console.log('test');
+        console.log('this.body.. '+this.body);
         $rootScope.diaryList.push(
             {'diaryId':1,
              'title': this.title,
@@ -163,15 +164,8 @@ function CalendarCtrl($rootScope,$scope, $http, $timeout) {
 
     }
     $scope.readDiary = function (diaryId) {
-        var ob;
-        $.each($rootScope.diaryList, function(i, v) {
-            console.log(v.diaryId ==diaryId);
-            if (v.diaryId == diaryId) {
-                ob=v;
-            }
 
-        });
-        location.replace('#!/diary-detail?'+'id='+ ob.diaryId);
+        location.replace('#!/diary-detail?diaryId='+diaryId);
     }
 
 
@@ -189,49 +183,58 @@ function ErrorCtrl($scope, $http, $timeout) {}
 
 function TimeLineCtrl($rootScope, $scope, $http, $timeout, $window) {
 
-
-    $scope.type='twitter';
-    $scope.check=false;
-    $scope.arrPost=[{'type': 'diary','name' : 'Jennifer Paijo', 'date' : '2014/6/25' , 'body': '안드로이드 소켓프로그래밍을 하고있는데요!같은 apk파일인데다른폰으로는 다 송수신되는데\n제 핸드폰은 송신만되고 수신이 안되요 ㅜ\n제가 의심해볼만한 사항은 뭔가요?? ㅠㅜ'},
-                    {'type': 'twitter','name' : 'Agus Anak Baik', 'date' : '2014/6/23' , 'body':'Take me to your leader! Switzerland is small and neutral! We are more like Germany, ambitious and misunderstood!'},
-        {'type': 'facebook','name' : 'Bruce Wyne', 'date' : '2014/6/25' , 'body':"'you're get a new friend!'"},
-        {'type': 'diary','name' : 'Jennifer Paijo', 'date' : '2014/6/25' , 'body': 'Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya handango imeem plugg dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle quora plaxo ideeli hulu weebly balihoo...'},
-        {'type': 'twitter','name' : 'Agus Anak Baik', 'date' : '2014/6/23' , 'body':'Take me to your leader! Switzerland is small and neutral! We are more like Germany, ambitious and misunderstood!'},
-        {'type': 'facebook','name' : 'Bruce Wyne', 'date' : '2014/6/25' , 'body':"'you're get a new friend!'"}
-
-    ];
-
-
-
-    $scope.loadMore = function() {
-        $scope.arrPost.push({'type': 'diary','name' : 'Jennifer Paijo', 'date' : '2014/6/25' , 'body': '안드로이드 소켓프로그래밍을 하고있는데요!같은 apk파일인데다른폰으로는 다 송수신되는데\n제 핸드폰은 송신만되고 수신이 안되요 ㅜ\n제가 의심해볼만한 사항은 뭔가요?? ㅠㅜ'},{'type': 'facebook','name':'메롱', 'date' : '2014/6/25' , 'body':'안돼 안돼 빨리 들어가야돼'});
-    };
-
 }
 
 function BlankCtrl($scope, $http, $timeout) {}
 
 function BlogListCtrl($scope, $http, $timeout) {}
 
-function DiaryDetailCtrl($scope, $http, $timeout, $routeParams) {
-    $scope.title='학교종이 땡땡땡';
-    $scope.body = '난 오늘 11시에 태평역에서 가산디지털단지역으로 지하철을 타고 갔다. 도착하고 나서 짜장범벅을 먹었고 일하고 일하고 일하고 일하고 전화하고 하다가 오후 10시 37분인데 일하고 서류 만들고 이러고 있다.\n 배가 고파서 뭘 먹을까 배달의 민족을 10분전에 찾아보다가 별로 땡기는게 없어서 편의점에 갈까 고민중이다.\n';
-    $scope.myTags=['keyword','tag','travel'];
-    $scope.recents=[{'title':'간만에 휴식','ago':3,'imgUrl':'https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpf1/v/t1.0-9/10553531_1494589260825919_7571164004568224289_n.jpg?oh=e150716e861d0a493fdeefe70a37c21d&oe=54AAC873&__gda__=1425070412_2bfe046f0909401324651c7cd0516f5c'},
-        {'title':'학교에 간 날','ago':4,'imgUrl':'https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xfp1/t31.0-8/1921045_468032023334626_6466308735889850799_o.jpg'},
-        {'title':'간만에 휴식','ago':3,'imgUrl':'https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpf1/v/t1.0-9/10553531_1494589260825919_7571164004568224289_n.jpg?oh=e150716e861d0a493fdeefe70a37c21d&oe=54AAC873&__gda__=1425070412_2bfe046f0909401324651c7cd0516f5c'},
-        {'title':'학교에 간 날','ago':4,'imgUrl':'https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xfp1/t31.0-8/1921045_468032023334626_6466308735889850799_o.jpg'}]
+function DiaryDetailCtrl($rootScope ,$scope, $http, $timeout, $routeParams) {
+    console.log('DiaryDetailCtrl start..');
 
-    $scope.tags = [{'name':'Admin','url':'#'},
-        {'name':'Fleet','url':'#'},
-        {'name':'Music','url':'#'},
-        {'name':'Video','url':'#'},
-        {'name':'Typhography','url':'#'},
-        {'name':'Computer','url':'#'},
-        {'name':'webDesign','url':'#'}];
+    getData();
 
-    console.log($routeParams.diaryId);
+
+
+    var diaryId=$routeParams.diaryId;
+    var ob=getDiaryObject(diaryId);
+    $scope.title = ob.title
+
+
+
+    /**id를 이용해 일기 오프젝트를 반환.*/
+    function getDiaryObject(id) {
+        var ob=[];
+        $.each($rootScope.diaryList, function(i, v) {
+            if (Number(v.diaryId) == id) {
+                console.log(true);
+                console.log(v);
+                ob=v;
+            }
+
+        });
+        return ob;
+    }
+
+    function getData() {
+        $scope.title='학교종이 땡땡땡';
+        $scope.body = '난 오늘 11시에 태평역에서 가산디지털단지역으로 지하철을 타고 갔다. 도착하고 나서 짜장범벅을 먹었고 일하고 일하고 일하고 일하고 전화하고 하다가 오후 10시 37분인데 일하고 서류 만들고 이러고 있다.\n 배가 고파서 뭘 먹을까 배달의 민족을 10분전에 찾아보다가 별로 땡기는게 없어서 편의점에 갈까 고민중이다.\n';
+        $scope.myTags=['keyword','tag','travel'];
+        $scope.recents=[{'title':'간만에 휴식','ago':3,'imgUrl':'https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpf1/v/t1.0-9/10553531_1494589260825919_7571164004568224289_n.jpg?oh=e150716e861d0a493fdeefe70a37c21d&oe=54AAC873&__gda__=1425070412_2bfe046f0909401324651c7cd0516f5c'},
+            {'title':'학교에 간 날','ago':4,'imgUrl':'https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xfp1/t31.0-8/1921045_468032023334626_6466308735889850799_o.jpg'},
+            {'title':'간만에 휴식','ago':3,'imgUrl':'https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpf1/v/t1.0-9/10553531_1494589260825919_7571164004568224289_n.jpg?oh=e150716e861d0a493fdeefe70a37c21d&oe=54AAC873&__gda__=1425070412_2bfe046f0909401324651c7cd0516f5c'},
+            {'title':'학교에 간 날','ago':4,'imgUrl':'https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xfp1/t31.0-8/1921045_468032023334626_6466308735889850799_o.jpg'}]
+
+        $scope.tags = [{'name':'Admin','url':'#'},
+            {'name':'Fleet','url':'#'},
+            {'name':'Music','url':'#'},
+            {'name':'Video','url':'#'},
+            {'name':'Typhography','url':'#'},
+            {'name':'Computer','url':'#'},
+            {'name':'webDesign','url':'#'}];
+    }
 }
+
 
 function FloatCtrl($scope, $http, $timeout) {}
 

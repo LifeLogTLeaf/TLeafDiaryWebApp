@@ -165,7 +165,7 @@ var app = angular.module('shack', ['infinite-scroll'/**, 'facebook'*/]).
         }).
 
         otherwise({
-            redirectTo: '/'
+            redirectTo: '/404'
         });
     }
 ]);
