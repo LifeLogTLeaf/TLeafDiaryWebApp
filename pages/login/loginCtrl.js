@@ -58,7 +58,8 @@ function loginCtrl($scope,$http) {
 //                // when the response is available
 //                console.log(data);
 //            });
-    }
+    };
+
 //    $scope.samePw = function () {
 //        console.log($scope.pw+', '+$scope.pw2);
 //        if($scope.pw == $scope.pw2){

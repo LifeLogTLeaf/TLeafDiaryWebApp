@@ -2,3 +2,8 @@
 .btn-margin{
     margin: 0px 4px 0px 0px;
 }
+
+/*캘린더 뷰의 날짜를 오른쪽 정렬한다*/
+.fc-day-number{
+    float: right;
+}

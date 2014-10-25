@@ -30,7 +30,7 @@ function IndexCtrl($rootScope,$scope) {
 
 // optional controllers
 function HeaderCtrl($rootScope, $scope/**, Facebook*/){
-//    console.log('HeaderCtrl 부터...'+$rootScope.loginStatus);
+//    console.log('HeaderCtrl 부터...'+$rootScopdxe.loginStatus);
 
     $rootScope.diaryList=[];
 
@@ -140,15 +140,19 @@ function MorrisCtrl($scope, $http) {}
 
 function EditorsCtrl($rootScope, $scope, $http) {
     setTitle($rootScope,'Editor');
+    CKEDITOR.replace('body');
 
 
     var data=$rootScope.date;
     $rootScope.date = '';
-    CKEDITOR.replace('body');
 
 
     $scope.insert = function () {
         var body = CKEDITOR.instances.body.getData();
+
+//        body = unescapeHTML(body);
+//        body = body.replace('<p','</br>').replace('>','').replace(/&amp;/g,'&');
+//        console.log('body is \n'+body);
         $rootScope.diaryList.push(
             {'diaryId':1,
              'title': this.title,
@@ -157,8 +161,14 @@ function EditorsCtrl($rootScope, $scope, $http) {
              'backgroundColor': "#f56954",
              'borderColor': "#f56954"});
         location.replace("#!");
+
+        function unescapeHTML(escapedHTML) {
+            console.log(escapedHTML.replace(/&lt;/g,'a').replace(/&gt;/g,'b').replace(/&amp;/g,'&'));
+            body = escapedHTML.replace(/&lt;/g,'a').replace(/&gt;/g,'b').replace(/&amp;/g,'&');
+        }
     }
 
+//.replace(/&/g,"&amp;").replace(/>/g,"&gt;").replace(/</g,"&lt;")
 
 }
 
@@ -184,12 +194,12 @@ function CalendarCtrl($rootScope,$scope, $http, $timeout) {
         console.log(year+','+ month+','+day);
         //에디터 컨트롤러에 보낼 목적으로 브로드캐스트 한다.
         $rootScope.date = {'year':year,'month':month, 'day':day};
-        location.replace("#!/editors");
+        location.href="#!/editors";
 
     }
     $scope.readDiary = function (diaryId) {
 
-        location.replace('#!/diary-detail?diaryId='+diaryId);
+        location.href='#!/diary-detail?diaryId='+diaryId;
     }
 
 
@@ -224,7 +234,10 @@ function DiaryDetailCtrl($rootScope ,$scope, $http, $timeout, $routeParams) {
     var diaryId=$routeParams.diaryId;
     var ob=getDiaryObject(diaryId);
     $scope.title = ob.title;
-    $scope.body = ob.body;
+//    $scope.body = ob.body;
+
+    //body의 내용은 태그의 꺽세의 특성때문에 jquery의 append를 사용하기로 함
+    $('.body').append(ob.body);
 
 
 
