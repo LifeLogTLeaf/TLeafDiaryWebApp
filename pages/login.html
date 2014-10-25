@@ -95,7 +95,7 @@
                 </div>
             </form>
             <!--회원가입에 관한 폼-->
-            <form name="user" ng-submit="submitJoin(user)" ng-switch-when="join">
+            <form ng-submit="submitJoin(user)" ng-switch-when="join">
                 <div class="body bg-white">
                     <!--이메일-->
                     <div class="input-group">
@@ -113,11 +113,6 @@
                             </div>
                         </span>
                         <input type="text" ng-model="user.nickname" ng-minlength="3" class="form-control" placeholder="Nick Name" />
-                    </div>
-                    <div class="msg-block">
-                        <span class="msg-error" ng-show="user.nickname.$error">
-                            Passwords don't match.
-                        </span>
                     </div>
 
                     <br>
@@ -160,19 +155,19 @@
                     <br>
 
                     <div>
-                    <hr class="timeline-hr">
-                </div>
-                <div class="footer">
+                        <hr class="timeline-hr">
+                    </div>
+                    <div class="footer">
 
 
-                    <!--  <p><a href="#">I forgot my password</a>
-                    </p> -->
+                        <!--  <p><a href="#">I forgot my password</a>
+                        </p> -->
 
-                    <p class="text-center login-with">Developed by TLeaf
-                    </p>
+                        <p class="text-center login-with">Developed by TLeaf
+                        </p>
 
 
-
+                    </div>
 
                 </div>
             </form>
