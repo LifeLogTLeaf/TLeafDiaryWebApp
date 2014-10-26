@@ -26,21 +26,18 @@ function loginCtrl($scope,$http) {
     $scope.isSamePw = true;
     $scope.submitJoin = function (info) {
     console.log(info);
-//        var data = {
-//            email1:'email'
-//            ,nickname:'nick'
-//            ,pw:'pw'
-//            ,age:'123'
-//        };
+        var data = {
+            email1:info.email1,
+            email2:'naver.com',
+            nickname:info.nickname,
+            pw:info.pw,
+            age:info.age
+        };
         $http({method: 'POST',
-              url: 'http://14.63.171.66:8081/tleafstructure-0600/user/signup',
-              headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                 data:
-                     'email1='+info.email1+
-                     'email2=naver.com'+
-                     '&nickname='+info.nickname +
-                     '&pw='+info.pw +
-                     '&age='+info.age
+              url: 'http://14.63.171.66:8081/tleafstructure/user/signup',
+              headers: {'Content-Type': 'application/json'},
+                 data: data
+
 
         }).then(function(result){
             console.log(result);
