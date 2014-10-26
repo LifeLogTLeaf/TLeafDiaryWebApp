@@ -5,7 +5,7 @@
 
 
 function loginCtrl($scope,$http) {
-    $scope.modeLogin = 'join';
+    $scope.modeLogin = 'login';
 
     //로그인과 회원가입의 폼을 바꾸며 보여준다
     $scope.changeLoginMode = function(event) {
@@ -26,24 +26,28 @@ function loginCtrl($scope,$http) {
     $scope.isSamePw = true;
     $scope.submitJoin = function (info) {
     console.log(info);
-        var data = {
-            email1:info.email1,
-            email2:'naver.com',
-            nickname:info.nickname,
-            pw:info.pw,
-            age:info.age
-        };
+//        var data = {
+//            email1:'email'
+//            ,nickname:'nick'
+//            ,pw:'pw'
+//            ,age:'123'
+//        };
         $http({method: 'POST',
               url: 'http://14.63.171.66:8081/tleafstructure/user/signup',
-              headers: {'Content-Type': 'application/json'},
-                 data: data
-
+              headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                 data:
+                     'email1='+info.email1+
+                     'email2=naver.com'+
+                     '&nickname='+info.nickname +
+                     '&pw='+info.pw +
+                     '&age='+info.age
 
         }).then(function(result){
+            $scope.modeLogin='login';
             console.log(result);
         }) ;
 
-
+        location.href('./');
 //        $http('http://14.63.171.66:8081/tleafstructure-0600/user/signup',{
 //                 email1:'email'
 //                ,nickname:'nick'

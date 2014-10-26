@@ -13,7 +13,7 @@
 'use strict';
 
 // angular.js main app initialization
-var app = angular.module('shack', ['infinite-scroll'/**, 'facebook'*/]).
+var app = angular.module('shack', ['infinite-scroll','match'/**, 'facebook'*/]).
     config(['$routeProvider', /**'FacebookProvider',*/
     function($routeProvider/**, FacebookProvider*/) {
 /**FacebookProvider.init('675376119207653');*/
