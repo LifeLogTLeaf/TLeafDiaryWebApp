@@ -107,7 +107,7 @@ var app = angular.module('shack', ['infinite-scroll','match'/**, 'facebook'*/]).
             controller: InvoiceCtrl,
             activetab: 'Invoice'
         }).
-        when('/masonry', {
+            when('/masonry', {
             templateUrl: 'pages/masonry.html',
             controller: MasonryCtrl,
             activetab: 'Masonry'
@@ -152,7 +152,7 @@ var app = angular.module('shack', ['infinite-scroll','match'/**, 'facebook'*/]).
             controller: ShopDetailCtrl,
             activetab: 'ShopDetail'
         }).
-        when('/peta', {
+        when('/login', {
             templateUrl: 'pages/peta.html',
             controller: PetaCtrl,
             activetab: 'Peta'
