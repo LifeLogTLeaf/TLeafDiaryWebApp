@@ -108,7 +108,7 @@ var app = angular.module('shack', ['infinite-scroll','match'/**, 'facebook'*/]).
             activetab: 'Invoice'
         }).
         when('/card', {
-            templateUrl: 'pages/card.html',
+            templateUrl: 'pages/card/card.html',
             controller: cardCtrl,
             activetab: 'card'
         }).
@@ -167,6 +167,8 @@ var app = angular.module('shack', ['infinite-scroll','match'/**, 'facebook'*/]).
         otherwise({
             redirectTo: '/404'
         });
+        // use the HTML5 History API
+//        $locationProvider.html5Mode(true);
     }
 ]);
 
