@@ -13,7 +13,7 @@ jQuery(document).ready(function () {
         console.log($(document).height() + ", " + $(window).height() + " = " + $(window).scrollTop());
         if ($(window).scrollTop() == $(document).height() - $(window).height()) {
 
-//                    console.log("catch");
+                    console.log("catch");
             loadArticle(link,1,1);
         }
     });

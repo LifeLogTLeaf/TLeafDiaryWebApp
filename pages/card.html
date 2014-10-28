@@ -79,13 +79,20 @@
 
 <div id="main" role="main">
 
-    <div >
+    <div infinite-scroll='' infinite-scroll-distance='0'>
     <!--카드 타이틀 목록이 시작된다-->
-    <ul id="tiles" infinite-scroll='loadMore()' infinite-scroll-distance='0'>
+    <ul id="tiles" >
 
         <!--카드에 관한 모든 처리를 해주는 디렉티브-->
-        <ng-card ng-repeat="info in diaryList" post="{{$index}}" ></ng-card>
-
+        <!--<li ng-card ></li>-->
+        <!--<ng-card></ng-card>-->
+        <li ng-repeat="info in diaryList"  data-date="{{info.date}}" data-grade="{{info.grade}}" data-title="{{info.title}}" style="display: list-item;">
+            <p><b>{{info.title}}</b></p>
+            <img src="{{info.imgUrl}}" width="200px" style="max-width: 200px; max-height:600px; ">
+            <!--body는 꼭! 약 20자 정도만 받아오도록 한다-->
+            <p>{{info.body}}</p>
+            <p>{{info.date}} / {{info.grade}}</p>
+        </li>
 
 
 
@@ -99,65 +106,6 @@
 
 <!-- Once the page is loaded, initalize the plug-in. -->
 <script type="text/javascript">
-(function load($) {
-    console.log('sdfsdfds');
-    $('#tiles').imagesLoaded(function() {
-        function comparatorTitle(a, b) {
-            return $(a).data('title') < $(b).data('title') ? -1 : 1;
-        }
+load(jQuery);
 
-
-        function comparatorDate(a, b) {
-            return $(a).data('date') > $(b).data('date') ? -1 : 1;
-        }
-
-        function comparatorGrade(a, b) {
-            return $(a).data('grade') < $(b).data('grade') ? -1 : 1;
-        }
-
-        // Prepare layout options.
-        var options = {
-            autoResize: true, // This will auto-update the layout when the browser window is resized.
-            container: $('#main'), // Optional, used for some extra CSS styling
-            offset: 2, // Optional, the distance between grid items
-            itemWidth: 210, // Optional, the width of a grid item
-            comparator: comparatorTitle
-        };
-
-        // Get a reference to your grid items.
-        var $handler = $('#tiles li'),
-            $sortbys = $('#sortbys li');
-
-        // Call the layout function.
-        $handler.wookmark(options);
-
-        /**
-         * When a filter is clicked, toggle it's active state and refresh.
-         */
-        var onClickSortBy = function(e) {
-            e.preventDefault();
-            $currentSortby = $(this);
-            switch ($currentSortby.data('sortby')) {
-                case 'grade':
-                    options.comparator = comparatorGrade;
-                    break;
-                case 'date':
-                    options.comparator = comparatorDate;
-                    break;
-                case 'title':
-                default:
-                    options.comparator = comparatorTitle;
-                    break;
-            }
-
-            $sortbys.removeClass('active');
-            $currentSortby.addClass('active');
-
-            $handler.wookmark(options);
-        }
-
-        // Capture filter click events.
-        $sortbys.click(onClickSortBy);
-    });
-})(jQuery);
 </script>
