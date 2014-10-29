@@ -46,26 +46,40 @@
 
     <!-- SIDEBAR MENU: : style can be found in sidebar.less -->
     <ul id="menu" class="sidebar-menu">
-        <li class="active">
-            <a href="#!/dashboard" ng-class="{activeSmall:part == 'dashboard'}">
-                <i class="fa fontello-desktop-1"></i> 
-                <span>전체보기</span>
-            </a>
-        </li>
-        <li>
+
+        <li class="treeview active">
             <a href="#!/mail" ng-class="{activeSmall:part == 'mail'}">
-                <i class="fa fontello-mail-1"></i> 
+                <i class="fa fa-book"></i>
                 <span>일기</span>
-                <small class="badge pull-right bg-yellow text-white">12</small>
+                <small class="badge pull-right bg-yellow text-white"></small>
+            </a>
+            <!--일기에 대한 하위 태그-->
+            <ul class="treeview-menu">
+                <li>
+                    <a href="#!/" ng-class="{activeSmall:part == 'mail'}">
+                        <i class="fa fontello-mail-1"></i>
+                        <span>캘린더로 보기</span>
+                        <small class="badge pull-right bg-yellow text-white">{{i}}</small>
+                    </a>
+                </li>
+                <li>
+                    <a href="#!/card" ng-class="">
+                        <i class="fa fontello-mail-1"></i>
+                        <span>카드로 보기</span>
+                        <small class="badge pull-right bg-yellow text-white">1</small>
+                    </a>
+                </li>
+            </ul>
+            <!--./일기에 대한 하위 태그-->
+        </li>
+        <li class="">
+            <a href="#!/dashboard" ng-class="{activeSmall:part == 'dashboard'}">
+                <i class="fa fontello-desktop-1"></i>
+                <span>통계</span>
             </a>
         </li>
-        <li>
-            <a href="#" ng-class="">
-                <i class="fa fontello-mail-1"></i>
-                <span>???</span>
-                <small class="badge pull-right bg-yellow text-white">1</small>
-            </a>
-        </li>
+
+
 
         <!--<li class="treeview">-->
             <!--<a href="#!/">-->
