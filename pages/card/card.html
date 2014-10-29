@@ -51,7 +51,16 @@
 
 
 
-
+<ol class="breadcrumb newcrumb">
+    <li>
+        <a href="#">
+            <span><i class="fa fontello-home-outline"></i>
+            </span>Home</a>
+    </li>
+    <li><a href="#">일기</a>
+    </li>
+    <li>카드로 보기</li>
+</ol>
 
 
 
@@ -78,9 +87,9 @@
             <!--<li ng-card ></li>-->
             <!--<ng-card></ng-card>-->
             <!--" ng-click='readDiary("+event.diaryId+")'" +-->
-            <li ng-repeat="info in diaryList" ng-click="readDiary({{info.diaryId}})"  data-date="{{info.start}}" data-grade="{{info.grade}}" data-title="{{info.title}}" style="display: list-item;" >
+            <li ng-repeat="info in diaryList" ng-click="readDiary({{info.diaryId}})"  data-date="{{info.start}}" data-grade="{{info.grade}}" data-title="{{info.title}}" style="display: list-item; border-radius: 3%;" >
                 <p><b>{{info.title}}</b></p>
-                <img src="http://goo.gl/K8lFHA" width="200px" style="max-width: 200px; min-width:100px; max-height:600px; ">
+                <img src="{{info.imgUrl}}" width="200px" style="max-width: 200px; min-width:100px; max-height:600px; ">
                 <!--body는 꼭! 약 20자 정도만 받아오도록 한다-->
                 <p>{{info.body}}</p>
                 <p>{{info.start}} / <b class="text-red">{{info.grade}}</b></p>

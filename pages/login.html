@@ -57,7 +57,7 @@
         <div  ng-switch="modeLogin">
 
             <!--로그인에 관한 -->
-            <form name="formLogin"  ng-switch-when="login">
+            <form ng-submit="submitLogin(user)" name="formLogin"  ng-switch-when="login">
                 <div class="body bg-white">
 
                     <div class="input-group">
@@ -65,7 +65,7 @@
                             <div class="btn bg-green" ><i class="fontello-user-1"></i>
                             </div>
                         </span>
-                        <input type="email" name="email1" ng-model="user.email1" placeholder="E-Mail" class="form-control" required>
+                        <input type="email" name="email1" ng-model="user.email" placeholder="E-Mail" class="form-control" required>
                         <!--<i class="form-invalid fa fa-fw fa-times" ng-show="formLogin.email1.$invalid"></i>-->
                         <!--체크 아이콘 표시-->
                         <i class="form-valid fa fa-fw fa-check" ng-show="formLogin.email1.$valid"></i>
@@ -116,9 +116,9 @@
                             </div>
                         </span>
 
-                        <input type="email" name="email1" ng-model="user.email1" placeholder="E-Mail" class="form-control" required>
+                        <input type="email" name="email" ng-model="user.email" placeholder="E-Mail" class="form-control" required>
                         <!--<i class="form-invalid fa fa-fw fa-times" ng-show="form.email1.$invalid"></i>-->
-                        <i class="form-valid fa fa-fw fa-check" ng-show="form.email1.$valid"></i>
+                        <i class="form-valid fa fa-fw fa-check" ng-show="form.email.$valid"></i>
 
                     </div>
                     <br>

@@ -44,24 +44,32 @@ function loginCtrl($scope,$http) {
 
 
     $scope.isSamePw = true;
-    $scope.submitJoin = function (info) {
-    console.log(info);
+    $scope.submitJoin = function (user) {
+        var data = JSON.stringify(
+            {
+            email: user.email ,
+            password:user.pw ,
+            nickname:user.nickname ,
+            gender: user.male ,
+            age:user.age });
+        var url = 'http://14.63.171.66:8081/tleafstructure/user/signup';
         $http({method: 'POST',
-              url: 'http://14.63.171.66:8081/tleafstructure/user/signup',
+              url: url,
               headers: {'Content-Type': 'application/json'},
-                 data: '{ "email":"'+info.email1+'" , "password":"'+info.pw+'" , "nickname":"'+info.nickname+'" , "gender":"male" , "age":'+info.age+' }'
-//                     'email1='+info.email1+
+                 data: data
+//                     'email1='+user.email1+
 //                     'email2=naver.com'+
-//                     '&nickname='+info.nickname +
-//                     '&pw='+info.pw +
-//                     '&age='+info.age
+//                     '&nickname='+user.nickname +
+//                     '&pw='+user.pw +
+//                     '&age='+user.age
 
         }).success(function(data, status, headers, config) {
             console.log('회원가입 성공 succenss');
 
             //쿠키에 유저 id저장
+            console.log(data);
             setCookie('userId',data.userId,5);
-            location.reload();
+//            location.reload();
 
             // this callback will be called asynchronously
                 // when the response is available
@@ -91,6 +99,46 @@ function loginCtrl($scope,$http) {
 //                console.log(data);
 //            });
     };
+    
+    
+    $scope.submitLogin = function (user) {
+        var data = JSON.stringify({ email: user.email , password:user.pw});
+        $http({method: 'POST',
+            url: 'http://14.63.171.66:8081/tleafstructure/user/login',
+            headers: {'Content-Type': 'application/json'},
+            data: data
+//                     'email1='+user.email1+
+//                     'email2=naver.com'+
+//                     '&nickname='+user.nickname +
+//                     '&pw='+user.pw +
+//                     '&age='+user.age
+
+        }).success(function(data, status, headers, config) {
+            console.log('로그인 성공');
+
+            //쿠키에 유저 id저장
+            console.log(data);
+            setCookie('accessKey',data.accessKey,5);
+//            location.reload();
+
+            // this callback will be called asynchronously
+            // when the response is available
+        }).
+            error(function(data, status, headers, config) {
+
+                console.log('회원가입 실패 fail');
+                console.log(data);
+                if(data.error == 'There is No Such User with the Email'){
+                    $('.row').append('<p class="text-red">이메일 또는 비밀번호를 확인하세요</p>')
+                }
+
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+            });
+    }
+
+
+
 
 //    $scope.samePw = function () {
 //        console.log($scope.pw+', '+$scope.pw2);
@@ -112,7 +160,7 @@ function setCookie(cName, cValue, cDay){
     expire.setDate(expire.getDate() + cDay);
     console.log('sdfds');
     cookies = cName + '=' + escape(cValue) + '; path=/ '; // 한글 깨짐을 막기위해 escape(cValue)를 합니다.
-    console.log(cName + '=' + escape(cValue) + '; path=/ ');
+//    console.log(cName + '=' + escape(cValue) + '; path=/ ');
     if(typeof cDay != 'undefined') cookies += ';expires=' + expire.toGMTString() + ';';
     document.cookie = cookies;
 }

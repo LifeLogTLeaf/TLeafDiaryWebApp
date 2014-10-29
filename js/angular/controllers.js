@@ -34,7 +34,22 @@ function HeaderCtrl($rootScope, $scope/**, Facebook*/){
 //    console.log('HeaderCtrl 부터...'+$rootScopdxe.loginStatus);
 
     $rootScope.diaryList=[];
+    $('.search').hover(function () {
+        $(this).animate({
+                width: '30%'
+            },500, function () {
 
+            }
+        );
+
+    }, function () {
+        $(this).animate({
+                width: '20%'
+            },500, function () {
+
+            }
+        );
+    });
 
 
 
