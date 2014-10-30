@@ -57,11 +57,6 @@ function loginCtrl($scope,$http) {
               url: url,
               headers: {'Content-Type': 'application/json'},
                  data: data
-//                     'email1='+user.email1+
-//                     'email2=naver.com'+
-//                     '&nickname='+user.nickname +
-//                     '&pw='+user.pw +
-//                     '&age='+user.age
 
         }).success(function(data, status, headers, config) {
             console.log('회원가입 성공 succenss');

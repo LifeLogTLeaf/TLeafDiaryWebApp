@@ -48,6 +48,8 @@ function cardCtrl($rootScope,$scope, $http, $timeout) {
     }
 
 
+
+
 }
 
 //카드의 줄정렬을 담당하는 함수
@@ -68,7 +70,7 @@ function sortArticle($) {
         }
 
         var options = {
-            autoResize: true, // 윈도우 화면에 따라 리사이즈 한다
+            autoResize: false, // 윈도우 화면에 따라 리사이즈 한다
             container: $('#main'), // css 스타일링한다
             offset: 3, // 그리드 아이템간의 거리
             itemWidth: 210, // 아이템의 두께

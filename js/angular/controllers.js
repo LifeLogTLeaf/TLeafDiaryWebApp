@@ -34,18 +34,20 @@ function HeaderCtrl($rootScope, $scope/**, Facebook*/){
 //    console.log('HeaderCtrl 부터...'+$rootScopdxe.loginStatus);
 
     $rootScope.diaryList=[];
-    $('.search').hover(function () {
+
+    $('.search').focusin(function () {
+        console.log('test');
         $(this).animate({
                 width: '30%'
-            },500, function () {
+            },400, function () {
 
             }
         );
-
-    }, function () {
+    });
+    $('.search').focusout(function () {
         $(this).animate({
                 width: '20%'
-            },500, function () {
+            },400, function () {
 
             }
         );
@@ -160,25 +162,85 @@ function EditorsCtrl($rootScope, $scope, $http) {
     CKEDITOR.replace('body');
 
 
-    var data=$rootScope.date;
+    var date=$rootScope.date;
     $rootScope.date = '';
 
-
+    //입력 버튼을 눌렀을 때
     $scope.insert = function () {
 
         var body = CKEDITOR.instances.body.getData();
+        var writeData = {
+            'diaryId':++$rootScope.i,
+            'title': this.title,
+            'body': body,
+            'start': new Date(date.year,date.month-1,date.day),
+            'backgroundColor': "#f56954",
+            'borderColor': "#f56954"};
 
-//        body = unescapeHTML(body);
-//        body = body.replace('<p','</br>').replace('>','').replace(/&amp;/g,'&');
-//        console.log('body is \n'+body);
-        $rootScope.diaryList.push(
-            {'diaryId':++$rootScope.i,
-             'title': this.title,
-             'body': body,
-             'start': new Date(data.year,data.month-1,data.day),
-             'backgroundColor': "#f56954",
-             'borderColor': "#f56954"});
+        $rootScope.diaryList.push(writeData);
         location.replace("#!");
+
+        var data = JSON.stringify( { "serviceData":writeData} );
+//        var data = JSON.stringify( { "serviceData":{"date":Date(),"purpose":"yoon test"}} );
+        $http({method: 'POST',
+            url: 'http://14.63.171.66:8081/tleafstructure/api/user/app/log',
+            headers: {'Content-Type': 'application/json', 'X-Tleaf-User-Id':'344bc889c8bb44dd6e4bb845d40007b9', 'X-Tleaf-Application-Id': '6b22f647ef8f2f3278a1322d8b000f81', 'X-Tleaf-Access-Token':'6b22f647ef8f2f3278a1322d8b000210'},
+            data: data
+
+
+        }).success(function(data, status, headers, config) {
+            console.log('성공');
+
+            console.log(data);
+//            location.reload();
+
+            // this callback will be called asynchronously
+            // when the response is available
+        }).
+            error(function(data, status, headers, config) {
+
+                console.log('실패');
+                console.log(data);
+
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+            });
+
+
+
+        var url = 'http://14.63.171.66:8081/TestServer/api/test/post';
+        $http({method: 'POST',
+            url: url,
+            headers: {'Content-Type': 'application/json'},
+            data: '{"appData":"'+ $rootScope.diaryList+'"}'
+//                     'email1='+user.email1+
+//                     'email2=naver.com'+
+//                     '&nickname='+user.nickname +
+//                     '&pw='+user.pw +
+//                     '&age='+user.age
+
+        }).success(function(data, status, headers, config) {
+            console.log('회원가입 성공 succenss');
+
+            //쿠키에 유저 id저장
+            console.log(data);
+            setCookie('userId',data.userId,5);
+//            location.reload();
+
+            // this callback will be called asynchronously
+            // when the response is available
+        }).
+            error(function(data, status, headers, config) {
+
+                console.log('회원가입 실패 fail');
+                console.log(data);
+                if(data.error == 'Email Already Exists'){
+                    $('.row').append('<p class="text-red">이메일이 중복되었습니다</p>')
+                }
+
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+            });
 
         function unescapeHTML(escapedHTML) {
             console.log(escapedHTML.replace(/&lt;/g,'a').replace(/&gt;/g,'b').replace(/&amp;/g,'&'));
