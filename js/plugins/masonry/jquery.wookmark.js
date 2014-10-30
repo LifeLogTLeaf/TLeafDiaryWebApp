@@ -497,7 +497,6 @@
 
     // Apply layout
     this.wookmarkInstance.layout(true);
-
     // Display items (if hidden) and return jQuery object to maintain chainability
     return this.show();
   };

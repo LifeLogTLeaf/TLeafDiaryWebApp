@@ -235,7 +235,7 @@ function EditorsCtrl($rootScope, $scope, $http) {
                 console.log('회원가입 실패 fail');
                 console.log(data);
                 if(data.error == 'Email Already Exists'){
-                    $('.row').append('<p class="text-red">이메일이 중복되었습니다</p>')
+                    $('.row').append('<p class="text-red">이메일이 중복되었습니다</p>');
                 }
 
                 // called asynchronously if an error occurs

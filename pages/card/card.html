@@ -81,15 +81,15 @@
     <!--무한스크롤 디렉티브의 옵션, 이것을 넣어주어야 무한스크롤이 활성화 된다-->
     <div infinite-scroll='' infinite-scroll-distance='0'>
 
-        <div ng-click="transfer()">wefsadfasdf</div>
+        <!--<div class="card bg-red col-lg-2" ng-click="transfer()">wefsadfasdf</div>-->
     <!--카드 타이틀 목록이 시작된다-->
-        <ul id="tiles">
+        <ul id="tiles" class="col-lg-8 col-md-12">
 
             <!--카드에 관한 모든 처리를 해주는 디렉티브-->
             <!--<li ng-card ></li>-->
             <!--<ng-card></ng-card>-->
             <!--" ng-click='readDiary("+event.diaryId+")'" +-->
-            <li ng-repeat="info in diaryList" ng-click="readDiary({{info.diaryId}})"  data-date="{{info.start}}" data-grade="{{info.grade}}" data-title="{{info.title}}" style="display: list-item; border-radius: 3%;" >
+            <li  ng-repeat="info in diaryList track by $index" ng-click="readDiary({{info.diaryId}})"  data-date="{{info.start}}" data-grade="{{info.grade}}" data-title="{{info.title}}" style="display: none; border-radius: 3%;" >
                 <p><b>{{info.title}}</b></p>
                 <img src="{{info.imgUrl}}" width="200px" style="max-width: 200px; min-width:100px; max-height:600px; ">
                 <!--body는 꼭! 약 20자 정도만 받아오도록 한다-->
