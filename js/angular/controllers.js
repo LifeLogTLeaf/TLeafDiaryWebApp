@@ -300,7 +300,68 @@ function TimeLineCtrl($rootScope, $scope, $http, $timeout, $window) {
 
 function BlankCtrl($scope, $http, $timeout) {}
 
-function BlogListCtrl($scope, $http, $timeout) {}
+function BlogListCtrl($scope, $http, $timeout) {
+
+    getData();
+    function getData() {
+        $scope.postList=[
+            {
+                diaryId:1,
+                title:'학교종이 땡땡땡',
+                body:'난 오늘 11시에 태평역에서 가산디지털단지역으로 지하철을 타고 갔다. 도착하고 나서 짜장범벅을 먹었고 일하고 일하고 일하고 일하고 전화하고 하다가 오후 10시 37분인데 일하고 서류 만들고 이러고 있다.\n 배가 고파서 뭘 먹을까 배달의 민족을 10분전에 찾아보다가 별로 땡기는게 없어서 편의점에 갈까 고민중이다.\n',
+                start:'2014-10-15 11:25',
+                imgUrl:'https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpf1/v/t1.0-9/10553531_1494589260825919_7571164004568224289_n.jpg?oh=e150716e861d0a493fdeefe70a37c21d&oe=54AAC873&__gda__=1425070412_2bfe046f0909401324651c7cd0516f5c',
+                tags:[
+                    '학교','강아지'
+                ]
+            },{
+                diaryId:2,
+                title:'학교종이 땡땡땡2',
+                body:'난 오늘 11시에 태평역에서 가산디지털단지역으로 지하철을 타고 갔다. 도착하고 나서 짜장범벅을 먹었고 일하고 일하고 일하고 일하고 전화하고 하다가 오후 10시 37분인데 일하고 서류 만들고 이러고 있다.\n 배가 고파서 뭘 먹을까 배달의 민족을 10분전에 찾아보다가 별로 땡기는게 없어서 편의점에 갈까 고민중이다.\n',
+                start:'2014-10-15 11:25',
+                imgUrl:'https://scontent-b.xx.fbcdn.net/hphotos-xpf1/v/t1.0-9/10300780_675260182581903_4055719240195517689_n.jpg?oh=075ca9f996a6728355a9c245e0fc6b7d&oe=54AE2D25',
+                tags:[
+                    '외로움','가로등','여행가고싶다'
+                ]
+            },{
+                diaryId:3,
+                title:'학교종이 땡땡땡2',
+                body:'난 오늘 11시에 태평역에서 가산디지털단지역으로 지하철을 타고 갔다. 도착하고 나서 짜장범벅을 먹었고 일하고 일하고 일하고 일하고 전화하고 하다가 오후 10시 37분인데 일하고 서류 만들고 이러고 있다.\n 배가 고파서 뭘 먹을까 배달의 민족을 10분전에 찾아보다가 별로 땡기는게 없어서 편의점에 갈까 고민중이다.\n',
+                start:'2014-10-15 11:25',
+                tags:[
+                    'keyword','tag','travel'
+                ]
+            },{
+                diaryId:4,
+                title:'학교종이 땡땡땡3',
+                body:'난 오늘 11시에 태평역에서 가산디지털단지역으로 지하철을 타고 갔다. 도착하고 나서 짜장범벅을 먹었고 일하고 일하고 일하고 일하고 전화하고 하다가 오후 10시 37분인데 일하고 서류 만들고 이러고 있다.\n 배가 고파서 뭘 먹을까 배달의 민족을 10분전에 찾아보다가 별로 땡기는게 없어서 편의점에 갈까 고민중이다.\n',
+                start:'2014-10-15 11:25',
+                imgUrl:'https://fbcdn-sphotos-e-a.akamaihd.net/hphotos-ak-xpf1/v/t1.0-9/10374521_1583010508586532_3427623053075932858_n.jpg?oh=aa233af62bd3c94dc6297e48a425c4fb&oe=54EF89F7&__gda__=1424818376_416f75d550dabb1167b906e0340d6439',
+                tags:[
+                    'keyword','tag','travel'
+                ]
+            }
+        ]
+
+
+        $scope.title='학교종이 땡땡땡';
+        $scope.body = '난 오늘 11시에 태평역에서 가산디지털단지역으로 지하철을 타고 갔다. 도착하고 나서 짜장범벅을 먹었고 일하고 일하고 일하고 일하고 전화하고 하다가 오후 10시 37분인데 일하고 서류 만들고 이러고 있다.\n 배가 고파서 뭘 먹을까 배달의 민족을 10분전에 찾아보다가 별로 땡기는게 없어서 편의점에 갈까 고민중이다.\n';
+        $scope.myTags=['keyword','tag','travel'];
+        $scope.recents=[{'title':'간만에 휴식','ago':3,'imgUrl':'https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpf1/v/t1.0-9/10553531_1494589260825919_7571164004568224289_n.jpg?oh=e150716e861d0a493fdeefe70a37c21d&oe=54AAC873&__gda__=1425070412_2bfe046f0909401324651c7cd0516f5c'},
+            {'title':'학교에 간 날','ago':4,'imgUrl':'https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xfp1/t31.0-8/1921045_468032023334626_6466308735889850799_o.jpg'},
+            {'title':'간만에 휴식','ago':3,'imgUrl':'https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpf1/v/t1.0-9/10553531_1494589260825919_7571164004568224289_n.jpg?oh=e150716e861d0a493fdeefe70a37c21d&oe=54AAC873&__gda__=1425070412_2bfe046f0909401324651c7cd0516f5c'},
+            {'title':'학교에 간 날','ago':4,'imgUrl':'https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xfp1/t31.0-8/1921045_468032023334626_6466308735889850799_o.jpg'}]
+
+        $scope.tags = [{'name':'Admin','url':'#'},
+            {'name':'Fleet','url':'#'},
+            {'name':'Music','url':'#'},
+            {'name':'Video','url':'#'},
+            {'name':'Typhography','url':'#'},
+            {'name':'Computer','url':'#'},
+            {'name':'webDesign','url':'#'}];
+    }
+
+}
 
 function DiaryDetailCtrl($rootScope ,$scope, $http, $timeout, $routeParams) {
     setTitle($rootScope,'Read');

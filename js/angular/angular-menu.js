@@ -127,7 +127,7 @@ var app = angular.module('shack', ['infinite-scroll','match'/**, 'facebook'*/]).
             controller: BlankCtrl,
             activetab: 'Blank'
         }).
-        when('/blog-list', {
+        when('/list', {
             templateUrl: 'pages/blog-list.html',
             controller: BlogListCtrl,
             activetab: 'BlogList'
