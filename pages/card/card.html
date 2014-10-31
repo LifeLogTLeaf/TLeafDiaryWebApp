@@ -89,7 +89,7 @@
             <!--<li ng-card ></li>-->
             <!--<ng-card></ng-card>-->
             <!--" ng-click='readDiary("+event.diaryId+")'" +-->
-            <li  ng-repeat="info in diaryList track by $index" ng-click="readDiary({{info.diaryId}})"  data-date="{{info.start}}" data-grade="{{info.grade}}" data-title="{{info.title}}" style="display: none; border-radius: 3%;" >
+            <li class="post-radius"  ng-repeat="info in diaryList track by $index" ng-click="readDiary({{info.diaryId}})"  data-date="{{info.start}}" data-grade="{{info.grade}}" data-title="{{info.title}}" style="display: none;" >
                 <p><b>{{info.title}}</b></p>
                 <img src="{{info.imgUrl}}" width="200px" style="max-width: 200px; min-width:100px; max-height:600px; ">
                 <!--body는 꼭! 약 20자 정도만 받아오도록 한다-->
