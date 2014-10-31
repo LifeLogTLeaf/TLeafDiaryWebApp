@@ -211,7 +211,7 @@ function EditorsCtrl($rootScope, $scope, $http) {
             'diaryId':++$rootScope.i,
             'title': this.title,
             'body': body,
-            'start': new Date(date.year,date.month-1,date.day),
+            'start': new Date(date.year,date.month-1,date.day+1),
             'backgroundColor': "#f56954",
             'borderColor': "#f56954"};
 
@@ -378,6 +378,7 @@ function DiaryDetailCtrl($rootScope ,$scope, $http, $timeout, $routeParams) {
     var diaryId=$routeParams.diaryId;
     var ob=getDiaryObject(diaryId);
     $scope.title = ob.title;
+    $scope.imgUrl = ob.imgUrl;
 //    $scope.body = ob.body;
 
     //body의 내용은 태그의 꺽세의 특성때문에 jquery의 append를 사용하기로 함

@@ -14,9 +14,14 @@
     <!--  BLOG CONTENT -->
     <div class="col-sm-8">
 
-        <div class="blog-list-nest">
+        <div class="blog-list-nest  post-radius">
+            <div class="vendor">
+                <img class="post-radius" style="width:100%;" src="{{imgUrl}}" alt="">
+                <!--투명 필터는 img가 있어야만 따라나온다-->
+                <div class="row bg-white img-bottom-filter" ng-show="imgUrl.length>0"></div>
+            </div>
+            <div class="blog-list-content ">
 
-            <div class="blog-list-content">
                 <h2>{{title}}</h2>
                 <!--body클래스에 일기 body를 집어넣도록 컨트롤러에서 작용-->
                 <p class="body"></p>
@@ -63,38 +68,41 @@
     <!--  END OF BLOG CONTENT -->
 
     <!--  BLOG SIDE CONTENT -->
-    <div class="col-sm-4">
+    <div class=" col-lg-3 col-md-3 col-sm-4   hidden-xs" >
 
 
-
-        <div class="blog-side-nest">
-            <h4 class="text-left">최근 일기</h4>
-            <hr style="margin:0">
-
-            <div class="media" ng-repeat="recent in recents">
-                <a class="pull-left" href="#"style="max-width: 64px">
-                    <img  class="img-circle media-object img-responsive-media" data-src="holder.js/64x64" alt="64x64" src="{{recent.imgUrl}}">
-                </a>
-                <div class="media-body">
-                    <h5 class="media-heading">{{recent.title}}</h5>
-                    <a class="text-green " style="margin:-10px 0 10px" href="#">{{recent.ago}}2 days ago</a>
+        <div class="col-lg-2 col-md-2" style="position:fixed;">
+            <div class=" blog-side-nest" >
+                <div>
+                    <h4 class="text-left">최근 읽은 일기</h4>
                 </div>
+                <hr style="margin:0">
+
+                <div class="media" ng-repeat="recent in recents">
+                    <a class="pull-left" href="#"style="max-width: 64px">
+                        <img  class="img-circle media-object img-responsive-media" data-src="holder.js/64x64" alt="64x64" src="{{recent.imgUrl}}">
+                    </a>
+                    <div class="media-body">
+                        <h5 class="media-heading">{{recent.title}}</h5>
+                        <a class="text-green " style="margin:-10px 0 10px" href="#">{{recent.ago}}2 days ago</a>
+                    </div>
+                </div>
+
+                <br>
             </div>
 
+            <!--태그목록 페이지-->
+            <div class="blog-side-nest" >
+                <h4 class="text-left">태그</h4>
+                <hr style="margin:0">
+                <ul class="list-inline">
+                    <li ng-repeat="tag in tags">
+                        <a class="btn bg-green" href="{{tag.url}}">{{tag.name}}</a>
+                    </li>
 
-
-            <br>
-        </div>
-
-        <div class="blog-side-nest">
-            <h4 class="text-left">태그</h4>
-            <hr style="margin:0">
-            <ul class="list-inline">
-                <li ng-repeat="tag in tags">
-                    <a class="btn bg-green" href="{{tag.url}}">{{tag.name}}</a>
-                </li>
-
-            </ul>
+                </ul>
+            </div>
+            <!--./태그목록 페이지-->
         </div>
     </div>
     <!--  END OF BLOG SIDE CONTENT -->
