@@ -30,11 +30,11 @@ function IndexCtrl($rootScope,$scope) {
 
 
 // optional controllers
-function HeaderCtrl($rootScope, $scope/**, Facebook*/){
+function HeaderCtrl($rootScope,$http, $scope/**, Facebook*/){
 //    console.log('HeaderCtrl 부터...'+$rootScopdxe.loginStatus);
 
     $rootScope.diaryList=[];
-
+    dataLoad();
     $('.search').focusin(function () {
         console.log('test');
         $(this).animate({
@@ -53,7 +53,45 @@ function HeaderCtrl($rootScope, $scope/**, Facebook*/){
         );
     });
 
+    $rootScope.recents=[{'title':'간만에 휴식','ago':3,'imgUrl':'https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpf1/v/t1.0-9/10553531_1494589260825919_7571164004568224289_n.jpg?oh=e150716e861d0a493fdeefe70a37c21d&oe=54AAC873&__gda__=1425070412_2bfe046f0909401324651c7cd0516f5c'},
+        {'title':'학교에 간 날','ago':4,'imgUrl':'https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xfp1/t31.0-8/1921045_468032023334626_6466308735889850799_o.jpg'},
+        {'title':'간만에 휴식','ago':3,'imgUrl':'https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpf1/v/t1.0-9/10553531_1494589260825919_7571164004568224289_n.jpg?oh=e150716e861d0a493fdeefe70a37c21d&oe=54AAC873&__gda__=1425070412_2bfe046f0909401324651c7cd0516f5c'},
+        {'title':'학교에 간 날','ago':4,'imgUrl':'https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xfp1/t31.0-8/1921045_468032023334626_6466308735889850799_o.jpg'}]
 
+    $rootScope.tags = [{'name':'Admin','url':'#'},
+        {'name':'Fleet','url':'#'},
+        {'name':'Music','url':'#'},
+        {'name':'Video','url':'#'},
+        {'name':'Typhography','url':'#'},
+        {'name':'Computer','url':'#'},
+        {'name':'webDesign','url':'#'}];
+
+    function dataLoad() {
+//        var data = JSON.stringify( { "data":writeData} );
+//        var data = JSON.stringify( { "serviceData":{"date":Date(),"purpose":"yoon test"}} );
+        $http({method: 'GET',
+            url: 'http://14.63.171.66:8081/tleafstructure/api/user/logs',
+            headers: {'Content-Type': 'application/json', 'X-Tleaf-User-Id':'344bc889c8bb44dd6e4bb845d40007b9', 'X-Tleaf-Application-Id': '6b22f647ef8f2f3278a1322d8b000f81', 'X-Tleaf-Access-Token':'6b22f647ef8f2f3278a1322d8b000210'}
+
+
+        }).success(function(data, status, headers, config) {
+            console.log('성공');
+            for(var i=0;i<data.logs.length;i++){
+                $rootScope.diaryList.push(data.logs[i].data);
+            }
+
+            // this callback will be called asynchronously
+            // when the response is available
+        }).
+            error(function(data, status, headers, config) {
+
+                console.log('실패');
+                console.log(data);
+
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+            });
+    }
 
     /**    $rootScope.$on('Facebook:statusChange', function(ev, data) {
         console.log('"HeaderCtrl 부터... " Facebook Status: ', JSON.stringify(data));
@@ -180,7 +218,7 @@ function EditorsCtrl($rootScope, $scope, $http) {
         $rootScope.diaryList.push(writeData);
         location.replace("#!");
 
-        var data = JSON.stringify( { "serviceData":writeData} );
+        var data = JSON.stringify( {"data" : writeData });
 //        var data = JSON.stringify( { "serviceData":{"date":Date(),"purpose":"yoon test"}} );
         $http({method: 'POST',
             url: 'http://14.63.171.66:8081/tleafstructure/api/user/app/log',
@@ -207,45 +245,6 @@ function EditorsCtrl($rootScope, $scope, $http) {
             });
 
 
-
-        var url = 'http://14.63.171.66:8081/TestServer/api/test/post';
-        $http({method: 'POST',
-            url: url,
-            headers: {'Content-Type': 'application/json'},
-            data: '{"appData":"'+ $rootScope.diaryList+'"}'
-//                     'email1='+user.email1+
-//                     'email2=naver.com'+
-//                     '&nickname='+user.nickname +
-//                     '&pw='+user.pw +
-//                     '&age='+user.age
-
-        }).success(function(data, status, headers, config) {
-            console.log('회원가입 성공 succenss');
-
-            //쿠키에 유저 id저장
-            console.log(data);
-            setCookie('userId',data.userId,5);
-//            location.reload();
-
-            // this callback will be called asynchronously
-            // when the response is available
-        }).
-            error(function(data, status, headers, config) {
-
-                console.log('회원가입 실패 fail');
-                console.log(data);
-                if(data.error == 'Email Already Exists'){
-                    $('.row').append('<p class="text-red">이메일이 중복되었습니다</p>');
-                }
-
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
-            });
-
-        function unescapeHTML(escapedHTML) {
-            console.log(escapedHTML.replace(/&lt;/g,'a').replace(/&gt;/g,'b').replace(/&amp;/g,'&'));
-            body = escapedHTML.replace(/&lt;/g,'a').replace(/&gt;/g,'b').replace(/&amp;/g,'&');
-        }
     }
 
 //.replace(/&/g,"&amp;").replace(/>/g,"&gt;").replace(/</g,"&lt;")
@@ -270,6 +269,7 @@ function TyphographyCtrl($scope, $http, $timeout) {}
 
 function CalendarCtrl($rootScope,$scope, $http, $timeout) {
     setTitle($rootScope,'Calendar');
+
     $scope.createDiary = function (year,month,day) {
         console.log(year+','+ month+','+day);
         //에디터 컨트롤러에 보낼 목적으로 브로드캐스트 한다.
@@ -281,6 +281,9 @@ function CalendarCtrl($rootScope,$scope, $http, $timeout) {
 
         location.href='#!/diary-detail?diaryId='+diaryId;
     }
+
+
+
 
 
 //    console.log('CalendarCtrl 로부터 : '+$rootScope.diaryList);
@@ -302,7 +305,7 @@ function BlankCtrl($scope, $http, $timeout) {}
 
 function BlogListCtrl($rootScope,$scope, $http, $timeout) {
 
-    getData();
+//    getData();
 
     $rootScope.loadMore = function () {
         $rootScope.diaryList.push({'diaryId':$rootScope.i+=1,'title': 'push', 'start': '2014-10-12', 'grade': '★★★☆☆', 'body': '또 찾아온 고양이 성애자입니다 공강시간에 점심밥먹고 오다가 만났네요 그래도 카메라 봐주네요 시크냥 .', 'imgUrl': 'https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-xfp1/v/t1.0-9/10372582_295142517363534_6776545901792196524_n.jpg?oh=9fa32ff68eccfae1e60a0b8915e8b89d&oe=54ADD6D0&__gda__=1420530521_9bd2cf59face7852e8784c15c84cd64b'});
@@ -359,18 +362,7 @@ function BlogListCtrl($rootScope,$scope, $http, $timeout) {
         ]
 
 
-        $scope.recents=[{'title':'간만에 휴식','ago':3,'imgUrl':'https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpf1/v/t1.0-9/10553531_1494589260825919_7571164004568224289_n.jpg?oh=e150716e861d0a493fdeefe70a37c21d&oe=54AAC873&__gda__=1425070412_2bfe046f0909401324651c7cd0516f5c'},
-            {'title':'학교에 간 날','ago':4,'imgUrl':'https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xfp1/t31.0-8/1921045_468032023334626_6466308735889850799_o.jpg'},
-            {'title':'간만에 휴식','ago':3,'imgUrl':'https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpf1/v/t1.0-9/10553531_1494589260825919_7571164004568224289_n.jpg?oh=e150716e861d0a493fdeefe70a37c21d&oe=54AAC873&__gda__=1425070412_2bfe046f0909401324651c7cd0516f5c'},
-            {'title':'학교에 간 날','ago':4,'imgUrl':'https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xfp1/t31.0-8/1921045_468032023334626_6466308735889850799_o.jpg'}]
 
-        $scope.tags = [{'name':'Admin','url':'#'},
-            {'name':'Fleet','url':'#'},
-            {'name':'Music','url':'#'},
-            {'name':'Video','url':'#'},
-            {'name':'Typhography','url':'#'},
-            {'name':'Computer','url':'#'},
-            {'name':'webDesign','url':'#'}];
     }
 
 }
@@ -411,12 +403,12 @@ function DiaryDetailCtrl($rootScope ,$scope, $http, $timeout, $routeParams) {
         $scope.title='학교종이 땡땡땡';
         $scope.body = '난 오늘 11시에 태평역에서 가산디지털단지역으로 지하철을 타고 갔다. 도착하고 나서 짜장범벅을 먹었고 일하고 일하고 일하고 일하고 전화하고 하다가 오후 10시 37분인데 일하고 서류 만들고 이러고 있다.\n 배가 고파서 뭘 먹을까 배달의 민족을 10분전에 찾아보다가 별로 땡기는게 없어서 편의점에 갈까 고민중이다.\n';
         $scope.myTags=['keyword','tag','travel'];
-        $scope.recents=[{'title':'간만에 휴식','ago':3,'imgUrl':'https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpf1/v/t1.0-9/10553531_1494589260825919_7571164004568224289_n.jpg?oh=e150716e861d0a493fdeefe70a37c21d&oe=54AAC873&__gda__=1425070412_2bfe046f0909401324651c7cd0516f5c'},
+        $rootScope.recents=[{'title':'간만에 휴식','ago':3,'imgUrl':'https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpf1/v/t1.0-9/10553531_1494589260825919_7571164004568224289_n.jpg?oh=e150716e861d0a493fdeefe70a37c21d&oe=54AAC873&__gda__=1425070412_2bfe046f0909401324651c7cd0516f5c'},
             {'title':'학교에 간 날','ago':4,'imgUrl':'https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xfp1/t31.0-8/1921045_468032023334626_6466308735889850799_o.jpg'},
             {'title':'간만에 휴식','ago':3,'imgUrl':'https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpf1/v/t1.0-9/10553531_1494589260825919_7571164004568224289_n.jpg?oh=e150716e861d0a493fdeefe70a37c21d&oe=54AAC873&__gda__=1425070412_2bfe046f0909401324651c7cd0516f5c'},
             {'title':'학교에 간 날','ago':4,'imgUrl':'https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xfp1/t31.0-8/1921045_468032023334626_6466308735889850799_o.jpg'}]
 
-        $scope.tags = [{'name':'Admin','url':'#'},
+        $rootScope.tags = [{'name':'Admin','url':'#'},
             {'name':'Fleet','url':'#'},
             {'name':'Music','url':'#'},
             {'name':'Video','url':'#'},

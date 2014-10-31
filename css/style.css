@@ -2793,7 +2793,7 @@ Component: timeline
      border-radius: 50%;
      color: #0AA699;
      margin: 5px 3px 0 0;
-      padding: 6.5px 11px !important;
+      padding: 6.5px 8px !important;
  }
  .main-theme .navbar .nav .messages-menu a:hover, .main-theme .navbar .nav .messages-menu a:focus {
      background: #0AA699!important;
