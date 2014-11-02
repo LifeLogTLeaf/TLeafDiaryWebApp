@@ -8,264 +8,186 @@
 <!--<span class="icon-bar"></span>-->
 <!--<span class="icon-bar"></span>-->
 <!--</a>-->
-<div><a href="#!" class="hidden-xs logo">Diary</a></div>
+    <div  >
+    <div style="margin: 0 auto 0 auto;"><a href="#!" class="hidden-xs logo">Diary</a></div>
 
-<!-- search form -->
-<div class="hidden-xs search">
-    <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-            <input type="text" name="q" style="border-color: transparent !important;" class="text-green form-control" placeholder="일기를 검색" />
-                <span class="input-group-btn">
-                    <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i>
-                    </button>
-                </span>
-        </div>
-    </form>
-</div>
-<!-- /.search form -->
-
-
-
-<div class="navbar-right">
-<!--오른편 서브 기능 아이콘들을 숨겨놓았다 로그아웃 기능 정도 생각중 -->
+    <!-- search form -->
+    <div class="hidden-xs search" style="margin: 0 auto 0 auto;">
+        <form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+                <input type="text" name="q" style="border-color: transparent !important;" class="text-green form-control" placeholder="일기를 검색" />
+                    <span class="input-group-btn">
+                        <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i>
+                        </button>
+                    </span>
+            </div>
+        </form>
+    </div>
+    <!-- /.search form -->
 
 
-<ul class="nav navbar-nav" style="">
 
-<li class="form  hidden-xs" >
-    connection</p>
+    <div class="" style="margin: 0 auto 0 auto;">
+    <!--오른편 서브 기능 아이콘들을 숨겨놓았다 로그아웃 기능 정도 생각중 -->
 
 
-</li>
+    <ul class="nav navbar-nav" style="">
 
-<!-- Messages: style can be found in dropdown.less-->
-<li class="dropdown messages-menu " >
-    <a href="" class="dropdown-toggle" data-toggle="dropdown" >
-        <i class="fontello-pen"></i>
-        <span class="label label-success"></span>
-    </a>
-    <!--기존 메일 버튼을 누르면 나왔던 하위 팝-->
-    <ul class="dropdown-menu bg-green" style="visibility: collapse">
-        <li class="header bg-green">
-            <span class="text-green fa fa-sort-desc"></span>You have 4 messages</li>
-        <li class="divider bg-opacity-white"></li>
-        <li>
-            <!-- inner menu: contains the actual data -->
-            <ul class="menu">
+        <li class="form  hidden-xs" >
+            connection</p>
+
+        </li>
+
+        <!-- Messages: style can be found in dropdown.less-->
+        <li class="dropdown messages-menu " >
+            <a href="" class="dropdown-toggle" data-toggle="dropdown" >
+                <i class="fontello-pen"></i>
+                <span class="label label-success"></span>
+            </a>
+        </li>
+        <!-- Notifications: style can be found in dropdown.less -->
+        <li class="dropdown notifications-menu">
+            <a href="#!" class="dropdown-toggle" data-toggle="dropdown" ng-click="facebooklogin()">
+                <i class="fa fontello-facebook"></i>
+                <span class="label bg-aqua">10</span>
+            </a>
+
+            <ul class="dropdown-menu bg-aqua" style="visibility: collapse">
+
+                <li class="header bg-aqua">
+                    <span class="text-aqua fa fa-sort-desc"></span>You have 10 notifications</li>
+                <li class="divider bg-opacity-white"></li>
                 <li>
-                    <!-- start message -->
-                    <a>
-                        <div class="pull-left">
-                            <img src="http://api.randomuser.me/portraits/thumb/men/30.jpg" class="img-circle" alt="User Image" />
-                        </div>
-                        <h4>
-                            Developer
-                            <!-- <small><i class="fa fa-clock-o"></i> 5 mins</small> -->
-                        </h4>
-                        <p>Bug fixed level 90%</p>
-                    </a>
+                    <!-- inner menu: contains the actual data -->
+                    <ul class="menu">
+                        <li>
+                            <a href="#">
+                                <i class="fa fontello-user-add-outline"></i> New developer registered
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fontello-upload-outline"></i> 2 item commit
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fontello-users-outline"></i> 3 members joined
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="fa fontello-basket"></i> 22 sales made
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fontello-contacts"></i> New task from manager
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-                <!-- end message -->
-                <li>
-                    <a href="#">
-                        <div class="pull-left">
-                            <img src="http://api.randomuser.me/portraits/thumb/women/30.jpg" class="img-circle" alt="user image" />
-                        </div>
-                        <h4>
-                            Aplication Support
-                            <!-- <small><i class="fa fa-clock-o"></i> 2 hours</small> -->
-                        </h4>
-                        <p>There is some bug in your last submit</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="pull-left">
-                            <img src="http://api.randomuser.me/portraits/thumb/men/31.jpg" class="img-circle" alt="user image" />
-                        </div>
-                        <h4>
-                            Lead Developers
-
-                        </h4>
-                        <p>Please check again your submit</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="pull-left">
-                            <img src="http://api.randomuser.me/portraits/thumb/women/31.jpg" class="img-circle" alt="user image" />
-                        </div>
-                        <h4>
-                            Web Designer
-
-                        </h4>
-                        <p>Art has done</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <div class="pull-left">
-                            <img src="http://api.randomuser.me/portraits/thumb/men/32.jpg" class="img-circle" alt="user image" />
-                        </div>
-                        <h4>
-                            General Manager
-
-                        </h4>
-                        <p>Employed newslatter</p>
-                    </a>
+                <li class="divider bg-opacity-white"></li>
+                <li class="footer">
+                    <btn class="btn btn-xs bg-opacity-white-btn  fontello-arrows-cw"></btn>
+                    <btn class="btn btn-xs bg-opacity-white-btn fontello-trash"></btn>
+                    <btn class="btn btn-xs bg-opacity-white-btn fontello-eye-outline"></btn>
                 </li>
             </ul>
         </li>
-        <li class="divider bg-opacity-white"></li>
-        <li class="footer">
-            <btn class="btn btn-xs bg-opacity-white-btn  fontello-arrows-cw"></btn>
-            <btn class="btn btn-xs bg-opacity-white-btn fontello-trash"></btn>
-            <btn class="btn btn-xs bg-opacity-white-btn fontello-eye-outline"></btn>
-        </li>
-    </ul>
-</li>
-<!-- Notifications: style can be found in dropdown.less -->
-<li class="dropdown notifications-menu">
-    <a href="#!" class="dropdown-toggle" data-toggle="dropdown" ng-click="facebooklogin()">
-        <i class="fa fontello-facebook"></i>
-        <span class="label bg-aqua">10</span>
-    </a>
+        <!-- 로그아웃 버튼을 시행한다 -->
+        <li class="dropdown tasks-menu" style="">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown" ng-click="facebookLogout()">
+                <i class="fa fontello-power-outline"></i>
+                <span class="label label-danger">9</span>
+            </a>
+            <ul class="dropdown-menu bg-red" style="visibility: hidden">
 
-    <ul class="dropdown-menu bg-aqua" style="visibility: collapse">
+                <li class="header bg-red">
+                    <span class="text-red fa fa-sort-desc"></span>You have 9 tasks</li>
+                <li class="divider bg-opacity-white"></li>
+                <li>
+                    <!-- inner menu: contains the actual data -->
+                    <ul class="menu text-white">
+                        <li>
 
-        <li class="header bg-aqua">
-            <span class="text-aqua fa fa-sort-desc"></span>You have 10 notifications</li>
-        <li class="divider bg-opacity-white"></li>
-        <li>
-            <!-- inner menu: contains the actual data -->
-            <ul class="menu">
-                <li>
-                    <a href="#">
-                        <i class="fa fontello-user-add-outline"></i> New developer registered
-                    </a>
+                            <!-- Task item -->
+                            <a href="#">
+                                <h3 class="fontello-leaf">
+                                    Tidy up your files
+                                    <small class="pull-right">35%</small>
+                                </h3>
+                                <div class="progress xs bg-white">
+                                    <div class="progress-bar bg-red-orange " style="width: 35%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                        <span class="sr-only">35% Complete</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <!-- end task item -->
+                        <li>
+                            <!-- Task item -->
+                            <a href="#">
+                                <h3 class="fontello-box">
+                                    Check server status
+                                    <small class="pull-right">40%</small>
+                                </h3>
+                                <div class="progress xs bg-white">
+                                    <div class="progress-bar bg-red-orange" style="width: 40%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                        <span class="sr-only">40% Complete</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <!-- end task item -->
+                        <li>
+                            <!-- Task item -->
+                            <a href="#">
+                                <h3 class="fontello-headphones">
+                                    Support costumer
+                                    <small class="pull-right">60%</small>
+                                </h3>
+                                <div class="progress xs bg-white">
+                                    <div class="progress-bar bg-red-orange" style="width: 60%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                        <span class="sr-only">60% Complete</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <!-- end task item -->
+                        <li>
+                            <!-- Task item -->
+                            <a href="#">
+                                <h3 class="fontello-fire-station">
+                                    Fix bug
+                                    <small class="pull-right">80%</small>
+                                </h3>
+                                <div class="progress xs bg-white">
+                                    <div class="progress-bar bg-red-orange" style="width: 80%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                        <span class="sr-only">80% Complete</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <!-- end task item -->
+                    </ul>
                 </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fontello-upload-outline"></i> 2 item commit
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fontello-users-outline"></i> 3 members joined
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fontello-basket"></i> 22 sales made
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fontello-contacts"></i> New task from manager
-                    </a>
+                <li class="divider bg-opacity-white"></li>
+                <li class="footer">
+                    <btn class="btn btn-xs bg-opacity-white-btn  fontello-arrows-cw"></btn>
+                    <btn class="btn btn-xs bg-opacity-white-btn fontello-trash"></btn>
+                    <btn class="btn btn-xs bg-opacity-white-btn fontello-eye-outline"></btn>
                 </li>
             </ul>
         </li>
-        <li class="divider bg-opacity-white"></li>
-        <li class="footer">
-            <btn class="btn btn-xs bg-opacity-white-btn  fontello-arrows-cw"></btn>
-            <btn class="btn btn-xs bg-opacity-white-btn fontello-trash"></btn>
-            <btn class="btn btn-xs bg-opacity-white-btn fontello-eye-outline"></btn>
-        </li>
+
+
+
+
     </ul>
-</li>
-<!-- 로그아웃 버튼을 시행한다 -->
-<li class="dropdown tasks-menu" style="">
-    <a href="" class="dropdown-toggle" data-toggle="dropdown" ng-click="facebookLogout()">
-        <i class="fa fontello-power-outline"></i>
-        <span class="label label-danger">9</span>
-    </a>
-    <ul class="dropdown-menu bg-red" style="visibility: hidden">
-
-        <li class="header bg-red">
-            <span class="text-red fa fa-sort-desc"></span>You have 9 tasks</li>
-        <li class="divider bg-opacity-white"></li>
-        <li>
-            <!-- inner menu: contains the actual data -->
-            <ul class="menu text-white">
-                <li>
-
-                    <!-- Task item -->
-                    <a href="#">
-                        <h3 class="fontello-leaf">
-                            Tidy up your files
-                            <small class="pull-right">35%</small>
-                        </h3>
-                        <div class="progress xs bg-white">
-                            <div class="progress-bar bg-red-orange " style="width: 35%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                <span class="sr-only">35% Complete</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <!-- end task item -->
-                <li>
-                    <!-- Task item -->
-                    <a href="#">
-                        <h3 class="fontello-box">
-                            Check server status
-                            <small class="pull-right">40%</small>
-                        </h3>
-                        <div class="progress xs bg-white">
-                            <div class="progress-bar bg-red-orange" style="width: 40%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                <span class="sr-only">40% Complete</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <!-- end task item -->
-                <li>
-                    <!-- Task item -->
-                    <a href="#">
-                        <h3 class="fontello-headphones">
-                            Support costumer
-                            <small class="pull-right">60%</small>
-                        </h3>
-                        <div class="progress xs bg-white">
-                            <div class="progress-bar bg-red-orange" style="width: 60%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                <span class="sr-only">60% Complete</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <!-- end task item -->
-                <li>
-                    <!-- Task item -->
-                    <a href="#">
-                        <h3 class="fontello-fire-station">
-                            Fix bug
-                            <small class="pull-right">80%</small>
-                        </h3>
-                        <div class="progress xs bg-white">
-                            <div class="progress-bar bg-red-orange" style="width: 80%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                <span class="sr-only">80% Complete</span>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <!-- end task item -->
-            </ul>
-        </li>
-        <li class="divider bg-opacity-white"></li>
-        <li class="footer">
-            <btn class="btn btn-xs bg-opacity-white-btn  fontello-arrows-cw"></btn>
-            <btn class="btn btn-xs bg-opacity-white-btn fontello-trash"></btn>
-            <btn class="btn btn-xs bg-opacity-white-btn fontello-eye-outline"></btn>
-        </li>
-    </ul>
-</li>
-
-
-
-
-</ul>
-</div>
+    </div>
+    </div>
 </nav>
 
 

@@ -1,24 +1,29 @@
 /* DEFAULT STYLE */
 
 .main-theme .leftmenu {
-    background: #222A38;
+    background: #E5E9EC;
+    -webkit-box-shadow: inset 0px 0px 0px 0px rgba(0, 0, 0, 0);
 }
 .main-theme .sidebar > .sidebar-menu > li > a:hover, .main-theme .sidebar > .sidebar-menu > li.active > a {
-    color: #fff;
-    background: #0D131E;
+    color: #FFFFFF;
+    background: #37A8AF;
+}
+.main-theme .sidebar > .sidebar-menu > li.active > a{
+    color: #FFFFFF;
+    background: #37A8AF;
 }
 .main-theme .sidebar > .sidebar-menu > li > .treeview-menu {
-    background: #0D131E;
-    color: #9fabbd;
+    background: #BDBDBD;
+    color: #37A8AF;
 }
 .sidebar .sidebar-menu .treeview-menu > li > a {
-    color: #9fabbd;
+    color: #37A8AF;
 }
 .main-theme .sidebar a {
-    color: #9fabbd;
+    color: #37A8AF;
 }
 .profile-list li a span {
-    background: #0D131E;
+    background: #E5E9EC;
     color: #fff;
 }
 .content {
