@@ -12,7 +12,7 @@
 <!--CONTENT-->
 <div class="" style="margin-top:30px;">
     <!--  BLOG CONTENT -->
-    <div class="col-sm-8 col-lg-6" infinite-scroll='loadMore()' infinite-scroll-distance='0'>
+    <div class="col-sm-8 col-lg-7 " infinite-scroll='loadMore()' infinite-scroll-distance='0'>
 
         <div id="{{post.diaryId}}" class="blog-list-nest post-radius" ng-animate="'animate'" ng-repeat="post in diaryList"  >
             <div class="vendor">
@@ -56,6 +56,7 @@
 
     </div>
     <!--  END OF BLOG CONTENT -->
+
     <div class="" remote-bar></div>
 </div>
 
@@ -67,3 +68,6 @@
 $(".blog-list-nest").fitVids();
 // Custom selector and No-Double-Wrapping Prevention Test
 </script>
+
+<!-- Page specific script -->
+

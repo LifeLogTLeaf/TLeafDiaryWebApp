@@ -3,43 +3,17 @@
 
 
         </script>
-<section class="sidebar " ng-controller="SideBarCtrl">
+<section class="sidebar" ng-controller="SideBarCtrl">
     <!-- Sidebar user panel -->
     <!--사용자 프로필 페이지 시작-->
     <div class="user-panel">
         <div class="image-avatar image">
 
-            <img src={{user[index].img}} ng-click="addIndex()" class="img-circle" alt="User Image" />
-            <span><i class="fa fa-circle text-success"></i>
-            </span>
+            <!--<img src={{user[index].img}} ng-click="addIndex()" class="img-circle" alt="User Image" />-->
+            <!--<span><i class="fa fa-circle text-success"></i>-->
+            <!--</span>-->
         </div>
-        <div class="info">
-            <p class="text-center">
-                <span>Hello,
-                    <strong>{{user[index].name}}</strong></span>
-            </p>
-            <ul class="profile-list">
-                <li>
-                    <a href="#nowhere" data-toggle="tooltip" data-placement="top" title="Profile">
-                        <span data-toggle="modal" data-target="#myModal"><i class="fontello-user-outline"></i>
-                        </span>
-                    </a>
 
-                </li>
-                <li>
-                    <a href="#nowhere" data-toggle="tooltip" data-placement="top" title="Setting">
-                        <span data-toggle="modal" data-target="#setting"><i class="fontello-wrench-outline"></i>
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="pages/login.html" data-toggle="tooltip" data-placement="top" title="Logout">
-                        <span><i class="fontello-power-outline"></i>
-                        </span>
-                    </a>
-                </li>
-            </ul>
-        </div>
     </div>
     <!--사용자 프로필 페이지 끝-->
 

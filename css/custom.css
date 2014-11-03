@@ -17,6 +17,28 @@
     border-radius: 3% 3% 0px 0px !important;
 }
 
+/*항목들 간의 padding-left값을 0으로 갱신 */
+.non-padding-left{
+    padding-left: 0px;
+}
+/*항목들 간의 padding-right값을 0으로 갱신 */
+.non-padding-right{
+    padding-right: 0px;
+}
+
+/*로그아웃 버튼 색상 지정*/
+.color-red{
+    color:#F56954;
+}
+.leftmenu{
+    width: 163px;
+}
+
+.col-lg-offset-1_5{
+    margin-left: 12.555555%;
+}
+
+/*페이지 로딩 애니메이션*/
 .animate-enter,
 .animate-leave
 {
@@ -42,3 +64,4 @@
     top: -80px;
     height: 0px;
 }
+/*./페이지 로딩 애니메이션*/
