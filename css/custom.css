@@ -3,10 +3,7 @@
     margin: 0px 4px 0px 0px;
 }
 
-/*캘린더 뷰의 날짜를 오른쪽 정렬한다*/
-.fc-day-number{
-    float: right;
-}
+
 
 /*일기 목록의 사진에 반투명 필터효과를 적용*/
 .img-bottom-filter{

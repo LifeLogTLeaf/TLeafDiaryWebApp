@@ -416,8 +416,9 @@ table.fc-border-separate {
     padding: 0 2px;
 }
 
+/*yoon's edit*/
 .fc-grid .fc-day-number {
-    float: right;
+    /*float: right;*/
     padding: 0 2px;
 }
 

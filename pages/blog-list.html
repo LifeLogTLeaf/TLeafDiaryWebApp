@@ -15,7 +15,9 @@
     <div class="col-sm-8 col-lg-7 " infinite-scroll='loadMore()' infinite-scroll-distance='0'>
 
         <div id="{{post.diaryId}}" class="blog-list-nest post-radius" ng-animate="'animate'" ng-repeat="post in diaryList"  >
+
             <div class="vendor">
+
                 <img class="post-radius" style="width:100%;" src="{{post.imgUrl}}" alt="">
                 <!--투명 필터는 img가 있어야만 따라나온다-->
                 <div class="row bg-white img-bottom-filter" ng-show="post.imgUrl.length>0"></div>
@@ -25,8 +27,8 @@
                 <!--제목 페이지-->
                 <h2>{{post.title}}</h2>
 
-                    <p class="text-green" >
-                    <span class="fa fa-fw fa-clock-o"></span>{{post.start}}</p>
+                    <h4 class="text-green" >
+                    <span class="fa fa-fw fa-clock-o"></span>{{post.start}}</h4>
 
                 <!--body클래스에 일기 body를 집어넣도록 컨트롤러에서 작용-->
                 <p class="body"></p>
