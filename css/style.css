@@ -2868,11 +2868,11 @@ Component: timeline
  .main-theme .navbar .sidebar-toggle:hover .icon-bar {
      background: #f6f6f6 !important;
  }
- /* skin-blue logo */
+ /* yoon's edit*/
  .main-theme .logo {
      color: #37A8AF;
-     border-left: 1px solid rgba(0, 0, 0, 0.1);
-     border-right: 1px solid rgba(0, 0, 0, 0.1);
+     /*border-left: 1px solid rgba(0, 0, 0, 0.1);*/
+     /*border-right: 1px solid rgba(0, 0, 0, 0.1);*/
  }
  .main-theme .logo > a {
      color: #37A8AF;

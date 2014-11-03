@@ -26,16 +26,21 @@
     padding-right: 0px;
 }
 
-/*로그아웃 버튼 색상 지정*/
-.color-red{
-    color:#F56954;
-}
 .leftmenu{
     width: 163px;
 }
 
 .col-lg-offset-1_5{
     margin-left: 12.555555%;
+}
+
+/*헤더의 아이콘 배경화면을 바꾼다*/
+.header-icon:hover{
+    background: #004164;
+}
+/*로고의 배경화면을 바꾼다*/
+.logo:hover{
+    background: #004164 !important;
 }
 
 /*페이지 로딩 애니메이션*/

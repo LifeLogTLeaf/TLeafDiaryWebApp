@@ -1,6 +1,6 @@
 <!-- TOP NAVBAR -->
 <!-- Header Navbar: style can be found in header.less -->
-<div class="navbar navbar-static-top"  role="navigation" ng-controller="HeaderCtrl">
+<div class="navbar navbar-static-top bg-blue"  role="navigation" ng-controller="HeaderCtrl">
 <!-- Sidebar toggle button-->
 <!--<a href="#" class="hidden-xs navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">-->
 <!--<span class="sr-only">Toggle navigation</span>-->
@@ -9,25 +9,32 @@
 <!--<span class="icon-bar"></span>-->
 <!--</a>-->
     <div class="row">
-        <div  class="col-lg-2 col-lg-offset-2">
+        <div  class="col-lg-3 col-lg-offset-2">
             <ul class="nav navbar-nav "  style="">
 
-                <li class="dropdown ">
+                <li class="dropdown header-icon" >
                     <a href="" class="dropdown-toggle" data-toggle="dropdown" >
-                        <b> 내 폴더 &gt;</b>
+                        <b class="text-white"> 내 폴더 &gt;</b>
                     </a>
                 </li>
 
                 <!--홈 버튼-->
-                <li class="dropdown pull-right">
+                <li class="dropdown  header-icon">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown" >
-                        <i class="fontello-home"></i>
+                        <i class="text-white fontello-home"></i>
                     </a>
                 </li>
                 <!--./홈 버튼-->
+                <!--유저 버튼-->
+                <li class="dropdown  header-icon">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" >
+                        <i class="fa fa-fw fa-user-md text-white"></i>
+                    </a>
+                </li>
+                <!--./유지 버튼-->
             </ul>
         </div>
-        <div class=" col-lg-2 col-lg-offset-1" style="" ><a href="#!" class="hidden-xs logo">Diary</a></div>
+        <div class=" col-lg-1  " style="" ><a href="#!" class="hidden-xs logo header-icon  text-white ">Tiary</a></div>
         <!-- search form -->
         <!--<div class="hidden-xs ">-->
             <!--<form action="#" method="get" class="sidebar-form">-->
@@ -45,40 +52,45 @@
 
 
         <!--오른편 서브 기능 아이콘들을 숨겨놓았다 로그아웃 기능 정도 생각중 -->
-        <div class="nav  col-lg-offset-1  col-lg-3" style="margin-left: 7%;">
+        <div class="nav  col-lg-offset-3  col-lg-2" style=" text-align: right;">
             <ul class="nav navbar-nav" style="">
 
-                <li class="dropdown ">yoonsKim
-                    <img style="max-width: 30px; max-height: 30px;" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xap1/v/t1.0-1/p320x320/10514709_602094559909057_545461442979457188_n.jpg?oh=2fa5ccf656478e20f37f08f8d56c78aa&oe=54F728FD&__gda__=1425365052_5d932c680b0f0e771d7a7f667aedbc16">
-                </li>
+                <!--<li class="dropdown ">yoonsKim-->
+                    <!--<a href="" class="dropdown-toggle" data-toggle="dropdown" >-->
+                    <!--<img style="max-width: 30px; max-height: 30px;" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xap1/v/t1.0-1/p320x320/10514709_602094559909057_545461442979457188_n.jpg?oh=2fa5ccf656478e20f37f08f8d56c78aa&oe=54F728FD&__gda__=1425365052_5d932c680b0f0e771d7a7f667aedbc16">-->
+                        <!--</a>-->
+                <!--</li>-->
 
                 <!-- Messages: style can be found in dropdown.less-->
-                <li class="dropdown messages-menu" >
+                <li class="dropdown header-icon" >
                     <a href="" class="dropdown-toggle" data-toggle="dropdown" >
-                        <i class="fontello-pen"></i>
-                        <span class="label label-success"></span>
+                        <i class="fontello-pen text-white "></i>
                     </a>
                 </li>
-                <!-- Notifications: style can be found in dropdown.less -->
-                <li class="dropdown notifications-menu">
-                    <a href="#!" class="dropdown-toggle" data-toggle="dropdown" ng-click="facebooklogin()">
-                        <i class="fa fontello-facebook"></i>
-                        <span class="label bg-aqua">10</span>
-                    </a>
-
-
-                </li>
-                <!-- 로그아웃 버튼을 시행한다 -->
-                <li class="dropdown " style="">
+                <!-- 로그아웃 버튼-->
+                <li class="dropdown header-icon" style="">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown" ng-click="facebookLogout()">
-                        <i class="fa fontello-power-outline color-red"></i>
+                        <i class="fa fontello-power-outline text-white"></i>
                     </a>
                 </li>
+                <!--./ 로그아웃 버튼-->
+                <!--others 버튼-->
+                <li class="dropdown header-icon" style="">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" ng-click="facebookLogout()">
+                        <i class="fa fa-fw fa-ellipsis-v text-white"></i>
+                    </a>
+                </li>
+                <!--./others 버튼-->
+
             </ul>
         </div>
         <!--./오른편 서브기능 아이콘 끝-->
     </div>
+    <!--네비게이션 바의 아랫 테두리 마감-->
+    <div class="row bg-blue" style="position: relative; height: 2px;"></div>
+    <!--./네비게이션 바의 아랫 테두리 마감-->
 </div>
+
 
 
 
