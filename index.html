@@ -103,18 +103,18 @@
 </header>
 
 
-<div class="wrapper row-offcanvas row-offcanvas-left" style="width: 80%; margin-left: auto; margin-right: auto;" >
+<div class="wrapper row-offcanvas row-offcanvas-left row" >
     <!-- Left Side Column. Contains Sidebar -->
-    <aside class="hidden-xs leftmenu  sidebar-offcanvas" ng-include src="'views/sidebar.html'" style="" >
+    <aside class="hidden-xs leftmenu sidebar-offcanvas col-lg-2  col-lg-offset-2" ng-include src="'views/sidebar.html'" style="" >
         <!-- side bar content -->
     </aside>
     <!-- End of Left Side Column. Contains Sidebar -->
     <!-- Right side column. Contains the navbar and content of the page -->
-    <aside class="right-side">
+    <aside class="right-side " style="height:0;">
         <!-- MAIN CONTENT -->
-        <section class="content">
+        <section class="content col-lg-offset-2" style="">
 
-            <div style="position:relative">
+            <div style="">
                 <div style="width:100%" ng-view ng-animate="{enter: 'view-enter', leave: 'view-leave'}"></div>
 
             </div>
@@ -124,10 +124,11 @@
         </section>
         <!-- ./MAIN CONTENT -->
 
-
-        <footer id="footer" ng-include src="'views/footer.html'">
-            <!-- footer content -->
-        </footer>
+        <!--footer 제거-->
+        <!--<footer id="footer" ng-include src="'views/footer.html'">-->
+            <!--&lt;!&ndash; footer content &ndash;&gt;-->
+        <!--</footer>-->
+        <!--./footer 제거-->
     </aside>
     <!-- /.right-side -->
 </div>
