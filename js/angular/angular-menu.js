@@ -23,7 +23,7 @@ var app = angular.module('shack', ['infinite-scroll','match','remoteBar'/**, 'fa
         when('/', {
             templateUrl: 'pages/list.html',
             activetab: 'BlogList',
-            controller: BlogListCtrl
+            controller: listCtrl
         }).
         when('/project/:projectId', {
             templateUrl: function(params) {
@@ -129,7 +129,7 @@ var app = angular.module('shack', ['infinite-scroll','match','remoteBar'/**, 'fa
         }).
         when('/list', {
             templateUrl: 'pages/list.html',
-            controller: BlogListCtrl,
+            controller: listCtrl,
             activetab: 'BlogList'
         }).
         when('/diary-detail', {

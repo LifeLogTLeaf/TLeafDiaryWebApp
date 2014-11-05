@@ -45,21 +45,29 @@
 
             <div class="vendor">
 
-                <img class="post-radius" style="width:100%;" src="{{post.imgUrl}}" alt="">
+                <img class="post-radius" ng-model="imgNum"  style="width:100%;" src="{{post.imgUrl[imgNum]}}" alt="">
                 <!--투명 필터는 img가 있어야만 따라나온다-->
                 <div class="row bg-white img-bottom-filter" ng-show="post.imgUrl.length>0"></div>
             </div>
-
+            <div style="margin-left: 20px;">
+                <img class="img-thumbnail" ng-mouseover="changeImgNum({{$index}})"  src="{{url}}" ng-repeat="url in post.imgUrl" style="max-width: 30px; max-height: 30px;">
+            </div>
             <div class="blog-list-content">
                 <!--제목 페이지-->
+
                 <h2>{{post.title}}</h2>
 
                     <h4 class="text-green" >
-                    <span class="fa fa-fw fa-clock-o"></span>{{post.start}}</h4>
+                    <span class="fa fa-fw fa-clock-o"></span>
+
+                        {{post.start.getFullYear()}}년
+                        {{post.start.getMonth()}}월
+                        {{post.start.getDate()}}일
+                        {{post.start.getHours()}}:{{post.start.getMinutes()}}
+                    </h4>
 
                 <!--body클래스에 일기 body를 집어넣도록 컨트롤러에서 작용-->
-                <p class="body"></p>
-                    <p>{{post.body}}</p>
+                    <p class="body" ng-bind-html-unsafe="'{{post.body}}'"></p>
 
                 <!--태그 페이지 -->
                 <p class="pull-right">
@@ -84,8 +92,7 @@
 
 
     </div>
-    <!--  END OF BLOG CONTENT -->
-
+    <!--리모컨 바를 추가한다-->
     <div class="" remote-bar></div>
 </div>
 

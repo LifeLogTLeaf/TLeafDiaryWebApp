@@ -24,7 +24,7 @@
 
                 <h2>{{title}}</h2>
                 <!--body클래스에 일기 body를 집어넣도록 컨트롤러에서 작용-->
-                <p class="body"></p>
+                <p class="body" ng-bind-html-unsafe="'{{body}}'"></p>
 
                 <!--태그 페이지 -->
                  <p class="pull-right">
@@ -44,7 +44,6 @@
                 </ul>
 
                 <hr>
-                <a href=""><button class="btn btn-info btn-margin pull-right">공유</button></a>
                 <a ng-click="deleteDiary()"><button class="btn btn-danger btn-margin pull-right">삭제</button></a>
                 <a ng-click="updateDiary()"><button class="btn btn-warning btn-margin pull-right">수정</button></a>
                 <a href="/diary/#!"><button class="btn btn-primary btn-margin pull-right">목록</button></a>

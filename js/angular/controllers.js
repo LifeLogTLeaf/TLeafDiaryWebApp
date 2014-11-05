@@ -18,7 +18,7 @@ function setTitle($rootScope,msg) {
 }
 
 function IndexCtrl($rootScope,$scope) {
-    $rootScope.i=0;
+    $rootScope.diaryId=0;
     $scope.header='Calendar';
 
     $rootScope.$on('title:change', function (e,data) {
@@ -76,11 +76,20 @@ function HeaderCtrl($rootScope,$http, $scope/**, Facebook*/){
 
         }).success(function(data, status, headers, config) {
             console.log('데이터 불러오기 성공');
-            for(var i=0;i<data.logs.length;i++){
+            var length = data.logs.length;
+
+            //일기의 총 갯수를 세어서 일기 id가 중첩되지 않도록 한다
+            $rootScope.diaryId=length;
+            for(var i=0;i<length;i++){
                 //nosql의 id와 rev값을 임의로 log하위에 넣는다.
                 data.logs[i].data.id=data.logs[i].id;
                 data.logs[i].data.revision=data.logs[i].revision;
+                //시간 변환에 들어간다.
+                data.logs[i].data.start= new Date(data.logs[i].data.start);
+
                 var inputData =data.logs[i].data;
+                console.log(inputData);
+
                 $rootScope.diaryList.push(inputData);
             }
 
@@ -95,6 +104,8 @@ function HeaderCtrl($rootScope,$http, $scope/**, Facebook*/){
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
             });
+
+
     }
 
     /**    $rootScope.$on('Facebook:statusChange', function(ev, data) {
@@ -204,23 +215,20 @@ function EditorsCtrl($rootScope, $scope, $http) {
     CKEDITOR.replace('body');
 
 
-    var date=$rootScope.date;
-    $rootScope.date = '';
 
     //입력 버튼을 눌렀을 때
     $scope.insert = function () {
 
         var body = CKEDITOR.instances.body.getData();
         var writeData = {
-            'diaryId':++$rootScope.i,
+            'diaryId':++$rootScope.diaryId,
             'title': this.title,
             'body': body,
-            'start': new Date(date.year,date.month-1,date.day+1),
+            'start': new Date(),
             'backgroundColor': "#f56954",
             'borderColor': "#f56954"};
 
-        $rootScope.diaryList.push(writeData);
-        location.replace("#!");
+
 
         var data = JSON.stringify( {"data" : writeData });
 //        var data = JSON.stringify( { "serviceData":{"date":Date(),"purpose":"yoon test"}} );
@@ -234,6 +242,8 @@ function EditorsCtrl($rootScope, $scope, $http) {
             console.log('성공');
 
             console.log(data);
+            $rootScope.diaryList.push(writeData);
+            location.replace("#!");
 //            location.reload();
 
             // this callback will be called asynchronously
@@ -309,18 +319,28 @@ function BlankCtrl($scope, $http, $timeout) {}
 
 
 var isSetEditor=true;
-function BlogListCtrl($rootScope,$scope, $http, $timeout) {
+function listCtrl($rootScope,$scope, $http, $timeout) {
 
 //    getData();
+
 
     if(isSetEditor) {
         isSetEditor=false;
         setEditor();
     }
 
+    //이미지 썸네일을 바꾸기 위한 변수처리
+    $scope.imgNum=0;
+    $scope.changeImgNum = function (newNum) {
+        $scope.imgNum=newNum;
+    }
+
+    //./이미지 썸네일을 바꾸기 위한 변수처리
+
+
     //페이지를 추가로 불러온다.
     $rootScope.loadMore = function () {
-//        $rootScope.diaryList.push({'diaryId':$rootScope.i+=1,'title': 'push', 'start': '2014-10-12', 'grade': '★★★☆☆', 'body': '또 찾아온 고양이 성애자입니다 공강시간에 점심밥먹고 오다가 만났네요 그래도 카메라 봐주네요 시크냥 .', 'imgUrl': 'https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-xfp1/v/t1.0-9/10372582_295142517363534_6776545901792196524_n.jpg?oh=9fa32ff68eccfae1e60a0b8915e8b89d&oe=54ADD6D0&__gda__=1420530521_9bd2cf59face7852e8784c15c84cd64b'});
+//        $rootScope.diaryList.push({'diaryId':$rootScope.diaryId+=1,'title': 'push', 'start': '2014-10-12', 'grade': '★★★☆☆', 'body': '또 찾아온 고양이 성애자입니다 공강시간에 점심밥먹고 오다가 만났네요 그래도 카메라 봐주네요 시크냥 .', 'imgUrl': 'https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-xfp1/v/t1.0-9/10372582_295142517363534_6776545901792196524_n.jpg?oh=9fa32ff68eccfae1e60a0b8915e8b89d&oe=54ADD6D0&__gda__=1420530521_9bd2cf59face7852e8784c15c84cd64b'});
     }
     setTitle($rootScope,'Main');
 
@@ -329,9 +349,6 @@ function BlogListCtrl($rootScope,$scope, $http, $timeout) {
         location.href='#!/diary-detail?diaryId='+diaryId;
     }
 
-
-//    var date=$rootScope.date;
-    var date={'year':2014,'month':12, 'day':5};
     $rootScope.date = '';
 
     //입력 버튼을 눌렀을 때
@@ -339,15 +356,14 @@ function BlogListCtrl($rootScope,$scope, $http, $timeout) {
 
         var body = CKEDITOR.instances.body.getData();
         var writeData = {
-            'diaryId':++$rootScope.i,
+            'diaryId':++$rootScope.diaryId,
             'title': this.title,
             'body': body,
-            'start': new Date(date.year,date.month-1,date.day),
+            'start': new Date(),
             'backgroundColor': "#f56954",
             'borderColor': "#f56954"};
 
-        $rootScope.diaryList.push(writeData);
-        location.href='#!';
+
 
         var data = JSON.stringify( {"data" : writeData });
 //        var data = JSON.stringify( { "serviceData":{"date":Date(),"purpose":"yoon test"}} );
@@ -360,11 +376,9 @@ function BlogListCtrl($rootScope,$scope, $http, $timeout) {
 
         }).success(function(data, status, headers, config) {
             console.log('작성 성공');
+            $rootScope.diaryList.push(writeData);
+            location.href='#!';
 
-//            location.reload();
-
-            // this callback will be called asynchronously
-            // when the response is available
         }).
             error(function(data, status, headers, config) {
 
@@ -446,7 +460,7 @@ function DiaryDetailCtrl($rootScope ,$scope, $http, $timeout, $routeParams) {
     setTitle($rootScope,'Read');
     console.log('DiaryDetailCtrl start..');
     console.log($rootScope.diaryList);
-    getData();
+//    getData();
 
 
 
@@ -454,9 +468,7 @@ function DiaryDetailCtrl($rootScope ,$scope, $http, $timeout, $routeParams) {
     var ob=getDiaryObject(diaryId);
     $scope.title = ob.title;
     $scope.imgUrl = ob.imgUrl;
-    $('.body').append(ob.body);
-//    $scope.body = ob.body;
-
+    $scope.body = ob.body;
 
     $scope.deleteDiary = function () {
 //        var data = JSON.stringify( { "data":writeData} );
@@ -468,7 +480,8 @@ function DiaryDetailCtrl($rootScope ,$scope, $http, $timeout, $routeParams) {
 
         }).success(function(data, status, headers, config) {
             console.log('데이터 삭제 성공');
-            var delObject = getDiaryObject(diaryId);
+            removeDiaryObject(diaryId);
+
             location.href='#!';
 //            $rootScope.diaryList.remove(delObject);
 //
@@ -504,6 +517,19 @@ function DiaryDetailCtrl($rootScope ,$scope, $http, $timeout, $routeParams) {
 
         });
         return ob;
+    }
+
+    /**id를 이용해 오브젝트 삭제.*/
+    function removeDiaryObject(id) {
+        $.each($rootScope.diaryList, function(i, v) {
+            if (Number(v.diaryId) == id) {
+
+                console.log($rootScope.diaryList);
+                $rootScope.diaryList.splice(i-2,1);
+                console.log($rootScope.diaryList);
+            }
+
+        });
     }
 
     function getData() {
