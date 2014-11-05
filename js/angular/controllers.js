@@ -306,10 +306,19 @@ function BlankCtrl($scope, $http, $timeout) {}
 function BlogListCtrl($rootScope,$scope, $http, $timeout) {
 
 //    getData();
-
+    CKEDITOR.replace('body',{
+        skin:'icy_orange',
+        uiColor:'#fffffe',
+        toolbar:[
+            ['Bold', 'Italic', '-'],
+            ['NumberedList', 'BulletedList'],
+            ['-', 'Link', 'Unlink','-'],
+            ['Image','Flash','HorizontalRule','Smiley','SpecialChar','PageBreak']]
+    });
     $rootScope.loadMore = function () {
         $rootScope.diaryList.push({'diaryId':$rootScope.i+=1,'title': 'push', 'start': '2014-10-12', 'grade': '★★★☆☆', 'body': '또 찾아온 고양이 성애자입니다 공강시간에 점심밥먹고 오다가 만났네요 그래도 카메라 봐주네요 시크냥 .', 'imgUrl': 'https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-xfp1/v/t1.0-9/10372582_295142517363534_6776545901792196524_n.jpg?oh=9fa32ff68eccfae1e60a0b8915e8b89d&oe=54ADD6D0&__gda__=1420530521_9bd2cf59face7852e8784c15c84cd64b'});
     }
+    setTitle($rootScope,'Editor');
 
     $scope.readDiary = function (diaryId) {
 

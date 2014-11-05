@@ -10,10 +10,22 @@
 <!--</ol>-->
 
 <!--CONTENT-->
-<div class="" style="margin-top:30px;">
+<div class="" style="margin-top:130px;">
     <!--  BLOG CONTENT -->
-    <div class="col-sm-8 col-lg-7 " infinite-scroll='loadMore()' infinite-scroll-distance='0'>
 
+    <div class="col-sm-8 col-lg-7 " infinite-scroll='loadMore()' infinite-scroll-distance='0'>
+        <div class="row bg-white" style="border: #93CC8D 5px solid; margin-bottom: 20px;">
+            <form ng-submit="insert()" >
+                <div class="row  text-left bg-grass"><h5 class="text-white" style="margin-left: 17px;"><b>일기 쓰기</b> </h5></div>
+                <input popover-trigger="focus" ng-model="title" name="title" class="form-control" placeholder="제목을 입력하세요" type="text" style="width: 50%;  margin: 10px;">
+                <textarea ng-model="body" id="body" name="body" class="textarea" placeholder="입력하세요 :)"></textarea>
+                <div class="row" align="right" style="margin: 20px;">
+                    <button type="submit" value="add" class="btn success-icon bg-blue">작 성</button>
+                    <button ng-click="abc()" class="btn btn-danger">취 소</button>
+
+                </div>
+            </form>
+        </div>
         <div id="{{post.diaryId}}" class="blog-list-nest post-radius" ng-animate="'animate'" ng-repeat="post in diaryList"  >
 
             <div class="vendor">

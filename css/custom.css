@@ -3,7 +3,14 @@
     margin: 0px 4px 0px 0px;
 }
 
+.fc-day-number{
+    /*background: #f56954;*/
+    /*border-radius: 60%;*/
 
+}
+.hello{
+    /*top: inherit !important;*/
+}
 
 /*일기 목록의 사진에 반투명 필터효과를 적용*/
 .img-bottom-filter{
@@ -36,8 +43,14 @@
     background: #004164;
 }
 /*로고의 배경화면을 바꾼다*/
-.logo:hover{
+.logo:hover ,.success-icon:hover{
     background: #004164 !important;
+}
+.bg-grass{
+    background: #93CC8D;
+}
+.textarea{
+    width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;
 }
 
 /*페이지 로딩 애니메이션*/

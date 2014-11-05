@@ -3903,7 +3903,7 @@ function AgendaEventRenderer() {
 					eventElement = $(triggerRes)
 						.css({
 							position: 'absolute',
-							top: seg.top,
+							top: 0,
 							left: seg.left
 						})
 						.appendTo(slotSegmentContainer);
@@ -3984,18 +3984,18 @@ function AgendaEventRenderer() {
 			" style=" +
 				"'" +
 				"position:absolute;" +
-				"top:" + seg.top + "px;" +
+//				"top:" + (seg.top-200) + "px;" +
 				"left:" + seg.left + "px;" +
-				skinCss +
+//				skinCss +
 				"'" +
 			">" +
 			"<div class='fc-event-inner'>" +
 			"<div class='fc-event-time'>" +
 			htmlEscape(formatDates(event.start, event.end, opt('timeFormat'))) +
 			"</div>" +
-			"<div class='fc-event-title'>" +
-			htmlEscape(event.title || '') +
-			"</div>" +
+//			"<div class='fc-event-title'>" +
+//			htmlEscape(event.title || '') +
+//			"</div>" +
 			"</div>" +
 			"<div class='fc-event-bg'></div>";
 		if (seg.isEnd && isEventResizable(event)) {
@@ -5205,15 +5205,13 @@ function DayEventRenderer() {
 
 		// render the HTML. innerHTML is considerably faster than jQuery's .html()
 		renderContainer[0].innerHTML = html;
-
-		// retrieve the individual elements
 		elements = renderContainer.children();
-
 		// if we were appending, and thus using a temporary container,
 		// re-attach elements to the real container.
 		if (doAppend) {
 			finalContainer.append(elements);
 		}
+        console.log(elements);
 
 		// assigns each element to `segment.event`, after filtering them through user callbacks
 		resolveElements(segments, elements);
@@ -5342,13 +5340,13 @@ function DayEventRenderer() {
 			html += "<div";
 		}
 		html +=
-			" class='" + classNames.join(' ') + "'" +
+			" class='" + classNames.join(' ') + " hello'" +
             " ng-click='readDiary("+event.diaryId+")'" +
 			" style=" +
 				"'" +
 				"position:absolute;" +
 				"left:" + segment.left + "px;" +
-				skinCss +
+//				skinCss +
 				"'" +
 			">" +
 			"<div class='fc-event-inner'>";
@@ -5361,9 +5359,9 @@ function DayEventRenderer() {
 				"</span>";
 		}
 		html +=
-			"<span class='fc-event-title'>" +
-			htmlEscape(event.title || '') +
-			"</span>" +
+//			"<span class='fc-event-title'>" +
+//			htmlEscape(event.title || '') +
+//			"</span>" +
 			"</div>";
 		if (segment.isEnd && isEventResizable(event)) {
 			html +=
@@ -5377,7 +5375,7 @@ function DayEventRenderer() {
 		// When these elements are initially rendered, they will be briefly visibile on the screen,
 		// even though their widths/heights are not set.
 		// SOLUTION: initially set them as visibility:hidden ?
-
+        console.log('final : '+html);
 		return html;
 	}
 
@@ -6008,7 +6006,7 @@ function CoordinateGrid(buildFunc) {
 	t.rect = function(row0, col0, row1, col1, originElement) { // row1,col1 is inclusive
 		var origin = originElement.offset();
 		return {
-			top: rows[row0][0] - origin.top,
+            top: rows[row0][0] - origin.top,
 			left: cols[col0][0] - origin.left,
 			width: cols[col1][1] - cols[col0][0],
 			height: rows[row1][1] - rows[row0][0]
