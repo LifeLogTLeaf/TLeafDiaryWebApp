@@ -75,9 +75,13 @@ function HeaderCtrl($rootScope,$http, $scope/**, Facebook*/){
 
 
         }).success(function(data, status, headers, config) {
-            console.log('성공');
+            console.log('데이터 불러오기 성공');
             for(var i=0;i<data.logs.length;i++){
-                $rootScope.diaryList.push(data.logs[i].data);
+                //nosql의 id와 rev값을 임의로 log하위에 넣는다.
+                data.logs[i].data.id=data.logs[i].id;
+                data.logs[i].data.revision=data.logs[i].revision;
+                var inputData =data.logs[i].data;
+                $rootScope.diaryList.push(inputData);
             }
 
             // this callback will be called asynchronously
@@ -303,22 +307,22 @@ function TimeLineCtrl($rootScope, $scope, $http, $timeout, $window) {
 
 function BlankCtrl($scope, $http, $timeout) {}
 
+
+var isSetEditor=true;
 function BlogListCtrl($rootScope,$scope, $http, $timeout) {
 
 //    getData();
-    CKEDITOR.replace('body',{
-        skin:'icy_orange',
-        uiColor:'#fffffe',
-        toolbar:[
-            ['Bold', 'Italic', '-'],
-            ['NumberedList', 'BulletedList'],
-            ['-', 'Link', 'Unlink','-'],
-            ['Image','Flash','HorizontalRule','Smiley','SpecialChar','PageBreak']]
-    });
-    $rootScope.loadMore = function () {
-        $rootScope.diaryList.push({'diaryId':$rootScope.i+=1,'title': 'push', 'start': '2014-10-12', 'grade': '★★★☆☆', 'body': '또 찾아온 고양이 성애자입니다 공강시간에 점심밥먹고 오다가 만났네요 그래도 카메라 봐주네요 시크냥 .', 'imgUrl': 'https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-xfp1/v/t1.0-9/10372582_295142517363534_6776545901792196524_n.jpg?oh=9fa32ff68eccfae1e60a0b8915e8b89d&oe=54ADD6D0&__gda__=1420530521_9bd2cf59face7852e8784c15c84cd64b'});
+
+    if(isSetEditor) {
+        isSetEditor=false;
+        setEditor();
     }
-    setTitle($rootScope,'Editor');
+
+    //페이지를 추가로 불러온다.
+    $rootScope.loadMore = function () {
+//        $rootScope.diaryList.push({'diaryId':$rootScope.i+=1,'title': 'push', 'start': '2014-10-12', 'grade': '★★★☆☆', 'body': '또 찾아온 고양이 성애자입니다 공강시간에 점심밥먹고 오다가 만났네요 그래도 카메라 봐주네요 시크냥 .', 'imgUrl': 'https://fbcdn-sphotos-g-a.akamaihd.net/hphotos-ak-xfp1/v/t1.0-9/10372582_295142517363534_6776545901792196524_n.jpg?oh=9fa32ff68eccfae1e60a0b8915e8b89d&oe=54ADD6D0&__gda__=1420530521_9bd2cf59face7852e8784c15c84cd64b'});
+    }
+    setTitle($rootScope,'Main');
 
     $scope.readDiary = function (diaryId) {
 
@@ -326,7 +330,69 @@ function BlogListCtrl($rootScope,$scope, $http, $timeout) {
     }
 
 
+//    var date=$rootScope.date;
+    var date={'year':2014,'month':12, 'day':5};
+    $rootScope.date = '';
 
+    //입력 버튼을 눌렀을 때
+    $scope.insert = function () {
+
+        var body = CKEDITOR.instances.body.getData();
+        var writeData = {
+            'diaryId':++$rootScope.i,
+            'title': this.title,
+            'body': body,
+            'start': new Date(date.year,date.month-1,date.day),
+            'backgroundColor': "#f56954",
+            'borderColor': "#f56954"};
+
+        $rootScope.diaryList.push(writeData);
+        location.href='#!';
+
+        var data = JSON.stringify( {"data" : writeData });
+//        var data = JSON.stringify( { "serviceData":{"date":Date(),"purpose":"yoon test"}} );
+        $http({
+            method: 'POST',
+            url: 'http://14.63.171.66:8081/tleafstructure/api/user/app/log',
+            headers: {'Content-Type': 'application/json', 'X-Tleaf-User-Id':'344bc889c8bb44dd6e4bb845d40007b9', 'X-Tleaf-Application-Id': '6b22f647ef8f2f3278a1322d8b000f81', 'X-Tleaf-Access-Token':'6b22f647ef8f2f3278a1322d8b000210'},
+            data: data
+
+
+        }).success(function(data, status, headers, config) {
+            console.log('작성 성공');
+
+//            location.reload();
+
+            // this callback will be called asynchronously
+            // when the response is available
+        }).
+            error(function(data, status, headers, config) {
+
+                console.log('작성 실패');
+                console.log(data);
+
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+            });
+
+
+    }
+
+
+
+
+//    메인 에디터로 사용하는 CK에디터를 수정한다.
+    function setEditor() {
+        CKEDITOR.replace('body',{
+            skin:'icy_orange',
+            uiColor:'#fffffe',
+            toolbar:[
+                ['Bold', 'Italic', '-'],
+                ['NumberedList', 'BulletedList'],
+                ['-', 'Link', 'Unlink','-'],
+                ['Image','Flash','HorizontalRule','Smiley','SpecialChar','PageBreak']]
+        });
+    }
 
 
     function getData() {
@@ -388,10 +454,41 @@ function DiaryDetailCtrl($rootScope ,$scope, $http, $timeout, $routeParams) {
     var ob=getDiaryObject(diaryId);
     $scope.title = ob.title;
     $scope.imgUrl = ob.imgUrl;
+    $('.body').append(ob.body);
 //    $scope.body = ob.body;
 
+
+    $scope.deleteDiary = function () {
+//        var data = JSON.stringify( { "data":writeData} );
+        var data = JSON.stringify({'id':ob.id,'revision':ob.revision});
+        $http({method: 'DELETE',
+            url: 'http://14.63.171.66:8081/tleafstructure/api/user/log',
+            headers: {'Content-Type': 'application/json', 'X-Tleaf-User-Id':'344bc889c8bb44dd6e4bb845d40007b9', 'X-Tleaf-Application-Id': '6b22f647ef8f2f3278a1322d8b000f81', 'X-Tleaf-Access-Token':'6b22f647ef8f2f3278a1322d8b000210'},
+            data: data
+
+        }).success(function(data, status, headers, config) {
+            console.log('데이터 삭제 성공');
+            var delObject = getDiaryObject(diaryId);
+            location.href='#!';
+//            $rootScope.diaryList.remove(delObject);
+//
+            // this callback will be called asynchronously
+            // when the response is available
+        }).
+            error(function(data, status, headers, config) {
+
+                console.log('데이터 삭제 실패');
+                console.log(data);
+
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+            });
+    }
+
     //body의 내용은 태그의 꺽세의 특성때문에 jquery의 append를 사용하기로 함
-    $('.body').append(ob.body);
+
+
+
 
 
 

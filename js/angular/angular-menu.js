@@ -21,9 +21,9 @@ var app = angular.module('shack', ['infinite-scroll','match','remoteBar'/**, 'fa
 
         $routeProvider.
         when('/', {
-            templateUrl: 'pages/calendar.html',
-            activetab: 'projects',
-            controller: CalendarCtrl
+            templateUrl: 'pages/list.html',
+            activetab: 'BlogList',
+            controller: BlogListCtrl
         }).
         when('/project/:projectId', {
             templateUrl: function(params) {
@@ -128,7 +128,7 @@ var app = angular.module('shack', ['infinite-scroll','match','remoteBar'/**, 'fa
             activetab: 'Blank'
         }).
         when('/list', {
-            templateUrl: 'pages/blog-list.html',
+            templateUrl: 'pages/list.html',
             controller: BlogListCtrl,
             activetab: 'BlogList'
         }).

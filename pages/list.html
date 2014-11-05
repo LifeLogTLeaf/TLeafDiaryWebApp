@@ -10,14 +10,29 @@
 <!--</ol>-->
 
 <!--CONTENT-->
-<div class="" style="margin-top:130px;">
+<div class="" style="margin-top:100px;">
     <!--  BLOG CONTENT -->
 
     <div class="col-sm-8 col-lg-7 " infinite-scroll='loadMore()' infinite-scroll-distance='0'>
         <div class="row bg-white" style="border: #93CC8D 5px solid; margin-bottom: 20px;">
             <form ng-submit="insert()" >
                 <div class="row  text-left bg-grass"><h5 class="text-white" style="margin-left: 17px;"><b>일기 쓰기</b> </h5></div>
+
                 <input popover-trigger="focus" ng-model="title" name="title" class="form-control" placeholder="제목을 입력하세요" type="text" style="width: 50%;  margin: 10px;">
+                <div style="margin-bottom: 10px;">
+                    <b style="margin-left: 17px;">날짜선택</b>
+                    <div class="btn-group" style="margin-left: 88px">
+                    <button type="button" class="btn btn-default">2014-02-02</button>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                        <span class="sr-only"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">달력이 나올 공간</a>
+                        </li>
+                    </ul>
+                </div>
+                </div>
                 <textarea ng-model="body" id="body" name="body" class="textarea" placeholder="입력하세요 :)"></textarea>
                 <div class="row" align="right" style="margin: 20px;">
                     <button type="submit" value="add" class="btn success-icon bg-blue">작 성</button>
@@ -44,7 +59,7 @@
 
                 <!--body클래스에 일기 body를 집어넣도록 컨트롤러에서 작용-->
                 <p class="body"></p>
-                    <p>내용내용내용내용내용내용내용내용내용</p>
+                    <p>{{post.body}}</p>
 
                 <!--태그 페이지 -->
                 <p class="pull-right">

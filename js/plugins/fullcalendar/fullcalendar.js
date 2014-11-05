@@ -5211,7 +5211,7 @@ function DayEventRenderer() {
 		if (doAppend) {
 			finalContainer.append(elements);
 		}
-        console.log(elements);
+//        console.log(elements);
 
 		// assigns each element to `segment.event`, after filtering them through user callbacks
 		resolveElements(segments, elements);
@@ -5375,7 +5375,7 @@ function DayEventRenderer() {
 		// When these elements are initially rendered, they will be briefly visibile on the screen,
 		// even though their widths/heights are not set.
 		// SOLUTION: initially set them as visibility:hidden ?
-        console.log('final : '+html);
+//        console.log('final : '+html);
 		return html;
 	}
 
