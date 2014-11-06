@@ -525,7 +525,7 @@ function DiaryDetailCtrl($rootScope ,$scope, $http, $timeout, $routeParams) {
             if (Number(v.diaryId) == id) {
 
                 console.log($rootScope.diaryList);
-                $rootScope.diaryList.splice(i-2,1);
+                $rootScope.diaryList.splice(i-1,1);
                 console.log($rootScope.diaryList);
             }
 
