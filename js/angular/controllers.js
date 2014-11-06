@@ -351,6 +351,7 @@ function listCtrl($rootScope,$scope, $http, $timeout) {
 
     $rootScope.date = '';
 
+
     //입력 버튼을 눌렀을 때
     $scope.insert = function () {
 
@@ -404,7 +405,8 @@ function listCtrl($rootScope,$scope, $http, $timeout) {
                 ['Bold', 'Italic', '-'],
                 ['NumberedList', 'BulletedList'],
                 ['-', 'Link', 'Unlink','-'],
-                ['Image','Flash','HorizontalRule','Smiley','SpecialChar','PageBreak']]
+                ['Image','Flash','HorizontalRule','Smiley','SpecialChar','PageBreak']],
+            filebrowserUploadUrl: 'http://naver.com'
         });
     }
 
