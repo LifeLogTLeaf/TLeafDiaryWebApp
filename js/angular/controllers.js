@@ -456,6 +456,8 @@ function listCtrl($rootScope,$scope, $http, $timeout) {
 
     }
 
+
+
 }
 
 function DiaryDetailCtrl($rootScope ,$scope, $http, $timeout, $routeParams) {

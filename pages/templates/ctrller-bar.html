@@ -37,21 +37,55 @@
         </div>
 
         <!--태그목록 페이지-->
-        <div class="blog-side-nest" >
-            <h4 class="text-left">태그</h4>
-            <hr style="margin:0">
-            <ul class="list-inline">
-                <li ng-repeat="tag in tags">
-                    <a class="btn bg-green" href="{{tag.url}}">{{tag.name}}</a>
-                </li>
+        <div class="bg-white" id="my_favorite_latin_words" style="width: 250px; height: 250px; border: 1px solid #ccc;"></div>
 
-            </ul>
-        </div>
         <!--./태그목록 페이지-->
     </div>
 </div>
 <!--  END OF BLOG SIDE CONTENT -->
 
+        <!--태그 jqCloud 실행-->
+<script>
+
+    var word_list = [
+        {text: "나초", weight: 13, link: "https://github.com/DukeLeNoir/jQCloud"},
+        {text: "타코스", weight: 10.5, html: {title: "My Title", "class": "custom-class"}, link: {href: "http://jquery.com/", target: "_blank"}},
+        {text: "Dolor", weight: 9.4},
+        {text: "Sit", weight: 8},
+        {text: "Amet", weight: 6.2},
+        {text: "Consectetur", weight: 5},
+        {text: "Adipiscing", weight: 5},
+        {text: "Elit", weight: 5},
+        {text: "Nam et", weight: 5},
+        {text: "Leo", weight: 4},
+        {text: "Sapien", weight: 4},
+        {text: "Pellentesque", weight: 3},
+        {text: "habitant", weight: 3},
+        {text: "morbi", weight: 3},
+        {text: "tristisque", weight: 3},
+        {text: "senectus", weight: 3},
+        {text: "et netus", weight: 3},
+        {text: "et malesuada", weight: 3},
+        {text: "fames", weight: 2},
+        {text: "ac turpis", weight: 2},
+        {text: "egestas", weight: 2},
+        {text: "Aenean", weight: 2},
+        {text: "justo", weight: 1},
+        {text: "dictum", weight: 1},
+        {text: "Ut et leo", weight: 1},
+        {text: "metus", weight: 1},
+        {text: "at molestie", weight: 1},
+        {text: "purus", weight: 1},
+        {text: "Sed", weight: 1}
+    ];
+    (function($) {
+        $("#my_favorite_latin_words").jQCloud(word_list);
+        console.log('test');
+    })(jQuery);
+
+</script>
+
+<!--캘린더에 관한 스크립트-->
 <script type="text/javascript">
     /* initialize the external events
      -----------------------------------------------------------------*/
