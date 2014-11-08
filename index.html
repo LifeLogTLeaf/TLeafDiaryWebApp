@@ -62,8 +62,9 @@
     <link rel="stylesheet" type="text/css" href="js/plugins/jqcloud/jqcloud.css" />
 
     <!--angularStrap CSS-->
-    <link rel="stylesheet" href="//mgcrea.github.io/angular-strap/styles/angular-motion.min.css">
-    <link rel="stylesheet" href="//mgcrea.github.io/angular-strap/styles/bootstrap-additions.min.css">
+
+    <link rel="stylesheet" href="js/plugins/angular-motion/angular-motion.min.css">
+    <link rel="stylesheet" href="js/plugins/angular-motion/bootstrap-additions.min.css">
     <link rel="stylesheet" href="//mgcrea.github.io/angular-strap/styles/libraries.min.css">
     <link rel="stylesheet" href="//mgcrea.github.io/angular-strap/styles/main.min.css">
 
@@ -94,13 +95,8 @@
     <script src="http://code.angularjs.org/1.2.26/angular-route.js"></script>
     <script src="http://code.angularjs.org/1.2.26/angular-animate.min.js" ></script>
     <script src="http://code.angularjs.org/1.2.26/angular-sanitize.min.js"></script>
-
-    <script src="http://mgcrea.github.io/angular-strap/dist/angular-strap.js" ></script>
-
-    <script src="http://mgcrea.github.io/angular-strap/dist/angular-strap.tpl.js"></script>
-    <script src="pages/app.js"></script>
-    <script src="http://mgcrea.github.io/angular-strap/scripts/demo.tpl.js"></script>
-
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-strap/2.1.2/angular-strap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-strap/2.1.2/angular-strap.tpl.min.js"></script>
 
 
     <!--문자열 바꾸기-->
@@ -127,7 +123,7 @@
                 <ul class="nav navbar-nav "  style="">
 
                     <li class="dropdown header-icon" >
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown" >
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" data-template="views/aside-test.html" data-placement="left" data-animation="am-slide-left" bs-aside="aside" data-container="body">
                             <b class="text-white"> 내 폴더 &gt;</b>
                         </a>
                     </li>
@@ -186,7 +182,7 @@
     </div>
 </header>
 
-<div class="wrapper row-offcanvas row-offcanvas-left row" style=" background-image: url('http://etc-mysitemyway.s3.amazonaws.com/backgrounds/legacy-previews/backgrounds/wood/wood-002665-light-sky-blue.jpg')">
+<div class="row-offcanvas row-offcanvas-left row" style=" background-image: url('http://etc-mysitemyway.s3.amazonaws.com/backgrounds/legacy-previews/backgrounds/wood/wood-002665-light-sky-blue.jpg')">
     <!-- Left Side Column. Contains Sidebar -->
     <!--<aside class="hidden-xs leftmenu sidebar-offcanvas col-lg-2  col-lg-offset-2" ng-include src="'views/sidebar.html'" style="" >-->
     <!--&lt;!&ndash; side bar content &ndash;&gt;-->

@@ -13,7 +13,7 @@
 'use strict';
 
 // angular.js main app initialization
-var app = angular.module('shack', [ 'ngRoute', "ngAnimate", 'ngSanitize', 'mgcrea.ngStrap.aside','infinite-scroll','match','remoteBar'/**, 'facebook'*/]).
+var app = angular.module('shack', [ 'ngRoute', "ngAnimate", 'ngSanitize','mgcrea.ngStrap.modal', 'mgcrea.ngStrap.aside','infinite-scroll','match','remoteBar'/**, 'facebook'*/]).
       config([ '$routeProvider', /**'FacebookProvider',*/
     function( $routeProvider/**, FacebookProvider*/) {
 /**FacebookProvider.init('675376119207653');*/
