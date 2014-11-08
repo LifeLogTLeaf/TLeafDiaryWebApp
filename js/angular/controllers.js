@@ -211,10 +211,8 @@ function MorrisCtrl($scope, $http) {}
 
 function EditorsCtrl($rootScope, $scope, $http) {
 
-    setTitle($rootScope,'Editor');
+//    setTitle($rootScope,'Editor');
     CKEDITOR.replace('body');
-
-
 
     //입력 버튼을 눌렀을 때
     $scope.insert = function () {
@@ -282,7 +280,7 @@ function TyphographyCtrl($scope, $http, $timeout) {}
 
 
 function CalendarCtrl($rootScope,$scope, $http, $timeout) {
-    setTitle($rootScope,'Calendar');
+//    setTitle($rootScope,'Calendar');
 
     $scope.createDiary = function (year,month,day) {
         console.log(year+','+ month+','+day);
@@ -319,7 +317,7 @@ function BlankCtrl($scope, $http, $timeout) {}
 
 
 var isSetEditor=true;
-function listCtrl($rootScope,$scope, $http, $timeout) {
+function listCtrl($rootScope, $scope, $http, $aside, $timeout) {
 
 //    getData();
 
@@ -334,8 +332,19 @@ function listCtrl($rootScope,$scope, $http, $timeout) {
     $scope.changeImgNum = function (newNum) {
         $scope.imgNum=newNum;
     }
-
     //./이미지 썸네일을 바꾸기 위한 변수처리
+
+
+    //asidebar 테스트
+    var myAside = $aside({title: 'My Title', content: 'My Content', show: true});
+
+    // Pre-fetch an external template populated with a custom scope
+    var myOtherAside = $aside({scope: $scope, template: 'aside/docs/aside.tpl.demo.html'});
+    // Show when some event occurs (use $promise property to ensure the template has been loaded)
+    myOtherAside.$promise.then(function() {
+        myOtherAside.show();
+    })
+    //./asidebar테스트
 
 
     //페이지를 추가로 불러온다.
@@ -345,7 +354,6 @@ function listCtrl($rootScope,$scope, $http, $timeout) {
     setTitle($rootScope,'Main');
 
     $scope.readDiary = function (diaryId) {
-
         location.href='#!/diary-detail?diaryId='+diaryId;
     }
 
@@ -367,28 +375,27 @@ function listCtrl($rootScope,$scope, $http, $timeout) {
 
 
         var data = JSON.stringify( {"data" : writeData });
-//        var data = JSON.stringify( { "serviceData":{"date":Date(),"purpose":"yoon test"}} );
+//      var data = JSON.stringify( { "serviceData":{"date":Date(),"purpose":"yoon test"}} );
+
+
         $http({
             method: 'POST',
             url: 'http://14.63.171.66:8081/tleafstructure/api/user/app/log',
             headers: {'Content-Type': 'application/json', 'X-Tleaf-User-Id':'344bc889c8bb44dd6e4bb845d40007b9', 'X-Tleaf-Application-Id': '6b22f647ef8f2f3278a1322d8b000f81', 'X-Tleaf-Access-Token':'6b22f647ef8f2f3278a1322d8b000210'},
             data: data
-
-
         }).success(function(data, status, headers, config) {
             console.log('작성 성공');
             $rootScope.diaryList.push(writeData);
             location.href='#!';
-
         }).
-            error(function(data, status, headers, config) {
+        error(function(data, status, headers, config) {
 
-                console.log('작성 실패');
-                console.log(data);
+            console.log('작성 실패');
+            console.log(data);
 
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
-            });
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+        });
 
 
     }

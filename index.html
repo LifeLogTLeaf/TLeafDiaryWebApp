@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="themesmile" />
-    <title>Diary :: {{header}}</title>
+    <title >Diary :: {{header}}</title>
     <meta name="description" content="Responsive website using AngularJS - demo page">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -61,16 +61,15 @@
     <!--jqCloud-->
     <link rel="stylesheet" type="text/css" href="js/plugins/jqcloud/jqcloud.css" />
 
-    <!-- Less Style -->
-    <!--   <link rel="stylesheet/less" href="less/sidebar.less" type="text/css" />
-  <link rel="stylesheet/less" href="less/main.less" type="text/css" />
-  <script src="js/less-1.7.3.min.js"></script> -->
-    <!-- add javascripts -->
-    <!-- jQuery 2.0.2 -->
-    <!--   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>  -->
+    <!--angularStrap CSS-->
+    <link rel="stylesheet" href="//mgcrea.github.io/angular-strap/styles/angular-motion.min.css">
+    <link rel="stylesheet" href="//mgcrea.github.io/angular-strap/styles/bootstrap-additions.min.css">
+    <link rel="stylesheet" href="//mgcrea.github.io/angular-strap/styles/libraries.min.css">
+    <link rel="stylesheet" href="//mgcrea.github.io/angular-strap/styles/main.min.css">
+
     <script src="js/jquery-2.0.3.min.js"></script>
-    <script src="js/angular/angular.min.js"></script>
-    <!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.1/angular-sanitize.js"></script>-->
+<!--    <script src="js/angular/angular.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
     <script src="js/angular/angular-menu.js"></script>
     <!-- 컨트롤러 삽입-->
     <script src="js/angular/controllers.js"></script>
@@ -87,8 +86,21 @@
     <script src="js/custom/match.js"></script>
     <script src="js/angular/facebook.js"></script>
     <script src="js/angular/googleplus.js"></script>
+
     <!-- fullCalendar 윤섭 수정 들어갑니다  -->
     <script src="js/plugins/fullcalendar/fullcalendar.js" type="text/javascript"></script>
+
+    <!--angularStrap 도입-->
+    <script src="http://code.angularjs.org/1.2.26/angular-route.js"></script>
+    <script src="http://code.angularjs.org/1.2.26/angular-animate.min.js" ></script>
+    <script src="http://code.angularjs.org/1.2.26/angular-sanitize.min.js"></script>
+
+    <script src="http://mgcrea.github.io/angular-strap/dist/angular-strap.js" ></script>
+
+    <script src="http://mgcrea.github.io/angular-strap/dist/angular-strap.tpl.js"></script>
+    <script src="pages/app.js"></script>
+    <script src="http://mgcrea.github.io/angular-strap/scripts/demo.tpl.js"></script>
+
 
 
     <!--문자열 바꾸기-->
@@ -98,25 +110,94 @@
 
 <body class="main-theme fixed">
 
-<header class="header" ng-include src="'views/header.html'">
-    <!-- header content -->
+<!-- header content -->
+<header class="header"  >
+    <!-- TOP NAVBAR -->
+    <!-- Header Navbar: style can be found in header.less -->
+    <div class="navbar navbar-static-top " style="background-color:rgba(62, 115, 157, 0.9)"  role="navigation" ng-controller="HeaderCtrl">
+        <!-- Sidebar toggle button-->
+        <!--<a href="#" class="hidden-xs navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">-->
+        <!--<span class="sr-only">Toggle navigation</span>-->
+        <!--<span class="icon-bar"></span>-->
+        <!--<span class="icon-bar"></span>-->
+        <!--<span class="icon-bar"></span>-->
+        <!--</a>-->
+        <div class="row">
+            <div  class="col-lg-3 col-lg-offset-2">
+                <ul class="nav navbar-nav "  style="">
+
+                    <li class="dropdown header-icon" >
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" >
+                            <b class="text-white"> 내 폴더 &gt;</b>
+                        </a>
+                    </li>
+
+                    <!--홈 버튼-->
+                    <li class="dropdown  header-icon">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" >
+                            <i class="text-white fontello-home"></i>
+                        </a>
+                    </li>
+                    <!--./홈 버튼-->
+                </ul>
+            </div>
+            <div class=" col-lg-1  " style="" ><a href="#!" class="hidden-xs logo header-icon  text-white ">Tiary</a></div>
+
+
+
+            <!--오른편 서브 기능 아이콘들을 숨겨놓았다 로그아웃 기능 정도 생각중 -->
+            <div class="nav  col-lg-offset-3  col-lg-2" style=" text-align: right;">
+                <ul class="nav navbar-nav" style="">
+
+                    <!--<li class="dropdown ">yoonsKim-->
+                    <!--<a href="" class="dropdown-toggle" data-toggle="dropdown" >-->
+                    <!--<img style="max-width: 30px; max-height: 30px;" src="https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xap1/v/t1.0-1/p320x320/10514709_602094559909057_545461442979457188_n.jpg?oh=2fa5ccf656478e20f37f08f8d56c78aa&oe=54F728FD&__gda__=1425365052_5d932c680b0f0e771d7a7f667aedbc16">-->
+                    <!--</a>-->
+                    <!--</li>-->
+
+                    <!-- Messages: style can be found in dropdown.less-->
+                    <li class="dropdown header-icon" >
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" >
+                            <i class="fa fa-fw fa-user-md text-white "></i>
+                        </a>
+                    </li>
+                    <!-- 로그아웃 버튼-->
+                    <li class="dropdown header-icon" style="">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" ng-click="facebookLogout()">
+                            <i class="fa fontello-power-outline text-white"></i>
+                        </a>
+                    </li>
+                    <!--./ 로그아웃 버튼-->
+                    <!--others 버튼-->
+                    <li class="dropdown header-icon" style="">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" ng-click="facebookLogout()">
+                            <i class="fa fa-fw fa-ellipsis-v text-white"></i>
+                        </a>
+                    </li>
+                    <!--./others 버튼-->
+
+                </ul>
+            </div>
+            <!--./오른편 서브기능 아이콘 끝-->
+        </div>
+        <!--네비게이션 바의 아랫 테두리 마감-->
+        <div class="row bg-blue" style="position: relative; height: 2px;"></div>
+        <!--./네비게이션 바의 아랫 테두리 마감-->
+    </div>
 </header>
 
-
-<div class="wrapper row-offcanvas row-offcanvas-left row"  style=" background-image: url('http://etc-mysitemyway.s3.amazonaws.com/backgrounds/legacy-previews/backgrounds/wood/wood-002665-light-sky-blue.jpg')">
+<div class="wrapper row-offcanvas row-offcanvas-left row" style=" background-image: url('http://etc-mysitemyway.s3.amazonaws.com/backgrounds/legacy-previews/backgrounds/wood/wood-002665-light-sky-blue.jpg')">
     <!-- Left Side Column. Contains Sidebar -->
     <!--<aside class="hidden-xs leftmenu sidebar-offcanvas col-lg-2  col-lg-offset-2" ng-include src="'views/sidebar.html'" style="" >-->
-        <!--&lt;!&ndash; side bar content &ndash;&gt;-->
+    <!--&lt;!&ndash; side bar content &ndash;&gt;-->
     <!--</aside>-->
     <!-- End of Left Side Column. Contains Sidebar -->
     <!-- Right side column. Contains the navbar and content of the page -->
     <aside class="right-side " style="height:0;">
         <!-- MAIN CONTENT -->
         <section class="" style="">
-
             <div style="">
-                <div style="width:100%; " ng-view ng-animate="{enter: 'view-enter', leave: 'view-leave'}"></div>
-
+                <div style="width:100%;" ng-view ng-animate="{enter: 'view-enter', leave: 'view-leave'}"   ></div>
             </div>
             <!-- ./Modal profile pop up -->
             <div ng-include src="'views/profile.html'"></div>
@@ -126,7 +207,7 @@
 
         <!--footer 제거-->
         <!--<footer id="footer" ng-include src="'views/footer.html'">-->
-            <!--&lt;!&ndash; footer content &ndash;&gt;-->
+        <!--&lt;!&ndash; footer content &ndash;&gt;-->
         <!--</footer>-->
         <!--./footer 제거-->
     </aside>
@@ -135,10 +216,13 @@
 <!-- ./wrapper -->
 
 
+
 <!-- jQuery UI 1.10.3 -->
-<!--<script src="js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>-->
+<script src="js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
 <!-- Bootstrap -->
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
+<!--jQCloud-->
+<script type="text/javascript" src="js/plugins/jqcloud/jqcloud-1.0.4.js"></script>
 <!-- Morris.js charts -->
 <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
 <script src="js/plugins/morris/morris.min.js" type="text/javascript"></script>
@@ -188,9 +272,6 @@
 <script src="http://jhere.net/js/jhere-custom.js"></script>
 <script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
 <script type="text/javascript" src="js/plugins/map/gmap3.js"></script>
-<!--jQCloud-->
-<script type="text/javascript" src="js/plugins/jqcloud/jqcloud-1.0.4.js"></script>
-
 
 
 </body>

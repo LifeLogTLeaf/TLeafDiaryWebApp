@@ -11,8 +11,26 @@
 
 <!--CONTENT-->
 
-<div class="" style=" margin-top:50px;">
+<div class="" style="margin-top:50px;" >
     <!--  BLOG CONTENT -->
+    <div class="bs-docs-section">
+        <div class="bs-example" append-source>
+
+
+            <button type="button" class="btn btn-lg btn-primary" bs-aside="aside">Click to toggle aside
+                <br />
+                <small>(using an object)</small>
+            </button>
+
+
+            <button type="button" class="btn btn-lg btn-danger" data-template="aside/docs/aside.tpl.demo.html" data-placement="left" data-animation="am-slide-left" bs-aside="aside" data-container="body">Custom aside
+                <br />
+                <small>(using data-template)</small>
+            </button>
+
+        </div>
+
+    </div>
 
     <div class="col-sm-8 col-lg-7 " infinite-scroll='loadMore()' infinite-scroll-distance='0'>
         <div class="row bg-white" style="border: #3E739D 5px solid; margin-bottom: 20px;opacity: 0.97;">
@@ -38,20 +56,21 @@
                 </div>
             </form>
         </div>
-        <div id="{{post.diaryId}}" class="blog-list-nest post-radius" ng-animate="'animate'" ng-repeat="post in diaryList"  >
 
-            <div class="vendor">
+        <div id="{{post.diaryId}}" class="blog-list-nest post-radius" ng-animate="'animate'" ng-repeat="post in diaryList" >
 
-                <img class="post-radius" ng-model="imgNum"  style="width:100%;" src="{{post.imgUrl[imgNum]}}" alt="">
+           <div class="vendor">
+
+                <img class="post-radius" ng-model="imgNum"  style="width:100%;" ng-src="{{post.imgUrl[imgNum]}}" alt="">
                 <!--투명 필터는 img가 있어야만 따라나온다-->
-                <div class="row bg-white img-bottom-filter" ng-show="post.imgUrl.length>0"></div>
+                <div class="row bg-white img-bottom-filter" ng-show="post.imgUrl"></div>
             </div>
             <div style="margin-left: 20px;">
-                <img class="img-thumbnail" ng-mouseover="changeImgNum({{$index}})"  src="{{url}}" ng-repeat="url in post.imgUrl" style="max-width: 30px; max-height: 30px;">
+                    <img class="img-thumbnail" ng-repeat="url in post.imgUrl" ng-mouseenter="changeImgNum($index)" ng-src="{{url}}" style="max-width: 30px; max-height: 30px;">
             </div>
+
             <div class="blog-list-content">
                 <!--제목 페이지-->
-
                 <h2>{{post.title}}</h2>
 
                     <h4 class="text-green" >
@@ -63,46 +82,33 @@
                         {{post.start.getHours()}}:{{post.start.getMinutes()}}
                     </h4>
 
-                <!--body클래스에 일기 body를 집어넣도록 컨트롤러에서 작용-->
+                <!--<!--body클래스에 일기 body를 집어넣도록 컨트롤러에서 작용-->-->
                     <p class="body" ng-bind-html-unsafe="'{{post.body}}'"></p>
 
-                <!--태그 페이지 -->
+                <!--<!--태그 페이지 -->-->
                 <p class="pull-right">
                     <span class="label label-default btn-margin bg-green" ng-repeat="tag in post.tags">{{tag}}</span>
                 </p>
-                <!--./태그페이지 -->
+                <!--<!--./태그페이지 -->-->
                 <ul class="list-inline">
                     <li>
-                        <a class="text-green" href="#">
-                            <span class="fontello-comment-1"></span>&nbsp;2 메모</a>
+                        <a class="text-green" href="#"><span class="fontello-comment-1"></span >&nbsp;2 메모</a>
                     </li>
                 </ul>
                 <hr>
-                <button ng-click="readDiary({{post.diaryId}})" class="btn btn-info pull-right">더 읽어보기</button>
+                <button ng-click="readDiary(post.diaryId)" class="btn btn-info pull-right">더 읽어보기</button>
                 <div style="clear:both;"></div>
             </div>
         </div>
-
-
-
-
-
-
     </div>
+
     <!--리모컨 바를 추가한다-->
     <div class="" remote-bar style="opacity: 0.94;"></div>
 </div>
 
+
 <script src="js/plugins/flatvideo/jquery.fitvids.js"></script>
 
-<script type="text/javascript">
-
-
-//    (function ($) {
-//        $('#datetimepicker1').datetimepicker();
-//    })(jQuery);
-
-</script>
 <script>
 
 $(".blog-list-nest").fitVids();
@@ -110,4 +116,3 @@ $(".blog-list-nest").fitVids();
 </script>
 
 <!-- Page specific script -->
-
