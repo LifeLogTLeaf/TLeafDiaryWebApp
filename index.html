@@ -123,7 +123,7 @@
                 <ul class="nav navbar-nav "  style="">
 
                     <li class="dropdown header-icon" >
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown" data-template="views/aside-test.html" data-placement="left" data-animation="am-slide-left" bs-aside="aside" data-container="body">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" data-title="내 폴더" data-content="" data-template="views/aside-test.html" data-placement="left" data-animation="am-slide-left" bs-aside="aside" data-container="body">
                             <b class="text-white"> 내 폴더 &gt;</b>
                         </a>
                     </li>
@@ -135,6 +135,11 @@
                         </a>
                     </li>
                     <!--./홈 버튼-->
+                    <li class="dropdown header-icon" >
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown" >
+                            <i class="fa fa-fw fa-user-md text-white "></i>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class=" col-lg-1  " style="" ><a href="#!" class="hidden-xs logo header-icon  text-white ">Tiary</a></div>
@@ -152,9 +157,11 @@
                     <!--</li>-->
 
                     <!-- Messages: style can be found in dropdown.less-->
+
+
                     <li class="dropdown header-icon" >
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown" >
-                            <i class="fa fa-fw fa-user-md text-white "></i>
+                        <a class="dropdown-toggle" data-toggle="dropdown" data-type="일기쓰기" data-content="" data-template="views/write.html"  data-animation="am-fade-and-scale" data-placement="am-fade-and-slide-top" bs-modal="modal" data-container="body" >
+                            <i class="fontello-pencil text-white"></i>
                         </a>
                     </li>
                     <!-- 로그아웃 버튼-->

@@ -1,0 +1,54 @@
+<div class="modal" tabindex="-1" role="dialog" ng-controller="writeCtrl">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-blue" >
+                <button type="button" class="close" ng-click="$hide()">&times;</button>
+                <h4 class="modal-title" ><b>일기쓰기</b></h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row bg-white" style="">
+                    <form ng-submit="insert()" >
+                        <b style="margin-left: 17px;">제목입력</b>
+                        <input popover-trigger="focus" ng-model="title" value="" name="title" class="form-control" placeholder="제목을 입력하세요" type="text" style="width: 50%;  margin: 10px;">
+                        <div style="margin-bottom: 10px;">
+                            <b style="margin-left: 17px;">날짜선택</b>
+                            <div class="form-group" style="margin-left: 10px; margin-top: 10px; width: 50%;">
+                                <div class='input-group date' id='datetimepicker1'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <textarea ng-model="body" id="body" name="body" class="textarea" placeholder="입력하세요 :)"></textarea>
+                        <div class="modal-footer ">
+                            <button ng-click="$hide()" type="submit" value="add" class="btn success-icon bg-blue">작 성</button>
+                            <button ng-click="$hide()" class="btn btn-danger">취 소</button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+        setEditor();
+
+    //    메인 에디터로 사용하는 CK에디터를 수정한다.
+    function setEditor() {
+        CKEDITOR.replace('body',{
+            skin:'icy_orange',
+            uiColor:'#fffffe',
+            toolbar:[
+                ['Bold', 'Italic', '-'],
+                ['NumberedList', 'BulletedList'],
+                ['-', 'Link', 'Unlink','-'],
+                ['Image','Flash','HorizontalRule','Smiley','SpecialChar','PageBreak']],
+            filebrowserUploadUrl: 'http://naver.com'
+        });
+    }
+</script>

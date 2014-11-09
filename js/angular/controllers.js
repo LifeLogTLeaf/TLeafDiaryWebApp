@@ -26,32 +26,25 @@ function IndexCtrl($rootScope,$scope) {
         $scope.header=data;
     });
 
+
+
 }
 
 
 // optional controllers
 function HeaderCtrl($rootScope,$http, $scope/**, Facebook*/){
 //    console.log('HeaderCtrl 부터...'+$rootScopdxe.loginStatus);
+    getData();
+    function getData() {
+        $rootScope.recents=[{'title':'간만에 휴식','ago':3,'imgUrl':'https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpf1/v/t1.0-9/10553531_1494589260825919_7571164004568224289_n.jpg?oh=e150716e861d0a493fdeefe70a37c21d&oe=54AAC873&__gda__=1425070412_2bfe046f0909401324651c7cd0516f5c'},
+            {'title':'학교에 간 날','ago':4,'imgUrl':'https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xfp1/t31.0-8/1921045_468032023334626_6466308735889850799_o.jpg'},
+            {'title':'간만에 휴식','ago':3,'imgUrl':'https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpf1/v/t1.0-9/10553531_1494589260825919_7571164004568224289_n.jpg?oh=e150716e861d0a493fdeefe70a37c21d&oe=54AAC873&__gda__=1425070412_2bfe046f0909401324651c7cd0516f5c'},
+            {'title':'학교에 간 날','ago':4,'imgUrl':'https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xfp1/t31.0-8/1921045_468032023334626_6466308735889850799_o.jpg'}]
+    }
 
     $rootScope.diaryList=[];
     dataLoad();
-    $('.search').focusin(function () {
-        console.log('test');
-        $(this).animate({
-                width: '30%'
-            },400, function () {
 
-            }
-        );
-    });
-    $('.search').focusout(function () {
-        $(this).animate({
-                width: '20%'
-            },400, function () {
-
-            }
-        );
-    });
 
     $rootScope.recents=[{'title':'간만에 휴식','ago':3,'imgUrl':'https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpf1/v/t1.0-9/10553531_1494589260825919_7571164004568224289_n.jpg?oh=e150716e861d0a493fdeefe70a37c21d&oe=54AAC873&__gda__=1425070412_2bfe046f0909401324651c7cd0516f5c'},
         {'title':'학교에 간 날','ago':4,'imgUrl':'https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xfp1/t31.0-8/1921045_468032023334626_6466308735889850799_o.jpg'},
@@ -107,89 +100,52 @@ function HeaderCtrl($rootScope,$http, $scope/**, Facebook*/){
 
 
     }
+}
+function writeCtrl($scope,$rootScope,$http) {
 
-    /**    $rootScope.$on('Facebook:statusChange', function(ev, data) {
-        console.log('"HeaderCtrl 부터... " Facebook Status: ', JSON.stringify(data));
-        console.log('"headerCtrl 부터... facebook status check : '+ data.status);
-        $rootScope.loginStatus = data.status;
-        if($rootScope.loginStatus != 'connected'){
-            console.log('HeaderCtrl 부터...로그인이 안되어 있습니다');
-//        location.replace("http://localhost/pages/login.html");
-        }
-    });*/
+    //입력 버튼을 눌렀을 때
+    $scope.insert = function () {
 
-//    $rootScope.$on('GooglePlus:statusChange', function(ev, data) {
-//        console.log('Google Status: ', data);
-//        if (data.status == 'connected') {
-//
-//
-//        } else if (data.status == 'loggin') {
-//
-//        }
-//    });
+        var body = CKEDITOR.instances.body.getData();
+        var writeData = {
+            'diaryId':++$rootScope.diaryId,
+            'title': this.title,
+            'body': body,
+            'start': new Date(),
+            'backgroundColor': "#f56954",
+            'borderColor': "#f56954"};
 
 
-    /*check facebook sdk load complete*/
-//    $scope.$watch(function() {
-//            return UserService.FacebookIsReady();
-//        },
-//        function(newVal) {
-//            if (newVal)
-//                $scope.facebookReady = true;
-//        }
-//    );
-//
-//    /*check googleplus sdk load complete*/
-//    $scope.$watch(function() {
-//            return UserService.GooglePlusIsReady();
-//        },
-//        function(newVal) {
-//            if (newVal)
-//                $scope.googleplusReady = true;
-//        }
-//    );
-/**
-    $scope.facebooklogin = function(){
-//        1. facebook로그인을 진행한다
 
-//        UserService.Logout('FACEBOOK');
-//        Facebook.logout();
-        Facebook.login(function(response) {
-            Facebook.api('/me', function(response) {
-                console.log('페이스북 데이터 목록 \n'+JSON.stringify(response));
+        var data = JSON.stringify( {"data" : writeData });
+//      var data = JSON.stringify( { "serviceData":{"date":Date(),"purpose":"yoon test"}} );
+
+
+        $http({
+            method: 'POST',
+            url: 'http://14.63.171.66:8081/tleafstructure/api/user/app/log',
+            headers: {'Content-Type': 'application/json', 'X-Tleaf-User-Id':'344bc889c8bb44dd6e4bb845d40007b9', 'X-Tleaf-Application-Id': '6b22f647ef8f2f3278a1322d8b000f81', 'X-Tleaf-Access-Token':'6b22f647ef8f2f3278a1322d8b000210'},
+            data: data
+        }).success(function(data, status, headers, config) {
+            console.log('작성 성공');
+            $rootScope.diaryList.push(writeData);
+            location.href='#!';
+        }).
+            error(function(data, status, headers, config) {
+
+                console.log('작성 실패');
+                console.log(data);
+                location.href='#!/404';
+
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
             });
-        });*/
 
-
-
-//          1. 끝
-
-//        2.구글 로그인을 진행한다
-        //UserService.Logout('GOOGLE');
-
-//        GooglePlus.logout();
-//        GooglePlus.login().then(function (authResult) {
-//            console.log(JSON.stringify(authResult));
-//        }, function (err) {
-//            console.log(err);
-//        });
-//        2.끝
-//    }
-
-/**
-    $scope.$on('Logout', function(event) {
-        event.stopPropagation();
-
-        Logout();
-    });
-
-    $scope.facebookLogout = function () {
-        Facebook.logout();
 
     }
-*/
 
 }
+
 function HomeCtrl($scope, $http) {
 
 
@@ -316,16 +272,11 @@ function TimeLineCtrl($rootScope, $scope, $http, $timeout, $window) {
 function BlankCtrl($scope, $http, $timeout) {}
 
 
-var isSetEditor=true;
 function listCtrl($rootScope, $scope, $http, $aside, $timeout) {
 
 //    getData();
 
 
-    if(isSetEditor) {
-        isSetEditor=false;
-        setEditor();
-    }
 
     //이미지 썸네일을 바꾸기 위한 변수처리
     $scope.imgNum=0;
@@ -347,62 +298,11 @@ function listCtrl($rootScope, $scope, $http, $aside, $timeout) {
     $rootScope.date = '';
 
 
-    //입력 버튼을 눌렀을 때
-    $scope.insert = function () {
-
-        var body = CKEDITOR.instances.body.getData();
-        var writeData = {
-            'diaryId':++$rootScope.diaryId,
-            'title': this.title,
-            'body': body,
-            'start': new Date(),
-            'backgroundColor': "#f56954",
-            'borderColor': "#f56954"};
-
-
-
-        var data = JSON.stringify( {"data" : writeData });
-//      var data = JSON.stringify( { "serviceData":{"date":Date(),"purpose":"yoon test"}} );
-
-
-        $http({
-            method: 'POST',
-            url: 'http://14.63.171.66:8081/tleafstructure/api/user/app/log',
-            headers: {'Content-Type': 'application/json', 'X-Tleaf-User-Id':'344bc889c8bb44dd6e4bb845d40007b9', 'X-Tleaf-Application-Id': '6b22f647ef8f2f3278a1322d8b000f81', 'X-Tleaf-Access-Token':'6b22f647ef8f2f3278a1322d8b000210'},
-            data: data
-        }).success(function(data, status, headers, config) {
-            console.log('작성 성공');
-            $rootScope.diaryList.push(writeData);
-            location.href='#!';
-        }).
-        error(function(data, status, headers, config) {
-
-            console.log('작성 실패');
-            console.log(data);
-
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
-        });
-
-
-    }
 
 
 
 
-//    메인 에디터로 사용하는 CK에디터를 수정한다.
-    function setEditor() {
-        CKEDITOR.replace('body',{
-            skin:'icy_orange',
-            uiColor:'#fffffe',
-            toolbar:[
-                ['Bold', 'Italic', '-'],
-                ['NumberedList', 'BulletedList'],
-                ['-', 'Link', 'Unlink','-'],
-                ['Image','Flash','HorizontalRule','Smiley','SpecialChar','PageBreak']],
-            filebrowserUploadUrl: 'http://naver.com'
-        });
-    }
+
 
 
     function getData() {
@@ -458,7 +358,7 @@ function DiaryDetailCtrl($rootScope ,$scope, $http, $timeout, $routeParams) {
     setTitle($rootScope,'Read');
     console.log('DiaryDetailCtrl start..');
     console.log($rootScope.diaryList);
-//    getData();
+    getData();
 
 
 
