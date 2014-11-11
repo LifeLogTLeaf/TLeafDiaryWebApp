@@ -83,3 +83,18 @@
     height: 0px;
 }
 /*./페이지 로딩 애니메이션*/
+
+
+.big-text-size{
+    font-size: 600%;
+}
+
+.text-deep-blue{
+    color: #153562;
+}
+.text-white-gray{
+    color:#D4D4D4;
+}
+.bg-white-gray{
+    background:#AEAEAE;
+}

@@ -1,0 +1,79 @@
+{
+ "name": "abc",
+ "children": [
+  {
+   "name": "analytics",
+   "children": [
+    {
+     "name": "cluster",
+     "children": [
+      {"name": "치킨", "size": 12000},
+      {"name": "피자", "size": 5000},
+      {"name": "소주", "size": 20000},
+      {"name": "곱창", "size": 9000}
+     ]
+    },
+    {
+     "name": "graph",
+     "children": [
+      {"name": "런닝머신", "size": 2500},
+      {"name": "자전거", "size": 4000},
+      {"name": "탁구", "size": 7840},
+      {"name": "수영", "size": 5914},
+      {"name": "축구", "size": 3416}
+     ]
+    },
+    {
+       "name": "scale5",
+       "children": [
+           {"name": "나초", "size": 2105},
+           {"name": "타코스", "size": 1316},
+           {"name": "꼬깔콘", "size": 3151},
+           {"name": "썬칩", "size": 3770},
+           {"name": "꿀꽈베기", "size": 2435},
+           {"name": "웨하스", "size": 4839},
+           {"name": "고래밥", "size": 1756},
+           {"name": "오레오", "size": 4268},
+           {"name": "사브레", "size": 1821},
+           {"name": "다이제", "size": 5833}
+       ]
+    }
+
+    ]
+  },
+
+
+
+
+     {
+         "name": "scale2",
+         "children": [
+             {"name": "IScaleMap", "size": 2105},
+             {"name": "LinearScale", "size": 1316},
+             {"name": "LogScale", "size": 3151},
+             {"name": "OrdinalScale", "size": 3770},
+             {"name": "QuantileScale", "size": 2435},
+             {"name": "QuantitativeScale", "size": 4839},
+             {"name": "RootScale", "size": 1756},
+             {"name": "Scale", "size": 4268},
+             {"name": "ScaleType", "size": 1821},
+             {"name": "TimeScale", "size": 5833}
+         ]
+     },
+     {
+         "name": "scale3",
+         "children": [
+             {"name": "나초", "size": 2105},
+             {"name": "타코스", "size": 1316},
+             {"name": "꼬깔콘", "size": 3151},
+             {"name": "썬칩", "size": 3770},
+             {"name": "꿀꽈베기", "size": 2435},
+             {"name": "웨하스", "size": 4839},
+             {"name": "고래밥", "size": 1756},
+             {"name": "오레오", "size": 4268},
+             {"name": "사브레", "size": 1821},
+             {"name": "다이제", "size": 5833}
+         ]
+     }
+ ]
+}

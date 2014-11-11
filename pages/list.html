@@ -34,19 +34,20 @@
 
             <div class="blog-list-content">
                 <!--제목 페이지-->
-                <h2>{{post.title}}</h2>
+                <h1>{{post.title}}</h1>
 
-                <h4 class="text-green" >
+                <h4 class="text-green" ><b>
                     <span class="fa fa-fw fa-clock-o"></span>
 
                     {{post.start.getFullYear()}}년
                     {{post.start.getMonth()}}월
                     {{post.start.getDate()}}일
                     {{post.start.getHours()}}:{{post.start.getMinutes()}}
+                </b>
                 </h4>
 
                 <!--body클래스에 일기 body를 집어넣도록 컨트롤러에서 작용-->
-                <p class="body" ng-bind-html="'{{post.body}}'"></p>
+                <p class="body" ng-bind-html="'{{post.body}}'"style="margin-top: 20px;"></p>
 
                 <!--태그 페이지 -->
                 <p class="pull-right">

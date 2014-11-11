@@ -13,7 +13,7 @@
 'use strict';
 
 // angular.js main app initialization
-var app = angular.module('shack', [ 'ngRoute', "ngAnimate", 'ngSanitize','mgcrea.ngStrap.modal', 'mgcrea.ngStrap.aside','infinite-scroll','match','remoteBar'/**, 'facebook'*/]).
+var app = angular.module('shack', [ 'ngRoute', 'ngAnimate', 'ngSanitize','mgcrea.ngStrap.modal', 'mgcrea.ngStrap.aside','infinite-scroll','match','remoteBar'/**, 'facebook'*/]).
       config([ '$routeProvider', /**'FacebookProvider',*/
     function( $routeProvider/**, FacebookProvider*/) {
 /**FacebookProvider.init('675376119207653');*/
@@ -58,9 +58,9 @@ var app = angular.module('shack', [ 'ngRoute', "ngAnimate", 'ngSanitize','mgcrea
             controller: SliderCtrl,
             activetab: 'slider'
         }).
-        when('/morris', {
-            templateUrl: 'pages/morris.html',
-            controller: MorrisCtrl,
+        when('/chart', {
+            templateUrl: 'pages/chart.html',
+            controller: ChartCtrl,
             activetab: 'morris'
         }).
         when('/editors', {

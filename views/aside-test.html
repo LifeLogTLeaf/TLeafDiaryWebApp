@@ -1,0 +1,22 @@
+<div class="aside" tabindex="-1" role="dialog" style="max-width: 200px;">
+    <div class="aside-dialog">
+        <div class="aside-content">
+            <div class="aside-header" ng-show="title">
+                <button type="button" class="close" ng-click="$hide()">&times;</button>
+                <h4 class="aside-title" ng-bind-html="title"></h4>
+            </div>
+            <div class="aside-body row" >
+                <div class="col-lg-4" ng-repeat="recent in recents">
+                    <a class="pull-left" href="#"style="max-width: 80px">
+                        <img  class="media-object img-responsive-media"  src="https://cdn4.iconfinder.com/data/icons/devine_icons/128/PNG/Folder%20and%20Places/Folder-Fevorite.png">
+                        <p style="font-family: bold">기본 폴더</p>
+                    </a>
+                </div>
+
+            </div>
+            <div class="aside-footer">
+                <button type="button" class="btn btn-default" ng-click="$hide()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

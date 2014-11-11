@@ -161,7 +161,7 @@ function IconsCtrl($scope, $http, $timeout) {}
 
 function SliderCtrl($scope, $http, $timeout) {}
 
-function MorrisCtrl($scope, $http) {}
+function ChartCtrl($scope, $http) {}
 
 
 
