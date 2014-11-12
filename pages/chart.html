@@ -1,60 +1,79 @@
 
-<h2>name님이 쓰신 일기 통계<i class="fontello-chart-bar-outline text-deep-blue"></i></h2>
 
 
-<div class="row">
-    <div class="col-md-10">
+<div class="row" style="margin-top: 50px;">
+
+    <div class=" col-lg-10 col-md-7" style="float: left;">
+        <h2 class=""style="color: #4C4C4C">yoon님이 쓰신 일기 통계<i class="fa fa-fw fa-bar-chart-o text-light-green"></i></h2>
+
         <div class="">
 
             <!-- DONUT CHART -->
-            <div class="box col-lg-4">
+            <div class="box col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <div>
-                    <div class="box-header">
-                        <!--<h3 class="box-title">Donut Chart</h3>-->
+                    <div class="row bg-red-pink" style="margin: 0 -15px;">
+                        <h3 class="text-white " style="margin-left: 3%;">일기 내용 통계</h3>
                     </div>
                     <div class="chart-responsive">
-                        <ul class="col-lg-4" style="display: block; float: left; margin-right: -2px;">
 
-                            <li class="col-lg-offset-3" style="display: block;">
-                                <h1 class="big-text-size "><i class="fa fa-fw fa-tags text-white-gray"></i></h1>
+                        <!--첫번째-->
+                        <ul class="col-lg-4 col-xs-12 ul-chart">
+
+                            <li class="col-lg-offset-3 col-xs-offset-4" style="display: block; ">
+                                <h1 class="big-text-size "><i class="fa fa-fw fa-tags text-white-gray"style=" margin-left: 5%;">
+                                    <h3 style="position: absolute; top: 65px;right:80px;">
+                                        <i class="fa fa-fw fa-arrow-circle-o-up " style="color: #FB8F81"></i>
+                                    </h3>
+                                </i></h1>
 
                             </li>
                             <li style="display: block;">
-                                <h1 class="text-deep-blue" style="text-align: center;"><b>나초</b></h1>
-                                <h5 class="text-deep-blue" style="text-align: center;">가장 많이 사용된 태그</h5>
+                                <h1 class="text-deep-blue text-align-center"><b>나초</b></h1>
+                                <h5 class="text-deep-blue text-align-center" >가장 많이 사용된 태그</h5>
                             </li>
                             <li style="display: block;">
                                 <div class="chart " id="sales-chart" style=" height: 200px;  position: relative;"></div>
 
                             </li>
                         </ul>
-                        <hr class="bg-white-gray"  style="width: 2px; height: 360px;float: left;" noshade="">
+                        <hr class="visible-lg bg-white-gray hr-chart">
 
-                        <ul class="col-lg-4" style="display: block; float: left;margin-right: -2px;">
 
-                            <li class="col-lg-offset-3" style="display: block;">
-                                <h1 class="big-text-size "><i class="fa fa-fw fa-font text-white-gray"></i></h1>
+                        <!--두번째-->
+                        <ul class="col-lg-4 col-xs-12 ul-chart">
+
+                            <li class="col-lg-offset-3 col-xs-offset-4" style="display: block;">
+                                <h1 class="big-text-size "><i class="fa fa-fw fa-font text-white-gray" style="margin-left: 5%;">
+                                    <h3 style="position: absolute; top: 65px;right:80px;">
+                                        <i class="fa fa-fw fa-arrow-circle-o-up " style="color: #FB8F81"></i>
+                                    </h3>
+                                </i></h1>
 
                             </li>
                             <li style="display: block;">
-                                <h1 class="text-deep-blue" style="text-align: center;"><b>소주</b></h1>
-                                <h5 class="text-deep-blue" style="text-align: center;">가장 많이 인용된 단어</h5>
+                                <h1 class="text-deep-blue text-align-center"><b>소주</b></h1>
+                                <h5 class="text-deep-blue text-align-center">가장 많이 인용된 단어</h5>
                             </li>
                             <li style="display: block;">
-
+                                <div class="chart2 " id="chart" style="height: 200px; position: relative; margin-left: 10%;"></div>
                             </li>
                         </ul>
-                        <hr class="bg-white-gray" style="width: 2px; height: 360px;float: left;" noshade="">
+                        <hr class="visible-lg bg-white-gray hr-chart" >
 
-                        <ul class="col-lg-4" style="display: block; float: left;margin-right: -2px;">
+                        <!--세번째-->
+                        <ul class="col-lg-4 col-xs-12 ul-chart" >
 
-                            <li class="col-lg-offset-3" style="display: block;">
-                                <h1 class="big-text-size "><i class="fa fa-fw fa-clock-o text-white-gray"></i></i></h1>
+                            <li class="col-lg-offset-3 col-xs-offset-4" style="display: block;">
+                                <h1 class="big-text-size "><i class="fa fa-fw fa-clock-o text-white-gray "style="margin-left: 5%;">
+                                    <h3 style="position: absolute; top: 65px;right:80px;">
+                                        <i class="fa fa-fw fa-arrow-circle-o-up " style="color: #FB8F81"></i>
+                                    </h3>
+                                </i></h1>
 
                             </li>
                             <li style="display: block;">
-                                <h1 class="text-deep-blue" style="text-align: center;"><b>23:24</b></h1>
-                                <h5 class="text-deep-blue" style="text-align: center;">평균 일기 작성 시간대</h5>
+                                <h1 class="text-deep-blue text-align-center"><b>23:24</b></h1>
+                                <h5 class="text-deep-blue text-align-center">평균 일기 작성 시간대</h5>
                             </li>
                             <li style="display: block;">
 
@@ -66,16 +85,6 @@
             </div>
             <!-- /.box -->
 
-            <!--<div class="box box-danger col-lg-4">-->
-                <!--<div class="box-header">-->
-                    <!--<h3 class="box-title">Chart</h3>-->
-                <!--</div>-->
-                <!--<div class="box-body chart-responsive">-->
-                    <!--<div class="chart2" id="chart" style="height: 300px; position: relative;"></div>-->
-                <!--</div>-->
-                <!--&lt;!&ndash; /.box-body &ndash;&gt;-->
-            <!--</div>-->
-            <!-- /.box -->
 
         </div>
     <!-- /.col (RIGHT) -->
@@ -109,15 +118,15 @@ var donut = new Morris.Donut({
 });
 
 
-var diameter = 300,
+var diameter = 200,
         format = d3.format(",d"),
-        color = d3.scale.category20c();
+        color = d3.scale.category20();
 
 
 var bubble = d3.layout.pack()
         .sort(null)
         .size([diameter, diameter])
-        .padding(1.5);
+        .padding(0.5);
 
 var svg = d3.select(".chart2").append("svg")
         .attr("width", diameter)

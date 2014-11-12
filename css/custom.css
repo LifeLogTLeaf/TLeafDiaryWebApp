@@ -95,6 +95,30 @@
 .text-white-gray{
     color:#D4D4D4;
 }
+.text-white-blue{
+    color:#5D97E8;
+}
+.text-light-green{
+    color: #33A16B;
+}
 .bg-white-gray{
     background:#AEAEAE;
+}
+.bg-red-pink{
+    background: #D76470;
+}
+
+/*chart페이지의 통계항목 ul태그값*/
+.ul-chart{
+    display: block;
+    float: left;
+    margin-right: -2px;
+}
+.hr-chart{
+    width: 2px;
+    height: 360px;
+    float: left;
+}
+.text-align-center{
+    text-align: center;
 }
