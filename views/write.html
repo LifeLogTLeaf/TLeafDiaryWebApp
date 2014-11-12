@@ -36,10 +36,9 @@
 
 <script type="text/javascript">
 
-        setEditor();
 
     //    메인 에디터로 사용하는 CK에디터를 수정한다.
-    function setEditor() {
+    (function setEditor() {
         CKEDITOR.replace('body',{
             skin:'icy_orange',
             uiColor:'#fffffe',
@@ -50,5 +49,5 @@
                 ['Image','Flash','HorizontalRule','Smiley','SpecialChar','PageBreak']],
             filebrowserUploadUrl: 'http://naver.com'
         });
-    }
+    }())
 </script>

@@ -107,7 +107,9 @@
 .bg-red-pink{
     background: #D76470;
 }
-
+.text-red-pink{
+    color: #CC737D;
+}
 /*chart페이지의 통계항목 ul태그값*/
 .ul-chart{
     display: block;
