@@ -87,8 +87,7 @@
                             </li>
 
                             <li style="display: block;">
-                                <div class="chart " id="sales-chart" style=" height: 200px;  position: relative;"></div>
-
+                                        <div class="chart" id="line-chart" style="height: 200px;"></div>
                             </li>
                         </ul>
                     </div>
@@ -180,5 +179,48 @@ function classes(root) {
 }
 
 d3.select(self.frameElement).style("height", diameter + "px");
+
+
+//line Chart
+var line = new Morris.Line({
+    element: 'line-chart',
+    resize: true,
+    data: [{
+        y: '01 10월 10일',
+        item1: 2345
+    }, {
+        y: '02 10월 11일',
+        item1: 2322
+    }, {
+        y: '03 10월 12일',
+        item1: 2350
+    }, {
+        y: '04 10월 13일',
+        item1: 1442
+    }, {
+        y: '05 10월 14일',
+        item1: 1033
+    }, {
+        y: '06 10월 15일',
+        item1: 123
+    }, {
+        y: '07 10월 16일',
+        item1: 2042
+    }, {
+        y: '08 10월 17일',
+        item1: 2150
+    }, {
+        y: '09 10월 18일',
+        item1: 912
+    }, {
+        y: '10 10월 19일',
+        item1: 2200
+    }],
+    xkey: 'y',
+    ykeys: ['item1'],
+    labels: ['Item 1'],
+    lineColors: ['#42CAD1'],
+    hideHover: 'auto'
+});
 
 </script>
