@@ -19,18 +19,21 @@
                         <!--첫번째-->
                         <ul class="col-lg-4 col-xs-12 ul-chart">
 
-                            <li class="col-lg-offset-3 col-xs-offset-4" style="display: block; ">
-                                <h1 class="big-text-size "><i class="fa fa-fw fa-tags text-white-gray"style=" margin-left: 5%;">
-                                    <h3 style="position: absolute; top: 65px;right:80px;">
-                                        <i class="fa fa-fw fa-arrow-circle-o-up " style="color: #FB8F81"></i>
-                                    </h3>
-                                </i></h1>
-
+                            <li class="col-lg-offset-4 col-xs-offset-4 list-margin-minus" >
+                                <h1 class="big-text-size ">
+                                    <i class="fa fa-fw fa-tags text-white-gray"style=" margin-left: 5%;">
+                                        <h3 class="icon-chart-postion">
+                                            <i class="fa fa-fw fa-arrow-circle-o-up text-white-pink" ></i>
+                                        </h3>
+                                    </i>
+                                </h1>
                             </li>
+
                             <li style="display: block;">
                                 <h1 class="text-deep-blue text-align-center"><b>나초</b></h1>
                                 <h5 class="text-deep-blue text-align-center" >가장 많이 사용된 태그</h5>
                             </li>
+
                             <li style="display: block;">
                                 <div class="chart " id="sales-chart" style=" height: 200px;  position: relative;"></div>
 
@@ -42,40 +45,49 @@
                         <!--두번째-->
                         <ul class="col-lg-4 col-xs-12 ul-chart">
 
-                            <li class="col-lg-offset-3 col-xs-offset-4" style="display: block;">
-                                <h1 class="big-text-size "><i class="fa fa-fw fa-font text-white-gray" style="margin-left: 5%;">
-                                    <h3 style="position: absolute; top: 65px;right:80px;">
-                                        <i class="fa fa-fw fa-arrow-circle-o-up " style="color: #FB8F81"></i>
-                                    </h3>
-                                </i></h1>
+                            <li class="col-lg-offset-4 col-xs-offset-4 list-margin-minus"style=" margin-bottom: 0px;" >
+                                <h1 class="big-text-size ">
+                                    <i class="fa fa-fw fa-font text-white-gray" style="margin-left: 5%;">
+                                        <h3 class="icon-chart-postion" style=" top: 49px;">
+                                            <i class="fa fa-fw fa-arrow-circle-o-up text-white-pink"></i>
+                                        </h3>
+                                    </i>
+                                </h1>
 
                             </li>
                             <li style="display: block;">
                                 <h1 class="text-deep-blue text-align-center"><b>소주</b></h1>
                                 <h5 class="text-deep-blue text-align-center">가장 많이 인용된 단어</h5>
                             </li>
-                            <li style="display: block;">
-                                <div class="chart2 " id="chart" style="height: 200px; position: relative; margin-left: 10%;"></div>
+                            <li class="row " style="list-style: none;">
+                                <div class="col-lg-2" style=""></div>
+
+                                <div class="col-lg-10 chart2 " id="chart" style=" width: 100px;"></div>
                             </li>
                         </ul>
                         <hr class="visible-lg bg-white-gray hr-chart" >
 
                         <!--세번째-->
-                        <ul class="col-lg-4 col-xs-12 ul-chart" >
+                        <ul class="col-lg-4 col-xs-12 ul-chart">
 
-                            <li class="col-lg-offset-3 col-xs-offset-4" style="display: block;">
-                                <h1 class="big-text-size "><i class="fa fa-fw fa-clock-o text-white-gray "style="margin-left: 5%;">
-                                    <h3 style="position: absolute; top: 65px;right:80px;">
-                                        <i class="fa fa-fw fa-arrow-circle-o-up " style="color: #FB8F81"></i>
-                                    </h3>
-                                </i></h1>
+                            <li class="col-lg-offset-4 col-xs-offset-4 list-margin-minus" style="margin-bottom: 0px;" >
+                                <h1 class="big-text-size ">
+                                    <i class="fa fa-fw fa-clock-o text-white-gray "style="margin-left: 5%;">
+                                        <h3 class="icon-chart-postion" style="top:49px;">
+                                            <i class="fa fa-fw fa-arrow-circle-o-up text-white-pink"></i>
 
+                                        </h3>
+                                    </i>
+                                </h1>
                             </li>
+
                             <li style="display: block;">
                                 <h1 class="text-deep-blue text-align-center"><b>23:24</b></h1>
                                 <h5 class="text-deep-blue text-align-center">평균 일기 작성 시간대</h5>
                             </li>
+
                             <li style="display: block;">
+                                <div class="chart " id="sales-chart" style=" height: 200px;  position: relative;"></div>
 
                             </li>
                         </ul>
@@ -131,7 +143,7 @@ var bubble = d3.layout.pack()
 var svg = d3.select(".chart2").append("svg")
         .attr("width", diameter)
         .attr("height", diameter)
-        .attr("class", "bubble");
+        .attr("class", "bubble d3-chart");
 /// 데이터 정의구간
 d3.json("flare.json", function(error, root) {
     var node = svg.selectAll(".node")

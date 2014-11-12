@@ -1631,7 +1631,8 @@
       backgroundColor: '#FFFFFF',
       labelColor: '#000000',
       formatter: Morris.commas,
-      resize: false
+      resize: true
+
     };
 
     function Donut(options) {

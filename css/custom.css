@@ -110,6 +110,9 @@
 .text-red-pink{
     color: #CC737D;
 }
+.text-white-pink{
+    color: #FB8F81;
+}
 /*chart페이지의 통계항목 ul태그값*/
 .ul-chart{
     display: block;
@@ -123,4 +126,18 @@
 }
 .text-align-center{
     text-align: center;
+}
+
+.list-margin-minus{
+    list-style: none; margin-bottom: -78px;
+}
+.icon-chart-postion{
+    position: relative;
+    width: 0px;
+    float: right;
+    top: -30px;
+    right:25px;
+}
+.d3-chart{
+    float: left;
 }
