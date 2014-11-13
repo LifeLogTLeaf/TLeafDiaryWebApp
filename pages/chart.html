@@ -1,107 +1,184 @@
+<div class="row field-area" style=" background-color: rgb(36,36,36); ">
+    <div class="chart-title text-align-center">
+        <h1 class="text-white text-size-bigger" style="margin-left: 46px;">통계 정보<i class="fontello-info"></i></h1>
+        <h4 class="list-title">User님의 일기를 정리하여 보여드립니다</h4>
+    </div>
+    <hr class="hr-head" style="width: 180px;" >
 
+    <div class="row text-align-center">
+        <div class="col-lg-4 col-xs-12">
 
+            <h1 class="big-text-size ">
+                <i class="fa fa-fw fa-tags text-white-gray"style=""></i>
+                <h3 class="icon-chart-postion" style="top:-50px;left: -42%;">
+                    <i class="fa fa-fw fa-arrow-circle-o-up text-white-pink" ></i>
+                </h3>
+            </h1>
 
-<div class="row" style="margin-top: 50px;">
+            <h1 class="text-deep-blue text-align-center"><b>나초</b></h1>
+            <h5 class="text-deep-blue text-align-center" >가장 많이 사용된 태그</h5>
 
-    <div class=" col-lg-10 col-md-7" style="float: left;">
-        <h2 class=""style="color: #4C4C4C">yoon님이 쓰신 일기 통계<i class="fa fa-fw fa-bar-chart-o text-light-green"></i></h2>
-
-        <div class="">
-
-            <!-- DONUT CHART -->
-            <div class="box col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                <div>
-                    <div class="row bg-red-pink" style="margin: 0 -15px;">
-                        <h3 class="text-white " style="margin-left: 3%;">일기 내용 통계</h3>
-                    </div>
-                    <div class="chart-responsive">
-
-                        <!--첫번째-->
-                        <ul class="col-lg-4 col-xs-12 ul-chart">
-
-                            <li class="col-lg-offset-4 col-xs-offset-4 list-margin-minus" >
-                                <h1 class="big-text-size ">
-                                    <i class="fa fa-fw fa-tags text-white-gray"style=" margin-left: 5%;">
-                                        <h3 class="icon-chart-postion">
-                                            <i class="fa fa-fw fa-arrow-circle-o-up text-white-pink" ></i>
-                                        </h3>
-                                    </i>
-                                </h1>
-                            </li>
-
-                            <li style="display: block;">
-                                <h1 class="text-deep-blue text-align-center"><b>나초</b></h1>
-                                <h5 class="text-deep-blue text-align-center" >가장 많이 사용된 태그</h5>
-                            </li>
-
-                            <li style="display: block;">
-                                <div class="chart " id="sales-chart" style=" height: 200px;  position: relative;"></div>
-
-                            </li>
-                        </ul>
-                        <hr class="visible-lg bg-white-gray hr-chart">
-
-
-                        <!--두번째-->
-                        <ul class="col-lg-4 col-xs-12 ul-chart">
-
-                            <li class="col-lg-offset-4 col-xs-offset-4 list-margin-minus"style=" margin-bottom: 0px;" >
-                                <h1 class="big-text-size ">
-                                    <i class="fa fa-fw fa-font text-white-gray" style="margin-left: 5%;">
-                                        <h3 class="icon-chart-postion" style=" top: 49px;">
-                                            <i class="fa fa-fw fa-arrow-circle-o-up text-white-pink"></i>
-                                        </h3>
-                                    </i>
-                                </h1>
-
-                            </li>
-                            <li style="display: block;">
-                                <h1 class="text-deep-blue text-align-center"><b>소주</b></h1>
-                                <h5 class="text-deep-blue text-align-center">가장 많이 인용된 단어</h5>
-                            </li>
-                            <li class="row " style="list-style: none;">
-                                <div class="col-lg-2" style=""></div>
-
-                                <div class="col-lg-10 chart2 " id="chart" style=" width: 100px;"></div>
-                            </li>
-                        </ul>
-                        <hr class="visible-lg bg-white-gray hr-chart" >
-
-                        <!--세번째-->
-                        <ul class="col-lg-4 col-xs-12 ul-chart">
-
-                            <li class="col-lg-offset-4 col-xs-offset-4 list-margin-minus" style="margin-bottom: 0px;" >
-                                <h1 class="big-text-size ">
-                                    <i class="fa fa-fw fa-clock-o text-white-gray "style="margin-left: 5%;">
-                                        <h3 class="icon-chart-postion" style="top:49px;">
-                                            <i class="fa fa-fw fa-arrow-circle-o-up text-white-pink"></i>
-
-                                        </h3>
-                                    </i>
-                                </h1>
-                            </li>
-
-                            <li style="display: block;">
-                                <h1 class="text-deep-blue text-align-center"><b>23:24</b></h1>
-                                <h5 class="text-deep-blue text-align-center">평균 일기 작성 시간대</h5>
-                            </li>
-
-                            <li style="display: block;">
-                                        <div class="chart" id="line-chart" style="height: 200px;"></div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
-
+            <div class="chart " id="sales-chart" style=" height: 200px;  position: relative;"></div>
 
         </div>
-    <!-- /.col (RIGHT) -->
+        <div class="col-lg-4 col-xs-12">
+
+            <h1 class="big-text-size ">
+                <i class="fa fa-fw fa-font text-white-gray" style="">
+                    <h3 class="icon-chart-postion" style=" top: 49px;">
+                        <i class="fa fa-fw fa-arrow-circle-o-up text-white-pink"></i>
+                    </h3>
+                </i>
+            </h1>
+
+            <h1 class="text-deep-blue text-align-center"><b>소주</b></h1>
+            <h5 class="text-deep-blue text-align-center">가장 많이 인용된 단어</h5>
+
+            <h4 style="float: left; margin-left: 20%;"><div class="chart2 " id="chart" style=" width: 200px;"></div></h4>
+        </div>
+        <div class="col-lg-4 col-xs-12">
+
+            <h1 class="big-text-size ">
+                <i class="fa fa-fw fa-clock-o text-white-gray "style="margin-left: 5%;">
+                    <h3 class="icon-chart-postion" style="top:49px;">
+                        <i class="fa fa-fw fa-arrow-circle-o-up text-white-pink"></i>
+
+                    </h3>
+                </i>
+            </h1>
+            <h1 class="text-deep-blue text-align-center"><b>23:24</b></h1>
+            <h5 class="text-deep-blue text-align-center">평균 일기 작성 시간대</h5>
+            <div class="chart" id="line-chart" style="height: 200px; padding: 0 20px;"></div>
+        </div>
     </div>
+
 </div>
-<!-- /.row -->
+
+<div class="row field-area" style=" background-color: #FACE6A; padding-left: 15px; padding-right: 15px;">
+    <div class="chart-title text-align-center" >
+        <h1 class="text-black text-size-bigger" style="margin-left: 46px"><b>Chart<i class="fontello-chart-pie"></i></b></h1>
+        <h4 class="list-title text-light-gray">통계를 쉬운 도표로 보여드립니다</h4>
+    </div>
+    <hr class="hr-head">
+    <div class="bg-white col-lg-offset-1 col-lg-10" >
+        <div class="box-primary">
+
+            <div class="box-body chart-responsive">
+                <div class="chart" id="revenue-chart" style="height: 300px;"></div>
+            </div>
+            <div class="box-header text-align-center" style="margin-bottom: 25px;">
+                <h3 class="box-title">
+                    <i class="fa fa-fw fa-thumbs-up"></i><b> /</b>
+                    <i class="fa fa-fw fa-comments"></i>
+                    <b>통계</b>
+                </h3>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="field-area" style=" background-color: #F76C6C; padding-left: 15px; padding-right: 15px; margin-bottom: 0;">
+    <div class="chart-title text-align-center" >
+        <h1 class="text-black text-size-bigger" style="margin-left: 46px; color: #343434;"><b>Best<i class="fa fa-fw fa-heart"></i></b></h1>
+        <h4 class="list-title text-white">최다 <i class="fa fa-fw fa-thumbs-up"></i>를 받은 게시글을 소개합니다</h4>
+    </div>
+    <hr class="hr-head">
+    <div class="row" style="margin:0 5%;">
+        <div class="col-lg-5" style="background: #413C3A; top: 40px;  float: left;">
+            <div class="box-body text-white" >
+                <h4><span class="fa fa-fw fa-clock-o text-green"></span> 2014년 07월 03일</h4>
+                <h4>얼마 전 대한민국호국미술대전에 입선 한 사진입니다</p>
+                    <p>민간과 함께하는 군이라는 주제를 담은 사진입니다</p>
+                    <p>다리가 짤린 작품이 입선 되었는데</p>
+                    <p>기대도 안 했지만 되더라도 전신이 다 나온 작품이 될 줄 알았는데...</p>
+                    허허...</h4>
+            </div>
+            <div class="box-footer" style="padding-left: 20px">
+                <h3>
+                    <i class="fa fa-fw fa-thumbs-up"></i>24
+                    <i class="fa fa-fw fa-comments"></i>12
+                </h3>
+            </div>
+        </div>
+        <div class=" col-lg-5" style="background: #413C3A; top: 40px; float: right">
+            <div class="box-body text-white" >
+                <h4><span class="fa fa-fw fa-clock-o text-green"></span> 2014년 11월 11일</h4>
+                <h4><img src="https://scontent-b.xx.fbcdn.net/hphotos-xfp1/v/t1.0-9/10635696_10152489495485994_5543849827313503054_n.jpg?oh=32c32fbdf334df83b9732d501b5f5af5&oe=54EC8409">
+            </div>
+            <div class="box-footer" style="padding-left: 20px">
+                <h3>
+                    <i class="fa fa-fw fa-thumbs-up"></i>24
+                    <i class="fa fa-fw fa-comments"></i>12
+                </h3>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<script>
+    // AREA CHART
+    var area = new Morris.Area({
+        element: 'revenue-chart',
+        resize: true,
+        data: [{
+            y: '2011 Q1',
+            comment: 22,
+            good: 24
+        }, {
+            y: '2011 Q2',
+            comment: 22,
+            good: 52
+        }, {
+            y: '2011 Q3',
+            comment: 22,
+            good: 33
+        }, {
+            y: '2011 Q4',
+            comment: 22,
+            good: 12
+        }, {
+            y: '2012 Q1',
+            comment: 22,
+            good: 74
+        }, {
+            y: '2012 Q2',
+            comment: 22,
+            good: 106
+        }, {
+            y: '2012 Q3',
+            comment: 22,
+            good: 15
+        }, {
+            y: '2012 Q4',
+            comment: 22,
+            good: 32
+        }, {
+            y: '2013 Q1',
+            comment: 22,
+            good: 64
+        }, {
+            y: '2013 Q2',
+            comment: 22,
+            good: 44
+        }],
+        xkey: 'y',
+        ykeys: [ 'good','comment'],
+        labels: ['<i class="fa fa-fw fa-thumbs-up"></i>',
+            '<i class="fa fa-fw fa-comments"></i>'],
+        lineColors: ['#37A8AF','#155E62'],
+        hideHover: 'auto'
+    });
+</script>
+
+
+
+
+
 
 
 
