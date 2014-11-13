@@ -154,8 +154,8 @@ var app = angular.module('shack', [ 'ngRoute', 'ngAnimate', 'ngSanitize','mgcrea
             activetab: 'ShopDetail'
         }).
         when('/login', {
-            templateUrl: 'pages/peta.html',
-            controller: PetaCtrl,
+            templateUrl: 'pages/login.html',
+            controller: loginCtrl,
             activetab: 'Peta'
         }).
         when('/shop-list', {
