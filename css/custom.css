@@ -152,3 +152,18 @@
     padding-bottom: 16%;
 
 }
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes mymove-rev {
+    0% {-webkit-transform: rotateY(360deg);}
+}
+
+/* Standard syntax */
+@keyframes mymove-rev {
+    0% {transform: rotateY(360deg);}
+}
+
+.trans-icon:not(:hover){
+    -webkit-animation: mymove-rev 1s; /* Chrome, Safari, Opera */
+    animation: mymove-rev 1s ;
+}

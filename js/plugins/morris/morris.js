@@ -731,7 +731,7 @@
       pointSize: 4,
       lineColors: ['#0b62a4', '#7A92A3', '#4da74d', '#afd8f8', '#edc240', '#cb4b4b', '#9440ed'],
       pointStrokeWidths: [1],
-      pointStrokeColors: ['#ffffff'],
+      pointStrokeColors: ['#FFFFFF'],
       pointFillColors: [],
       smooth: true,
       xLabels: 'auto',
@@ -1628,8 +1628,8 @@
 
     Donut.prototype.defaults = {
       colors: ['#0B62A4', '#3980B5', '#679DC6', '#95BBD7', '#B0CCE1', '#095791', '#095085', '#083E67', '#052C48', '#042135'],
-      backgroundColor: '#FFFFFF',
-      labelColor: '#000000',
+      backgroundColor: '#333333',
+      labelColor: '#ffffff',
       formatter: Morris.commas,
       resize: true
 
