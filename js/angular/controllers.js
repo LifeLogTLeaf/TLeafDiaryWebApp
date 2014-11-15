@@ -1,16 +1,4 @@
-﻿/**
- *
- * Responsive website using AngularJS
- * http://www.script-tutorials.com/responsive-website-using-angularjs/
- *
- * Licensed under the MIT license.
- * http://www.opensource.org/licenses/mit-license.php
- *
- * Copyright 2013, Script Tutorials
- * http://www.script-tutorials.com/
- */
-
-'use strict';
+﻿'use strict';
 
 //index.html의 title태그값을 바꾸기 위해 브로드캐스트한다.
 function setTitle($rootScope,msg) {
@@ -19,12 +7,20 @@ function setTitle($rootScope,msg) {
 
 function IndexCtrl($rootScope,$scope) {
     $rootScope.diaryId=0;
-    $scope.header='Calendar';
+    $scope.header='Diary';
 
     $rootScope.$on('title:change', function (e,data) {
         console.log(data+'페이지 시작...');
         $scope.header=data;
     });
+
+    $scope.hideNavbar = function () {
+        if($scope.header=='Login'){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
 
 
@@ -484,11 +480,9 @@ function SideBarCtrl($scope) {
 }
 
 
-function loginCtrl($scope,$http) {
-    //ng-switch에서 사용.
-    //커서가 어디쪽을 가리키는지 명시한다.
-    //'login'과 'join' 둘중 하나이다.
-    $scope.modeLogin = 'login';
+function loginCtrl($rootScope,$scope,$http) {
+
+    setTitle($rootScope,'Login');
     console.log(getCookie('userId'));
 
 //    $scope.changeLoginMode = function() {
