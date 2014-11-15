@@ -34,7 +34,12 @@ function IndexCtrl($rootScope,$scope) {
 // optional controllers
 function HeaderCtrl($rootScope,$http, $scope/**, Facebook*/){
 //    console.log('HeaderCtrl 부터...'+$rootScopdxe.loginStatus);
-    getData();
+    $rootScope.appId="6b22f647ef8f2f3278a1322d8b000f81";
+    $rootScope.diaryList=[];
+    dataLoad();
+
+
+//    getData();
     function getData() {
         $rootScope.recents=[{'title':'간만에 휴식','ago':3,'imgUrl':'https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpf1/v/t1.0-9/10553531_1494589260825919_7571164004568224289_n.jpg?oh=e150716e861d0a493fdeefe70a37c21d&oe=54AAC873&__gda__=1425070412_2bfe046f0909401324651c7cd0516f5c'},
             {'title':'학교에 간 날','ago':4,'imgUrl':'https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xfp1/t31.0-8/1921045_468032023334626_6466308735889850799_o.jpg'},
@@ -42,8 +47,7 @@ function HeaderCtrl($rootScope,$http, $scope/**, Facebook*/){
             {'title':'학교에 간 날','ago':4,'imgUrl':'https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xfp1/t31.0-8/1921045_468032023334626_6466308735889850799_o.jpg'}]
     }
 
-    $rootScope.diaryList=[];
-    dataLoad();
+
 
 
     $rootScope.recents=[{'title':'간만에 휴식','ago':3,'imgUrl':'https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpf1/v/t1.0-9/10553531_1494589260825919_7571164004568224289_n.jpg?oh=e150716e861d0a493fdeefe70a37c21d&oe=54AAC873&__gda__=1425070412_2bfe046f0909401324651c7cd0516f5c'},
@@ -51,20 +55,13 @@ function HeaderCtrl($rootScope,$http, $scope/**, Facebook*/){
         {'title':'간만에 휴식','ago':3,'imgUrl':'https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpf1/v/t1.0-9/10553531_1494589260825919_7571164004568224289_n.jpg?oh=e150716e861d0a493fdeefe70a37c21d&oe=54AAC873&__gda__=1425070412_2bfe046f0909401324651c7cd0516f5c'},
         {'title':'학교에 간 날','ago':4,'imgUrl':'https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xfp1/t31.0-8/1921045_468032023334626_6466308735889850799_o.jpg'}]
 
-    $rootScope.tags = [{'name':'Admin','url':'#'},
-        {'name':'Fleet','url':'#'},
-        {'name':'Music','url':'#'},
-        {'name':'Video','url':'#'},
-        {'name':'Typhography','url':'#'},
-        {'name':'Computer','url':'#'},
-        {'name':'webDesign','url':'#'}];
 
     function dataLoad() {
 //        var data = JSON.stringify( { "data":writeData} );
 //        var data = JSON.stringify( { "serviceData":{"date":Date(),"purpose":"yoon test"}} );
         $http({method: 'GET',
             url: 'http://14.63.171.66:8081/tleafstructure/api/user/logs',
-            headers: {'Content-Type': 'application/json', 'X-Tleaf-User-Id':'344bc889c8bb44dd6e4bb845d40007b9', 'X-Tleaf-Application-Id': '6b22f647ef8f2f3278a1322d8b000f81', 'X-Tleaf-Access-Token':'6b22f647ef8f2f3278a1322d8b000210'}
+            headers: {'Content-Type': 'application/json', 'X-Tleaf-User-Id':'344bc889c8bb44dd6e4bb845d40007b9', 'X-Tleaf-Application-Id': $rootScope.appId, 'X-Tleaf-Access-Token':'6b22f647ef8f2f3278a1322d8b000210'}
 
 
         }).success(function(data, status, headers, config) {
@@ -101,11 +98,15 @@ function HeaderCtrl($rootScope,$http, $scope/**, Facebook*/){
 
     }
 }
+
+
 function writeCtrl($scope,$rootScope,$http) {
+
+
 
     //입력 버튼을 눌렀을 때
     $scope.insert = function () {
-
+        var tags = this.tags.split(',');
         var body = CKEDITOR.instances.body.getData();
         var writeData = {
             'diaryId':++$rootScope.diaryId,
@@ -113,7 +114,8 @@ function writeCtrl($scope,$rootScope,$http) {
             'body': body,
             'start': new Date(),
             'backgroundColor': "#f56954",
-            'borderColor': "#f56954"};
+            'borderColor': "#f56954",
+            'tags':tags};
 
 
 
@@ -632,6 +634,7 @@ function setCookie(cName, cValue, cDay){
     //시나 분 등으로 저장도 가능해보임
     expire.setDate(expire.getDate() + cDay);
     console.log('sdfds');
+    var cookies;
     cookies = cName + '=' + escape(cValue) + '; path=/ '; // 한글 깨짐을 막기위해 escape(cValue)를 합니다.
 //    console.log(cName + '=' + escape(cValue) + '; path=/ ');
     if(typeof cDay != 'undefined') cookies += ';expires=' + expire.toGMTString() + ';';

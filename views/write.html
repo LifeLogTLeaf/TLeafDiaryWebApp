@@ -8,7 +8,7 @@
             <div class="modal-body">
 
                 <div class="row bg-white" style="">
-                    <form ng-submit="insert()" >
+                    <form ng-submit="insert()"  style="margin-top: 10px;">
                         <b style="margin-left: 17px;">제목입력</b>
                         <input popover-trigger="focus" ng-model="title" value="" name="title" class="form-control" placeholder="제목을 입력하세요" type="text" style="width: 50%;  margin: 10px;">
                         <div style="margin-bottom: 10px;">
@@ -21,6 +21,8 @@
                             </div>
                         </div>
                         <textarea ng-model="body" id="body" name="body" class="textarea" placeholder="입력하세요 :)"></textarea>
+                        <b style="margin-left: 17px;">태그입력</b>
+                        <input popover-trigger="focus" ng-model="tags" value="" name="tags" class="form-control" placeholder="태그 입력: 쉼표(,) 로 구분" type="text" style="width: 50%;  margin: 10px;">
                         <div class="modal-footer ">
                             <button ng-click="$hide()" type="submit" value="add" class="btn success-icon bg-blue">작 성</button>
                             <button ng-click="$hide()" class="btn btn-danger">취 소</button>
