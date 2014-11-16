@@ -1,15 +1,4 @@
-<!--<ol class="breadcrumb newcrumb">-->
-<!--<li>-->
-<!--<a class="text-green" href="#">-->
-<!--<span><i class="fa fontello-home-outline"></i>-->
-<!--</span>Home</a>-->
-<!--</li>-->
-<!--<li><a href="#">Blog</a>-->
-<!--</li>-->
-<!--<li>Blog List</li>-->
-<!--</ol>-->
 
-<!--CONTENT-->
 
 <div class="col-lg-offset-2 " style="margin-top:50px;" >
     <!--  BLOG CONTENT -->
@@ -20,10 +9,9 @@
 
     <div class="col-sm-8 col-lg-7 " infinite-scroll='loadMore()' infinite-scroll-distance='0'>
         <h2 class=""style="color: #4C4C4C">당신의 하루를 작성해 보세요<i class="fontello-pencil text-red-pink"></i></h2>
-        <div id="{{post.diaryId}}" class="blog-list-nest post-radius" ng-animate="'animate'" ng-repeat="post in diaryList" >
+        <div id="{{post.diaryId}}" class="blog-list-nest post-radius" ng-animate="'animate'" ng-repeat="post in diaryList"  >
 
             <div class="vendor">
-
                 <img class="post-radius" ng-model="imgNum"  style="width:100%;" ng-src="{{post.imgUrl[imgNum]}}" alt="">
                 <!--투명 필터는 img가 있어야만 따라나온다-->
                 <div class="row bg-white img-bottom-filter" ng-show="post.imgUrl"></div>
@@ -32,7 +20,10 @@
                 <img class="img-thumbnail" ng-repeat="url in post.imgUrl" ng-mouseenter="changeImgNum($index)" ng-src="{{url}}" style="max-width: 30px; max-height: 30px;">
             </div>
 
+
             <div class="blog-list-content">
+                <h4 style=""><i class="fa fa-fw fa-folder-open"></i>{{post.folder}}</h4>
+
                 <!--제목 페이지-->
                 <h1>{{post.title}}</h1>
 

@@ -6,33 +6,36 @@
                 <h4 class="modal-title" ><b>일기쓰기</b></h4>
             </div>
             <div class="modal-body">
-
-                <div class="row bg-white" style="">
-                    <form ng-submit="insert()"  style="margin-top: 10px;">
-                        <b style="margin-left: 17px;">제목입력</b>
-                        <input popover-trigger="focus" ng-model="title" value="" name="title" class="form-control" placeholder="제목을 입력하세요" type="text" style="width: 50%;  margin: 10px;">
-                        <div style="margin-bottom: 10px;">
-                            <b style="margin-left: 17px;">날짜선택</b>
-                            <div class="form-group" style="margin-left: 10px; margin-top: 10px; width: 50%;">
-                                <div class='input-group date' id='datetimepicker1'>
-                                    <input type='text' class="form-control" />
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                                </div>
-                            </div>
+                <div class="row" style="margin-top: 17px;">
+                    <b style="margin-left: 17px;">폴더선택</b>
+                    <div class="bg-white" style="display: inline;">
+                        <select class="form-control" ng-model="folder" name="folder" style="width: 50%; margin: 10px 10px 10px 5px; display: inline;">
+                            <option value="{{folder}}" ng-repeat="folder in folderList">{{folder}}</option>
+                        </select>
+                    </div>
+                </div>
+                <b style="margin-left: 17px; ">제목입력</b>
+                <input popover-trigger="focus" ng-model="title" value="" name="title" class="form-control" placeholder="어떤 하루를 보냈나요?" type="text" style="width: 50%; margin: 10px 10px 10px 5px; display: inline;">
+                <div style="margin-bottom: 10px;">
+                    <b style="margin-left: 17px;">날짜선택</b>
+                    <div class="" style="margin-left: 7px; margin-top: 10px; width: 50%;">
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                         </div>
-                        <textarea ng-model="body" id="body" name="body" class="textarea" placeholder="입력하세요 :)"></textarea>
-                        <b style="margin-left: 17px;">태그입력</b>
-                        <input popover-trigger="focus" ng-model="tags" value="" name="tags" class="form-control" placeholder="태그 입력: 쉼표(,) 로 구분" type="text" style="width: 50%;  margin: 10px;">
-                        <div class="modal-footer ">
-                            <button ng-click="$hide()" type="submit" value="add" class="btn success-icon bg-blue">작 성</button>
-                            <button ng-click="$hide()" class="btn btn-danger">취 소</button>
+                    </div>
+                </div>
+                <textarea ng-model="body" id="body" name="body" class="textarea" placeholder="입력하세요 :)"></textarea>
+                <b style="margin-left: 17px;">태그입력</b>
+                <input popover-trigger="focus" ng-model="tags" value="" name="tags" class="form-control" placeholder="태그 입력: 쉼표(,) 로 구분" type="text" style="width: 50%;  margin: 10px;">
+                <div class="modal-footer ">
+                    <button ng-click="insert()"  type="submit" value="add" class="btn success-icon bg-blue">작 성</button>
+                    <button ng-click="$hide()" class="btn btn-danger">취 소</button>
 
-                        </div>
-                    </form>
                 </div>
             </div>
-
         </div>
+
     </div>
 </div>
 

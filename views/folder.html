@@ -6,10 +6,10 @@
                 <h4 class="aside-title" ng-bind-html="title"></h4>
             </div>
             <div class="aside-body row" >
-                <div class="col-lg-4" ng-repeat="recent in recents">
+                <div class="col-lg-4" ng-repeat="folder in folderList">
                     <a class="pull-left" href="#"style="max-width: 80px">
                         <img  class="media-object img-responsive-media"  src="https://cdn4.iconfinder.com/data/icons/devine_icons/128/PNG/Folder%20and%20Places/Folder-Fevorite.png">
-                        <p style="font-family: bold">기본 폴더</p>
+                        <p style="font-family: bold">{{folder}}</p>
                     </a>
                 </div>
 

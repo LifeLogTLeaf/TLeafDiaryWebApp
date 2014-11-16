@@ -32,8 +32,9 @@ function HeaderCtrl($rootScope,$http, $scope/**, Facebook*/){
 //    console.log('HeaderCtrl 부터...'+$rootScopdxe.loginStatus);
     $rootScope.appId="6b22f647ef8f2f3278a1322d8b000f81";
     $rootScope.diaryList=[];
+    $rootScope.folderList=['hobby','travel','school'];
     dataLoad();
-
+    $rootScope.abc = 'travel';
 
 //    getData();
     function getData() {
@@ -53,8 +54,6 @@ function HeaderCtrl($rootScope,$http, $scope/**, Facebook*/){
 
 
     function dataLoad() {
-//        var data = JSON.stringify( { "data":writeData} );
-//        var data = JSON.stringify( { "serviceData":{"date":Date(),"purpose":"yoon test"}} );
         $http({method: 'GET',
             url: 'http://14.63.171.66:8081/tleafstructure/api/user/logs',
             headers: {'Content-Type': 'application/json', 'X-Tleaf-User-Id':'344bc889c8bb44dd6e4bb845d40007b9', 'X-Tleaf-Application-Id': $rootScope.appId, 'X-Tleaf-Access-Token':'6b22f647ef8f2f3278a1322d8b000210'}
@@ -102,10 +101,12 @@ function writeCtrl($scope,$rootScope,$http) {
 
     //입력 버튼을 눌렀을 때
     $scope.insert = function () {
+
         var tags = this.tags.split(',');
         var body = CKEDITOR.instances.body.getData();
         var writeData = {
             'diaryId':++$rootScope.diaryId,
+            'folder':this.folder,
             'title': this.title,
             'body': body,
             'start': new Date(),
@@ -127,7 +128,7 @@ function writeCtrl($scope,$rootScope,$http) {
         }).success(function(data, status, headers, config) {
             console.log('작성 성공');
             $rootScope.diaryList.push(writeData);
-            location.href='#!';
+            location.reload();
         }).
             error(function(data, status, headers, config) {
 
