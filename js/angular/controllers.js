@@ -116,7 +116,6 @@ function writeCtrl($scope,$rootScope,$http) {
         };
 
 
-
         var data = JSON.stringify( {"data" : writeData });
 
         $http({
@@ -127,7 +126,7 @@ function writeCtrl($scope,$rootScope,$http) {
         }).success(function(data, status, headers, config) {
             console.log('작성 성공');
             $rootScope.diaryList.push(writeData);
-            location.reload();
+//            location.reload();
         }).
             error(function(data, status, headers, config) {
 
@@ -476,6 +475,15 @@ function loginCtrl($rootScope,$scope,$http) {
     setTitle($rootScope,'Login');
     console.log(getCookie('userId'));
 
+    $scope.login = function () {
+        var frm = document.extendHDD;
+        var url = "http://14.63.171.66:8081/tleafstructure/oauth?appId=41bfdd372e1d60c37baba4cdec003b0f";
+        var title = "pop"; //객체의 레퍼런스가 아닌 스트링을 사용한 이름을 지정해 주어야 함.
+        var status = "width=1000,height=680,menubar=no,toolbar=no,location=no,status=no,fullscreen=no,scrollbars=no,resizable=yes,top=0,left=0";
+
+        window.open(url, title, status);
+
+    }
 //    $scope.changeLoginMode = function() {
 //        //커서가 로그인 쪽이라면 회원가입쪽으로 바꾼다
 //        if ($scope.login === 'bg-white') {
