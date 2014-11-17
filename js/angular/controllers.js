@@ -1,4 +1,5 @@
 ﻿'use strict';
+var rootUrl='http://14.63.171.66:8081/tleafstructure/';
 
 //index.html의 title태그값을 바꾸기 위해 브로드캐스트한다.
 function setTitle($rootScope,msg) {
@@ -33,7 +34,7 @@ function HeaderCtrl($rootScope,$http, $scope/**, Facebook*/){
     $rootScope.appId="6b22f647ef8f2f3278a1322d8b000f81";
     $rootScope.diaryList=[];
     $rootScope.folderList=['hobby','travel','school'];
-//    dataLoad();
+    dataLoad();
     $rootScope.abc = 'travel';
 
 //    getData();
@@ -54,14 +55,15 @@ function HeaderCtrl($rootScope,$http, $scope/**, Facebook*/){
 
     //초기데이터를 위해 헤더가 로딩될때 데이터를 받아온다.
     function dataLoad() {
+        var date = new Date();
         $http({method: 'GET',
-            url: 'http://14.63.171.66:8081/tleafstructure/api/user/date?date=2014&date=11&date=16',
+            url: rootUrl+'api/user/date?date='+date.getFullYear()+'&date='+(date.getMonth()+1)+'&date='+(date.getDate()),
             headers: {'Content-Type': 'application/json', 'X-Tleaf-User-Id':'344bc889c8bb44dd6e4bb845d40007b9', 'X-Tleaf-Application-Id': $rootScope.appId, 'X-Tleaf-Access-Token':'6b22f647ef8f2f3278a1322d8b000210'},
 
 
         }).success(function(data, status, headers, config) {
             console.log('데이터 불러오기 성공');
-            console.log(data[0].data);
+
             var length = data.length;
 //            일기의 총 갯수를 세어서 일기 id가 중첩되지 않도록 한다
 //            $rootScope.diaryId=length;
@@ -93,12 +95,14 @@ function HeaderCtrl($rootScope,$http, $scope/**, Facebook*/){
 
 function writeCtrl($scope,$rootScope,$http) {
 
-
+    $scope.isVisible=true;
 
     //입력 버튼을 눌렀을 때
     $scope.insert = function () {
-
-        var tags = this.tags.split(',');
+        var tags;
+        if(this.tags.split(',').length!=0){
+            tags = this.tags.split(',');
+        }
         var body = CKEDITOR.instances.body.getData();
         var writeData = {
             'diaryId':++$rootScope.diaryId,
@@ -108,18 +112,17 @@ function writeCtrl($scope,$rootScope,$http) {
             'start': new Date(),
             'backgroundColor': "#f56954",
             'borderColor': "#f56954",
-            'tags':tags};
+            'tags':tags
+        };
 
 
 
         var data = JSON.stringify( {"data" : writeData });
-//      var data = JSON.stringify( { "serviceData":{"date":Date(),"purpose":"yoon test"}} );
-
 
         $http({
             method: 'POST',
-            url: 'http://14.63.171.66:8081/tleafstructure/api/user/app/log',
-            headers: {'Content-Type': 'application/json', 'X-Tleaf-User-Id':'344bc889c8bb44dd6e4bb845d40007b9', 'X-Tleaf-Application-Id': '6b22f647ef8f2f3278a1322d8b000f81', 'X-Tleaf-Access-Token':'6b22f647ef8f2f3278a1322d8b000210'},
+            url: rootUrl+'api/user/app/log',
+            headers: {'Content-Type': 'application/json', 'X-Tleaf-User-Id':'344bc889c8bb44dd6e4bb845d40007b9', 'X-Tleaf-Application-Id': $rootScope.appId, 'X-Tleaf-Access-Token':'6b22f647ef8f2f3278a1322d8b000210'},
             data: data
         }).success(function(data, status, headers, config) {
             console.log('작성 성공');
@@ -182,8 +185,8 @@ function EditorsCtrl($rootScope, $scope, $http) {
         var data = JSON.stringify( {"data" : writeData });
 //        var data = JSON.stringify( { "serviceData":{"date":Date(),"purpose":"yoon test"}} );
         $http({method: 'POST',
-            url: 'http://14.63.171.66:8081/tleafstructure/api/user/app/log',
-            headers: {'Content-Type': 'application/json', 'X-Tleaf-User-Id':'344bc889c8bb44dd6e4bb845d40007b9', 'X-Tleaf-Application-Id': '6b22f647ef8f2f3278a1322d8b000f81', 'X-Tleaf-Access-Token':'6b22f647ef8f2f3278a1322d8b000210'},
+            url: rootUrl+'api/user/app/log',
+            headers: {'Content-Type': 'application/json', 'X-Tleaf-User-Id':'344bc889c8bb44dd6e4bb845d40007b9', 'X-Tleaf-Application-Id': $rootScope.appId, 'X-Tleaf-Access-Token':'6b22f647ef8f2f3278a1322d8b000210'},
             data: data
 
 
@@ -269,11 +272,10 @@ function BlankCtrl($scope, $http, $timeout) {}
 
 function listCtrl($rootScope, $scope, $http, $aside, $timeout) {
 
-//    getData();
     setTitle($rootScope,'Main');
     //타임라인에서 다음에 불러울 날짜값을 저장한다
     var nextDate = new Date();
-
+    var networkFlag=true;
 
     //이미지 썸네일을 바꾸기 위한 변수처리
     $scope.imgNum=0;
@@ -282,37 +284,40 @@ function listCtrl($rootScope, $scope, $http, $aside, $timeout) {
     }
     //./이미지 썸네일을 바꾸기 위한 변수처리
     //페이지를 추가로 불러온다.
-    $rootScope.loadMore = function () {
-        dataLoad(nextDate);
-        nextDate.setMonth(nextDate.getMonth()-1);
+    $scope.loadMore = function () {
+        if(networkFlag) {
+            networkFlag=false;
+            //헤더에서 최초호출이 있기때문에, 1을 빼주고 시작한다
+            nextDate.setDate(nextDate.getDate()-1);
+            dataLoad(nextDate);
 
+        }
     }
 
     $scope.readDiary = function (diaryId) {
         location.href='#!/diary-detail?diaryId='+diaryId;
     }
-
     $rootScope.date = '';
 
 
 
     //초기데이터를 위해 헤더가 로딩될때 데이터를 받아온다.
     function dataLoad(date) {
-        var url = 'http://14.63.171.66:8081/tleafstructure/api/user/date?date='+date.getFullYear()+'&date='+(date.getMonth()+1);
+        var url = 'api/user/date?date='+date.getFullYear()+'&date='+(date.getMonth()+1)+'&date='+(date.getDate());
         $http({method: 'GET',
-            url: url,
-            headers: {'Content-Type': 'application/json', 'X-Tleaf-User-Id':'344bc889c8bb44dd6e4bb845d40007b9', 'X-Tleaf-Application-Id': $rootScope.appId, 'X-Tleaf-Access-Token':'6b22f647ef8f2f3278a1322d8b000210'},
+            url: rootUrl+ url,
+            headers: {'Content-Type': 'application/json', 'X-Tleaf-User-Id':'344bc889c8bb44dd6e4bb845d40007b9', 'X-Tleaf-Application-Id': $rootScope.appId, 'X-Tleaf-Access-Token':'6b22f647ef8f2f3278a1322d8b000210'}
 
 
         }).success(function(data, status, headers, config) {
             console.log('데이터 불러오기 성공');
-            console.log(url);
             var length = data.length;
 //            일기의 총 갯수를 세어서 일기 id가 중첩되지 않도록 한다
             for(var i=0;i<length;i++){
                 //nosql의 id와 rev값을 임의로 log하위에 넣는다.
 //                data[i].data.id=data[i].id;
 //                data[i].data.revision=data[i].revision;
+
                 //시간 변환에 들어간다.
                 data[i].data.start= new Date(data[i].data.start);
                 var inputData =data[i].data;
@@ -320,6 +325,7 @@ function listCtrl($rootScope, $scope, $http, $aside, $timeout) {
 
                 $rootScope.diaryList.push(inputData);
             }
+            networkFlag=true;
 
         }).
             error(function(data, status, headers, config) {
@@ -332,53 +338,6 @@ function listCtrl($rootScope, $scope, $http, $aside, $timeout) {
 
     }
 
-
-
-
-    function getData() {
-
-        $rootScope.diaryList=[
-            {
-                diaryId:1,
-                title:'학교종이 땡땡땡',
-                body:'난 오늘 11시에 태평역에서 가산디지털단지역으로 지하철을 타고 갔다. 도착하고 나서 짜장범벅을 먹었고 일하고 일하고 일하고 일하고 전화하고 하다가 오후 10시 37분인데 일하고 서류 만들고 이러고 있다.\n 배가 고파서 뭘 먹을까 배달의 민족을 10분전에 찾아보다가 별로 땡기는게 없어서 편의점에 갈까 고민중이다.\n',
-                start:'2014-10-15 11:25',
-                imgUrl:'https://fbcdn-sphotos-a-a.akamaihd.net/hphotos-ak-xpf1/v/t1.0-9/10553531_1494589260825919_7571164004568224289_n.jpg?oh=e150716e861d0a493fdeefe70a37c21d&oe=54AAC873&__gda__=1425070412_2bfe046f0909401324651c7cd0516f5c',
-                tags:[
-                    '학교','강아지'
-                ]
-            },{
-                diaryId:2,
-                title:'학교종이 땡땡땡2',
-                body:'난 오늘 11시에 태평역에서 가산디지털단지역으로 지하철을 타고 갔다. 도착하고 나서 짜장범벅을 먹었고 일하고 일하고 일하고 일하고 전화하고 하다가 오후 10시 37분인데 일하고 서류 만들고 이러고 있다.\n 배가 고파서 뭘 먹을까 배달의 민족을 10분전에 찾아보다가 별로 땡기는게 없어서 편의점에 갈까 고민중이다.\n',
-                start:'2014-10-15 11:25',
-                imgUrl:'https://scontent-b.xx.fbcdn.net/hphotos-xpf1/v/t1.0-9/10300780_675260182581903_4055719240195517689_n.jpg?oh=075ca9f996a6728355a9c245e0fc6b7d&oe=54AE2D25',
-                tags:[
-                    '외로움','가로등','여행가고싶다'
-                ]
-            },{
-                diaryId:3,
-                title:'학교종이 땡땡땡2',
-                body:'난 오늘 11시에 태평역에서 가산디지털단지역으로 지하철을 타고 갔다. 도착하고 나서 짜장범벅을 먹었고 일하고 일하고 일하고 일하고 전화하고 하다가 오후 10시 37분인데 일하고 서류 만들고 이러고 있다.\n 배가 고파서 뭘 먹을까 배달의 민족을 10분전에 찾아보다가 별로 땡기는게 없어서 편의점에 갈까 고민중이다.\n',
-                start:'2014-10-15 11:25',
-                tags:[
-                    'keyword','tag','travel'
-                ]
-            },{
-                diaryId:4,
-                title:'학교종이 땡땡땡3',
-                body:'난 오늘 11시에 태평역에서 가산디지털단지역으로 지하철을 타고 갔다. 도착하고 나서 짜장범벅을 먹었고 일하고 일하고 일하고 일하고 전화하고 하다가 오후 10시 37분인데 일하고 서류 만들고 이러고 있다.\n 배가 고파서 뭘 먹을까 배달의 민족을 10분전에 찾아보다가 별로 땡기는게 없어서 편의점에 갈까 고민중이다.\n',
-                start:'2014-10-15 11:25',
-                imgUrl:'https://fbcdn-sphotos-e-a.akamaihd.net/hphotos-ak-xpf1/v/t1.0-9/10374521_1583010508586532_3427623053075932858_n.jpg?oh=aa233af62bd3c94dc6297e48a425c4fb&oe=54EF89F7&__gda__=1424818376_416f75d550dabb1167b906e0340d6439',
-                tags:[
-                    'keyword','tag','travel'
-                ]
-            }
-        ]
-
-
-
-    }
 
 
 
@@ -402,8 +361,8 @@ function DiaryDetailCtrl($rootScope ,$scope, $http, $timeout, $routeParams) {
 //        var data = JSON.stringify( { "data":writeData} );
         var data = JSON.stringify({'id':ob.id,'revision':ob.revision});
         $http({method: 'DELETE',
-            url: 'http://14.63.171.66:8081/tleafstructure/api/user/log',
-            headers: {'Content-Type': 'application/json', 'X-Tleaf-User-Id':'344bc889c8bb44dd6e4bb845d40007b9', 'X-Tleaf-Application-Id': '6b22f647ef8f2f3278a1322d8b000f81', 'X-Tleaf-Access-Token':'6b22f647ef8f2f3278a1322d8b000210'},
+            url: rootUrl+'api/user/log',
+            headers: {'Content-Type': 'application/json', 'X-Tleaf-User-Id':'344bc889c8bb44dd6e4bb845d40007b9', 'X-Tleaf-Application-Id': $rootScope.appId, 'X-Tleaf-Access-Token':'6b22f647ef8f2f3278a1322d8b000210'},
             data: data
 
         }).success(function(data, status, headers, config) {
@@ -558,7 +517,7 @@ function loginCtrl($rootScope,$scope,$http) {
                 nickname:user.nickname ,
                 gender: user.male ,
                 age:user.age });
-        var url = 'http://14.63.171.66:8081/tleafstructure/user/signup';
+        var url = 'user/signup';
         $http({method: 'POST',
             url: url,
             headers: {'Content-Type': 'application/json'},
@@ -605,7 +564,7 @@ function loginCtrl($rootScope,$scope,$http) {
     $scope.submitLogin = function (user) {
         var data = JSON.stringify({ email: user.email , password:user.pw});
         $http({method: 'POST',
-            url: 'http://14.63.171.66:8081/tleafstructure/user/login',
+            url: rootUrl+'user/login',
             headers: {'Content-Type': 'application/json'},
             data: data
 //                     'email1='+user.email1+
